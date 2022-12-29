@@ -16,12 +16,16 @@ export default class NewUserName extends React.Component {
     this.setState({
       isClicked: !this.state.isClicked
     });
+    // eslint-disable-next-line
+    console.log('clicked?: ', this.state.isClicked);
   }
 
   handleUserName(event) {
     this.setState({
       userName: event.target.value
     });
+    // eslint-disable-next-line
+    console.log('username: ', this.state.userName);
   }
 
   handleSubmitUserName(event) {
@@ -29,18 +33,20 @@ export default class NewUserName extends React.Component {
     this.setState({
       userName: ''
     });
+    // eslint-disable-next-line
+    console.log('submitted!');
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmitUserName}>
         <div className='mt-5'>
           <label htmlFor='username'>
-            <input name='username' type='text' value='Type a username here' className='user-input' />
+            <input required name='username' type='text' placeholder='Type a username here' className='user-input'value={this.state.userName} onChange={this.handleUserName}/>
           </label>
         </div>
         <div className='mt-5'>
-          <button type='submit' className='next'>NEXT</button>
+          <button type='submit' className='next' onClick={this.handleClick}>NEXT</button>
         </div>
       </form>
     );
