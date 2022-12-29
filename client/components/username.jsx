@@ -6,6 +6,13 @@ export default class NewUserName extends React.Component {
     this.state = {
       isClicked: false
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      isClicked: !this.state.isClicked
+    });
   }
 
   render() {
