@@ -36,11 +36,17 @@ export default class NewUserName extends React.Component {
 
       return false;
     } else {
+
+      // WILL NEED TO REMOVE WHEN STARTING VIEW SWAP
+      event.preventDefault();
+
       // eslint-disable-next-line
       console.log('submitted!');
       this.setState({
         userName: ''
       });
+      // eslint-disable-next-line
+      console.log('username: ', this.state.userName);
     }
   }
 
@@ -51,7 +57,7 @@ export default class NewUserName extends React.Component {
       return (
         <>
           <div className='instruct wht-txt'>
-            <p>Username is invalid</p>
+            <p className='wrong'>Username is invalid, please try again!</p>
           </div>
           <form onSubmit={this.handleSubmitUserName}>
             <div className='mt-5'>
@@ -60,7 +66,7 @@ export default class NewUserName extends React.Component {
               </label>
             </div>
             <div className='mt-5'>
-              <button type='submit' className='next'>NEXT</button>
+              <button type='submit' className='next grn'>NEXT</button>
             </div>
           </form>
         </>
@@ -69,7 +75,7 @@ export default class NewUserName extends React.Component {
       return (
         <>
           <div className='instruct wht-txt'>
-            <p>Success! Please click next.</p>
+            <p className='correct'>Success! Please click next.</p>
           </div>
           <form onSubmit={this.handleSubmitUserName}>
             <div className='mt-5'>
@@ -78,7 +84,7 @@ export default class NewUserName extends React.Component {
               </label>
             </div>
             <div className='mt-5'>
-              <button type='submit' className='next'>NEXT</button>
+              <button type='submit' className='next grn'>NEXT</button>
             </div>
           </form>
         </>
@@ -97,7 +103,7 @@ export default class NewUserName extends React.Component {
             </div>
             <div className='mt-5'>
               <div className='mt-5'>
-                <button type='submit' className='next'>NEXT</button>
+                <button type='submit' className='next grn'>NEXT</button>
               </div>
             </div>
           </form>
