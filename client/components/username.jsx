@@ -65,6 +65,24 @@ export default class NewUserName extends React.Component {
           </form>
         </>
       );
+    } else if (this.state.userName.length >= 7) {
+      return (
+        <>
+          <div className='instruct wht-txt'>
+            <p>Success! Please click next.</p>
+          </div>
+          <form onSubmit={this.handleSubmitUserName}>
+            <div className='mt-5'>
+              <label htmlFor='username'>
+                <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
+              </label>
+            </div>
+            <div className='mt-5'>
+              <button type='submit' className='next'>NEXT</button>
+            </div>
+          </form>
+        </>
+      );
     } else {
       return (
         <>
