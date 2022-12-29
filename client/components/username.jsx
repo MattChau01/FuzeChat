@@ -25,7 +25,10 @@ export default class NewUserName extends React.Component {
   }
 
   handleSubmitUserName(event) {
-
+    event.preventDefault();
+    this.setState({
+      userName: ''
+    });
   }
 
   render() {
