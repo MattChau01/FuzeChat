@@ -9,6 +9,7 @@ export default class NewUserName extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleUserName = this.handleUserName.bind(this);
+    this.handleSubmitUserName = this.handleSubmitUserName.bind(this);
   }
 
   handleClick() {
@@ -21,6 +22,10 @@ export default class NewUserName extends React.Component {
     this.setState({
       userName: event.target.value
     });
+  }
+
+  handleSubmitUserName(event) {
+
   }
 
   render() {
