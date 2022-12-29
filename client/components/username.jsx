@@ -4,14 +4,22 @@ export default class NewUserName extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      isClicked: false,
+      userName: ''
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleUserName = this.handleUserName.bind(this);
   }
 
   handleClick() {
     this.setState({
       isClicked: !this.state.isClicked
+    });
+  }
+
+  handleUserName(event) {
+    this.setState({
+      userName: event.target.value
     });
   }
 
