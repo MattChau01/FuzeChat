@@ -7,7 +7,7 @@ body {
   font-size: 40px;
   color: #fff;
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .nav-bar {
@@ -28,7 +28,7 @@ body {
 .instruct {
   font-family: Helvetica, sans-serif;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .user-input {
@@ -39,6 +39,7 @@ body {
   font-family: Helvetica, sans-serif;
   color: grey;
   padding-left: 10px;
+  font-weight: 500;
 }
 
 .user-input:focus::placeholder {
