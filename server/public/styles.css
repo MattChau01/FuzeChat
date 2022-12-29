@@ -40,6 +40,7 @@ body {
   color: grey;
   padding-left: 10px;
   font-weight: 500;
+  outline: none;
 }
 
 .user-input:focus::placeholder {
@@ -55,4 +56,11 @@ body {
   height: 40px;
   border-style: none;
   border-radius: 1rem;
+}
+
+.wrong {
+  color: rgb(235, 142, 142, 100%);
+  font-size: 30px;
+  position: absolute;
+  right: 40px;
 }

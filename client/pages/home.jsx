@@ -9,9 +9,6 @@ export default function Home(props) {
           <div className='row welcome wht-txt'>
             <p>Welcome to FuzeChat!</p>
           </div>
-          <div className='instruct wht-txt'>
-            <p>Please enter a username below</p>
-          </div>
           <div>
             <NewUserName />
           </div>
