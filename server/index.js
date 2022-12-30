@@ -19,7 +19,6 @@ const jsonMiddleWare = express.json();
 app.use(staticMiddleware);
 app.use(jsonMiddleWare);
 
-// GET REQUEST
 app.get('/api/users', (req, res, next) => {
   const sql = `
     select *
@@ -34,7 +33,6 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// POST REQUEST
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
 

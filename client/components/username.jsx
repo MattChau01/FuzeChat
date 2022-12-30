@@ -22,31 +22,16 @@ export default class NewUserName extends React.Component {
     this.setState({
       userName: event.target.value
     });
-    // eslint-disable-next-line
-    // console.log('username: ', this.state.userName);
   }
 
   handleSubmitUserName(event) {
     if (this.state.userName.length < 7) {
-      // eslint-disable-next-line
-      console.log('invalid input!');
       event.preventDefault();
 
       return false;
     } else {
 
-      // WILL NEED TO REMOVE WHEN STARTING VIEW SWAP
       event.preventDefault();
-
-      // eslint-disable-next-line
-      console.log('submitted!');
-      // this.setState({
-      //   userName: ''
-      // });
-      // eslint-disable-next-line
-      console.log('final username: ', this.state.userName);
-
-      // POST METHOD HERE:
 
       const reqObj = {};
       reqObj.userName = this.state.userName;
@@ -70,8 +55,6 @@ export default class NewUserName extends React.Component {
   }
 
   render() {
-    // console.log('username being typed: ', this.state.userName);
-
     if ((this.state.userName.length < 7) && (this.state.userName.length >= 1)) {
       return (
         <>

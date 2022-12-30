@@ -69,3 +69,40 @@ body {
 .grn {
   background-color: rgb(2, 175, 160, 100%);
 }
+
+@media screen and (min-width: 500px) {
+  .welcome {
+    font-family: Helvetica, sans-serif;
+    font-size: 33px;
+    font-weight: 600;
+  }
+
+  .instruct {
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .user-input {
+    width: 350px;
+    height: 40px;
+    border-style: none;
+    border-radius: 1rem;
+    font-family: Helvetica, sans-serif;
+    color: grey;
+    padding-left: 10px;
+    font-weight: 500;
+    outline: none;
+  }
+
+  .next {
+    font-family: Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    width: 120px;
+    height: 50px;
+    border-style: none;
+    border-radius: 1rem;
+  }
+}
