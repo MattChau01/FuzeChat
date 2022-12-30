@@ -1,9 +1,10 @@
 import React from 'react';
 import NewUserName from '../components/username';
+import SelectRoom from '../components/room-select';
 
 export default function Home(props) {
   return (
-    <div className='container-fluid main' >
+    <div className='container-fluid' >
       <div className='mt-5 pt-5'>
         <div className='mt-5'>
           <div className='mt-5 pt-5 text-center'>
@@ -12,6 +13,7 @@ export default function Home(props) {
             </div>
             <div>
               <NewUserName />
+              <SelectRoom />
             </div>
           </div>
         </div>
