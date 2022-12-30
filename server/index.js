@@ -37,10 +37,10 @@ app.get('/api/users', (req, res, next) => {
 // POST REQUEST
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
-  // console.log('req body: ', req.body);
-  // console.log('userName: ', userName);
 
   if (!userName) {
+    throw new ClientError(400, 'Invalid input');
+  } else if (userName.length < 7 && userName.length >= 1) {
     throw new ClientError(400, 'Invalid input');
   }
 
