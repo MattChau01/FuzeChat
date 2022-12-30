@@ -50,6 +50,7 @@ body {
 .next {
   font-family: Helvetica, sans-serif;
   font-size: 22px;
+  font-weight: 600;
   color: #fff;
   width: 120px;
   height: 40px;

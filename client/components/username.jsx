@@ -16,8 +16,6 @@ export default class NewUserName extends React.Component {
     this.setState({
       isClicked: !this.state.isClicked
     });
-    // eslint-disable-next-line
-    console.log('clicked?: ', this.state.isClicked);
   }
 
   handleUserName(event) {
@@ -31,7 +29,7 @@ export default class NewUserName extends React.Component {
   handleSubmitUserName(event) {
     if (this.state.userName.length < 7) {
       // eslint-disable-next-line
-      console.log('invalid input');
+      console.log('invalid input!');
       event.preventDefault();
 
       return false;
@@ -42,11 +40,32 @@ export default class NewUserName extends React.Component {
 
       // eslint-disable-next-line
       console.log('submitted!');
-      this.setState({
-        userName: ''
-      });
+      // this.setState({
+      //   userName: ''
+      // });
       // eslint-disable-next-line
-      console.log('username: ', this.state.userName);
+      console.log('final username: ', this.state.userName);
+
+      // POST METHOD HERE:
+
+      const reqObj = {};
+      reqObj.userName = this.state.userName;
+
+      const req = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reqObj)
+      };
+
+      fetch('/api/users', req)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            userName: ''
+          });
+        });
     }
   }
 
