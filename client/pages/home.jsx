@@ -1,21 +1,52 @@
 import React from 'react';
-// import NewUserName from '../components/username';
+import ParseRoute from '../lib/parse-route';
+import NewUserName from '../components/username';
 import SelectRoom from '../components/room-select';
 
-export default function Home(props) {
-  return (
-    <div className='container-fluid' >
-      <div className='mt-5 pt-5'>
-        <div className='mt-5'>
-          <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
-            <div>
-              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
-              {/* <NewUserName /> */}
-              <SelectRoom />
+export default class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      route: ParseRoute(window.location.hash)
+    };
+    this.renderPage = this.renderPage.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      this.setState({
+        route: ParseRoute(window.location.hash)
+      });
+    });
+  }
+
+  renderPage() {
+    const { path } = this.state.route;
+    // eslint-disable-next-line
+    console.log('path: ', path);
+    if (path === '') {
+      return (<NewUserName />);
+    }
+    if (path === 'choose-room') {
+      return <SelectRoom />;
+    }
+  }
+
+  render() {
+    return (
+      <div className='container-fluid' >
+        <div className='mt-5 pt-5'>
+          <div className='mt-5'>
+            <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
+              <div>
+                <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+                {this.renderPage()}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 }

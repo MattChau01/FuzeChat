@@ -50,8 +50,14 @@ export default class NewUserName extends React.Component {
           this.setState({
             userName: ''
           });
+          window.location.hash = 'choose-room';
         });
+
+      // REDIRECT:
+      // if (this.state.userName.length >= 7) return <Redirect to="choose-room" />;
     }
+    // console.log('window location: ', window.location);
+
   }
 
   render() {
@@ -68,7 +74,7 @@ export default class NewUserName extends React.Component {
               </label>
             </div>
             <div className='mt-5'>
-              <button type='submit' className='next grn'>NEXT</button>
+              <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
             </div>
           </form>
         </>
@@ -86,7 +92,7 @@ export default class NewUserName extends React.Component {
               </label>
             </div>
             <div className='mt-5'>
-              <button type='submit' className='next grn'>NEXT</button>
+              <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
             </div>
           </form>
         </>
@@ -105,7 +111,7 @@ export default class NewUserName extends React.Component {
             </div>
             <div className='mt-5'>
               <div className='mt-5'>
-                <button type='submit' className='next grn'>NEXT</button>
+                <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
               </div>
             </div>
           </form>

@@ -48,13 +48,15 @@ body {
 
 .next {
   font-family: Helvetica, sans-serif;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 600;
   color: #fff;
   width: 120px;
   height: 40px;
   border-style: none;
   border-radius: 1rem;
+  text-decoration: none;
+  padding-top: 1px;
 }
 
 .wrong {
