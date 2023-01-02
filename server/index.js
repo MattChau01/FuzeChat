@@ -33,6 +33,15 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// GET REQUEST FOR CHATROOMS
+app.get('/api/chatRooms', (req, res, next) => {
+  // eslint-disable-next-line
+  const sql = `
+    select *
+    from "chatRooms"
+  `;
+});
+
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
 
