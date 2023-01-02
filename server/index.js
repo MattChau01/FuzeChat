@@ -61,6 +61,42 @@ app.post('/api/users', (req, res, next) => {
 
 app.use(errorMiddleware);
 
+// ADDING A DELETE REQUEST
+
+app.delete('/api/users/:userId', (req, res, next) => {
+  const id = Number(req.params.userId);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    res.status(400).json({
+      error: 'Invalid input'
+    });
+  } else {
+    const sql = `
+      delete
+        from "users"
+       where "userId" = $1
+       returning *
+    `;
+
+    const params = [id];
+
+    db.query(sql, params)
+      .then(result => {
+        const user = result.rows[0];
+
+        if (!user) {
+          res.status(404).json({
+            error: 'Invalid input'
+          });
+        } else {
+          res.status(204).json(user);
+        }
+      })
+      .catch(err => next(err));
+  }
+
+});
+
 app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });

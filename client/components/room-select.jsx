@@ -4,8 +4,22 @@ export default class SelectRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      isClicked: false,
+      currentVal: null
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    this.setState({
+      isClicked: this.state.isClicked
+    });
+    // eslint-disable-next-line
+    console.log('clicked?: ', !this.state.isClicked);
+    // eslint-disable-next-line
+    console.log(event.target.value);
+    // eslint-disable-next-line
+    console.log(typeof event.target.value);
   }
 
   render() {
@@ -17,7 +31,7 @@ export default class SelectRoom extends React.Component {
               <label htmlFor='rooms' className='instruct pt-3 wht-txt'>Please select a chat room to join</label>
             </div>
             <div className='pt-5'>
-              <select className='selection' name='rooms'>
+              <select className='selection' name='rooms' onClick={this.handleClick}>
                 <option value=''>Select a room here..</option>
                 <option value='rc1022'>rc1022</option>
                 <option value='lfz2022'>lfz2022</option>
