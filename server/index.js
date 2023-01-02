@@ -35,11 +35,17 @@ app.get('/api/users', (req, res, next) => {
 
 // GET REQUEST FOR CHATROOMS
 app.get('/api/chatRooms', (req, res, next) => {
-  // eslint-disable-next-line
   const sql = `
     select *
     from "chatRooms"
   `;
+
+  db.query(sql)
+    .then(result => {
+      const roomsList = result.rows;
+      res.json(roomsList);
+    })
+    .catch(err => next(err));
 });
 
 app.post('/api/users', (req, res, next) => {
