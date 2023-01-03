@@ -1,4 +1,5 @@
 import React from 'react';
+import Redirect from './redirect';
 
 export default class NewUserName extends React.Component {
   constructor(props) {
@@ -54,10 +55,9 @@ export default class NewUserName extends React.Component {
         });
 
       // REDIRECT:
-      // if (this.state.userName.length >= 7) return <Redirect to="choose-room" />;
+      if (this.state.userName.length >= 7) return <Redirect to="choose-room" />;
     }
     // console.log('window location: ', window.location);
-
   }
 
   render() {
