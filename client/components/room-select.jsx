@@ -7,9 +7,7 @@ export default class SelectRoom extends React.Component {
       buttonClicked: false,
       selectClicked: false,
       currentVal: null,
-      userName: window.location.hash.slice(13),
-      chatRoomId: null
-      // currentHash: window.location.hash
+      userName: window.location.hash.slice(13)
     };
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
