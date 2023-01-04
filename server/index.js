@@ -49,41 +49,10 @@ app.get('/api/chatRooms', (req, res, next) => {
 });
 
 // TEST
-// GET REQUEST FOR USERSINCHAT
 app.get('/api/usersInChat', (req, res, next) => {
   const { chatRoomName } = req.body;
 
-  const sqlRoom = `
-      with "cte_chatRoom" as (
-      select "chatRoomId"
-        from "chatRooms"
-       where "chatRoomName" = $1
-    )
-
-    select * from "cte_chatRoom";
-  `;
-
-  const sqlName = `
-    with "cte_userId" as (
-      select "userId"
-        from "users"
-       where "userName" = $2
-    )
-
-    select * from "cte_userId";
-  `;
-
   const sql = `
-    with "cte_chatRoom" as (
-    select "chatRoomId"
-      from "chatRooms"
-      where "chatRoomName" = $1
-    )
-
-    select * from "cte_chatRoom";
-
-    insert into "usersInChat" ("chatRoomId")
-    values (${sqlRoom}, ${sqlName})
 
   `;
 
@@ -127,9 +96,6 @@ app.post('/api/users', (req, res, next) => {
 // POST REQUEST FOR ROOM SELECTION
 app.post('/api/usersInChat', (req, res, next) => {
   const { chatRoomName, userName } = req.body;
-
-  // console.log('chatRoomName: ', chatRoomName);
-  // console.log('userName: ', userName);
 
   if (!chatRoomName || !userName) {
     throw new ClientError(400, 'Invalid input!');

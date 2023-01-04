@@ -20,18 +20,12 @@ export default class SelectRoom extends React.Component {
       currentVal: event.target.value,
       buttonClicked: false
     });
-    // eslint-disable-next-line
-    // console.log('clicked?: ', !this.state.isClicked);
-    // eslint-disable-next-line
-    // console.log(typeof event.target.value);
   }
 
   buttonClicked() {
     this.setState({
       buttonClicked: true
     });
-    // eslint-disable-next-line
-    // console.log('please select');
   }
 
   handleSubmit(event) {
@@ -40,8 +34,6 @@ export default class SelectRoom extends React.Component {
       return false;
     } else {
       event.preventDefault();
-
-      // this.setState({ userName: (this.state.currentHash).slice(13) });
 
       const reqObj = {};
       reqObj.chatRoomName = this.state.currentVal;
@@ -55,32 +47,18 @@ export default class SelectRoom extends React.Component {
         body: JSON.stringify(reqObj)
       };
 
-      // console.log('reqobj: ', reqObj);
-
       fetch('/api/usersInChat', req)
         .then(res => res.json())
         .then(data => {
           this.setState({
             currentVal: event.target.value
           });
-          // INSERT HASH TO CHAT ROOM HERE:
-          // ROOM HASH
+
         });
-      // console.log('currentValue: ', this.state.currentVal);
-      // console.log('username: ', this.state.userName);
     }
   }
 
   render() {
-
-    // console.log('window location: ', (this.state.currentHash).slice(13));
-    // console.log('window location: ', (window.location.hash).length);
-
-    // eslint-disable-next-line
-    // console.log('current value: ', this.state.currentVal);
-    // eslint-disable-next-line
-    // console.log('type: ', typeof this.state.currentVal);
-
     if (this.state.buttonClicked === true && this.state.currentVal === null) {
       return (
         <div className='pt-1'>
