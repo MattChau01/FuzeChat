@@ -103,12 +103,11 @@ app.post('/api/usersInChat', (req, res, next) => {
 
   // SQL QUERY
   const sql = `
- insert into "usersInChat" ("chatRoomId", "userId")
-  values (
-    (select "chatRoomId" from "chatRooms" where "chatRoomName" = $1),
-    (select "userId" from "users" where "userName" = $2)
-  )
-  returning *
+    insert into "usersInChat" ("chatRoomId", "userId")
+      values (
+      (select "chatRoomId" from "chatRooms" where "chatRoomName" = $1),
+      (select "userId" from "users" where "userName" = $2))
+    returning *
   `;
 
   const params = [chatRoomName, userName];
