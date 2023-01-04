@@ -6,8 +6,9 @@ export default class SelectRoom extends React.Component {
     this.state = {
       buttonClicked: false,
       selectClicked: false,
-      optionSelected: false,
-      currentVal: null
+      currentVal: null,
+      userId: null,
+      chatRoomId: null
     };
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
@@ -23,8 +24,6 @@ export default class SelectRoom extends React.Component {
     // eslint-disable-next-line
     console.log('clicked?: ', !this.state.isClicked);
     // eslint-disable-next-line
-    console.log(event.target.value);
-    // eslint-disable-next-line
     console.log(typeof event.target.value);
   }
 
@@ -38,17 +37,38 @@ export default class SelectRoom extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // eslint-disable-next-line
-    console.log('submission: ', this.state.currentVal);
-    // eslint-disable-next-line
-    console.log('submit type: ', typeof this.state.currentVal);
-    // eslint-disable-next-line
-    console.log('length: ', this.state.currentVal.length);
+
+    const reqObj = {};
+    reqObj.roomSelection = this.state.currentVal;
+
+    const req = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(reqObj)
+    };
+
+    // console.log('reqobj: ', reqObj);
+
+    fetch('/api/usersInChat', req)
+      .then(res => res.json())
+      .then(data => {
+        // console.log('data: ', data);
+        this.setState({
+          currentVal: event.target.value
+        });
+
+        // INSERT HASH TO CHAT ROOM HERE:
+        // ROOM HASH
+      });
+    // console.log('this.currentValue: ', this.state.currentVal);
+    // console.log('assigned to current val: ', this.state.currentVal);
   }
 
   render() {
     // eslint-disable-next-line
-    // console.log('current value: ', this.state.currentVal);
+    console.log('current value: ', this.state.currentVal);
     // eslint-disable-next-line
     // console.log('type: ', typeof this.state.currentVal);
 

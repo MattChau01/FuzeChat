@@ -48,6 +48,56 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// TEST
+// GET REQUEST FOR USERSINCHAT
+app.get('/api/usersInChat', (req, res, next) => {
+  const { chatRoomName } = req.body;
+
+  const sqlRoom = `
+      with "cte_chatRoom" as (
+      select "chatRoomId"
+        from "chatRooms"
+       where "chatRoomName" = $1
+    )
+
+    select * from "cte_chatRoom";
+  `;
+
+  const sqlName = `
+    with "cte_userId" as (
+      select "userId"
+        from "users"
+       where "userName" = $2
+    )
+
+    select * from "cte_userId";
+  `;
+
+  const sql = `
+    with "cte_chatRoom" as (
+    select "chatRoomId"
+      from "chatRooms"
+      where "chatRoomName" = $1
+    )
+
+    select * from "cte_chatRoom";
+
+    insert into "usersInChat" ("chatRoomId")
+    values (${sqlRoom}, ${sqlName})
+
+  `;
+
+  const params = [chatRoomName];
+
+  db.query(sql, params)
+    .then(result => {
+      const activeUsers = result.rows;
+      res.json(activeUsers);
+    })
+    .catch(err => next(err));
+});
+// TEST ABOVE
+
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
 
@@ -69,6 +119,35 @@ app.post('/api/users', (req, res, next) => {
     .then(result => {
       const newUser = result.rows[0];
       res.status(201).json(newUser);
+    })
+    .catch(err => next(err));
+
+});
+
+// POST REQUEST FOR ROOM SELECTION
+app.post('/api/usersInChat', (req, res, next) => {
+  const { chatRoomName, userName } = req.body;
+
+  if (!chatRoomName || !userName) {
+    throw new ClientError(400, 'Invalid input!');
+  }
+
+  // SQL QUERY
+  const sql = `
+ insert into "usersInChat" ("chatRoomId", "userId")
+  values (
+    (select "chatRoomId" from "chatRooms" where "chatRoomName" = $1),
+    (select "userId" from "users" where "userName" = $2)
+  )
+  returning *
+  `;
+
+  const params = [chatRoomName, userName];
+
+  db.query(sql, params)
+    .then(result => {
+      const active = result.rows[0];
+      res.status(201).json(active);
     })
     .catch(err => next(err));
 

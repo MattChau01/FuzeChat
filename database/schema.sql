@@ -19,7 +19,7 @@ CREATE TABLE "public"."chatRooms" (
 CREATE TABLE "public"."users" (
 	"userId" serial NOT NULL,
 	"userName" TEXT NOT NULL,
-	"createdAt" TIMESTAMP NOT NULL,
+	"createdAt" timestamptz(6) NOT NULL default now(),
 	CONSTRAINT "users_pk" PRIMARY KEY ("userId")
 ) WITH (
   OIDS=FALSE
@@ -29,7 +29,7 @@ CREATE TABLE "public"."users" (
 
 CREATE TABLE "public"."messages" (
 	"newMessage" TEXT NOT NULL,
-	"createdAt" TIMESTAMP NOT NULL,
+	"createdAt" timestamptz(6) NOT NULL default now(),
 	"entryId" serial NOT NULL,
 	"chatRoomId" integer NOT NULL,
 	"userId" integer NOT NULL
