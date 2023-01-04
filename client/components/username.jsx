@@ -48,10 +48,11 @@ export default class NewUserName extends React.Component {
       fetch('/api/users', req)
         .then(res => res.json())
         .then(data => {
+          // console.log('data from username: ', data);
           this.setState({
             userName: ''
           });
-          window.location.hash = 'choose-room';
+          window.location.hash = `choose-room?${this.state.userName}`;
         });
 
       // REDIRECT:

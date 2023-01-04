@@ -128,6 +128,9 @@ app.post('/api/users', (req, res, next) => {
 app.post('/api/usersInChat', (req, res, next) => {
   const { chatRoomName, userName } = req.body;
 
+  // console.log('chatRoomName: ', chatRoomName);
+  // console.log('userName: ', userName);
+
   if (!chatRoomName || !userName) {
     throw new ClientError(400, 'Invalid input!');
   }

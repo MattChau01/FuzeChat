@@ -7,8 +7,9 @@ export default class SelectRoom extends React.Component {
       buttonClicked: false,
       selectClicked: false,
       currentVal: null,
-      userId: null,
+      userName: window.location.hash.slice(13),
       chatRoomId: null
+      // currentHash: window.location.hash
     };
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
@@ -22,9 +23,9 @@ export default class SelectRoom extends React.Component {
       buttonClicked: false
     });
     // eslint-disable-next-line
-    console.log('clicked?: ', !this.state.isClicked);
+    // console.log('clicked?: ', !this.state.isClicked);
     // eslint-disable-next-line
-    console.log(typeof event.target.value);
+    // console.log(typeof event.target.value);
   }
 
   buttonClicked() {
@@ -32,43 +33,53 @@ export default class SelectRoom extends React.Component {
       buttonClicked: true
     });
     // eslint-disable-next-line
-    console.log('please select');
+    // console.log('please select');
   }
 
   handleSubmit(event) {
-    event.preventDefault();
+    if (this.currentVal === null) {
+      event.preventDefault();
+      return false;
+    } else {
+      event.preventDefault();
 
-    const reqObj = {};
-    reqObj.roomSelection = this.state.currentVal;
+      // this.setState({ userName: (this.state.currentHash).slice(13) });
 
-    const req = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(reqObj)
-    };
+      const reqObj = {};
+      reqObj.chatRoomName = this.state.currentVal;
+      reqObj.userName = this.state.userName;
 
-    // console.log('reqobj: ', reqObj);
+      const req = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(reqObj)
+      };
 
-    fetch('/api/usersInChat', req)
-      .then(res => res.json())
-      .then(data => {
-        // console.log('data: ', data);
-        this.setState({
-          currentVal: event.target.value
+      // console.log('reqobj: ', reqObj);
+
+      fetch('/api/usersInChat', req)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            currentVal: event.target.value
+          });
+          // INSERT HASH TO CHAT ROOM HERE:
+          // ROOM HASH
         });
-
-        // INSERT HASH TO CHAT ROOM HERE:
-        // ROOM HASH
-      });
-    // console.log('this.currentValue: ', this.state.currentVal);
-    // console.log('assigned to current val: ', this.state.currentVal);
+      // console.log('currentValue: ', this.state.currentVal);
+      // console.log('username: ', this.state.userName);
+    }
   }
 
   render() {
+
+    // console.log('window location: ', (this.state.currentHash).slice(13));
+    // console.log('window location: ', (window.location.hash).length);
+
     // eslint-disable-next-line
-    console.log('current value: ', this.state.currentVal);
+    // console.log('current value: ', this.state.currentVal);
     // eslint-disable-next-line
     // console.log('type: ', typeof this.state.currentVal);
 
@@ -97,7 +108,6 @@ export default class SelectRoom extends React.Component {
           </div>
         </div>
       );
-      // WORKING ON DISPLAYING SUCCESS MESSAGE ONLY AFTER BOTH SELECT IS CLICKED AND A SELECITON IS MADE
     } else if (this.state.currentVal !== null && this.selectClicked) {
       return (
         <div className='pt-1'>
