@@ -1,7 +1,8 @@
 import React from 'react';
 import ParseRoute from '../lib/parse-route';
-import NewUserName from '../components/username';
+// import NewUserName from '../components/username';
 import SelectRoom from '../components/room-select';
+import ChatRoom from '../components/chat-room';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -22,10 +23,10 @@ export default class Home extends React.Component {
 
   renderPage() {
     const { path } = this.state.route;
-    // eslint-disable-next-line
-    console.log('path: ', path);
     if (path === '') {
-      return (<NewUserName />);
+      // return (<NewUserName />);
+      // COMMENTING OUT <NEWUSERNAME /> FOR NOW TO TEST CHAT ROOM
+      return (<ChatRoom />);
     }
     if (path === 'choose-room') {
       return <SelectRoom />;
