@@ -17,9 +17,9 @@ export default class Sender extends React.Component {
 
   render() {
     // eslint-disable-next-line
-    console.log(window.location.hash);
+    // console.log(window.location.hash);
     return (
-      <div className='message-area'>
+      <div className='message-area text-center'>
         <div className='mt-3'>
           <div>
             <form>

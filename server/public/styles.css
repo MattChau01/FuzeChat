@@ -91,7 +91,8 @@ body {
   background-color: rgb(40, 60, 70, 100%);
   width: 360px;
   height: 35px;
-  margin-top: -20%;
+
+  /* margin-top: 20%; */
   margin-left: 15px;
 }
 
@@ -149,6 +150,14 @@ body {
 .send-arrow {
   color: #fff;
   font-size: 20px;
+}
+
+.message {
+  font-size: 14px;
+}
+
+.just-joined {
+  font-size: 13px;
 }
 
 @media screen and (min-width: 500px) {

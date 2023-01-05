@@ -37,13 +37,14 @@ export default class Home extends React.Component {
     }
     if (path === 'message') {
       return (<ChatRoom />);
+
     }
   }
 
   render() {
     return (
 
-      <div className='mt-5 pt-5'>
+      <div className=''>
         { this.renderPage() }
       </div>
 

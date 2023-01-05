@@ -1,5 +1,6 @@
 import React from 'react';
 import Redirect from './redirect';
+import enterChat from '../../server/public/enterChat.mp3';
 
 export default class SelectRoom extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export default class SelectRoom extends React.Component {
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.playChime = this.playChime.bind(this);
   }
 
   selectClicked(event) {
@@ -21,6 +23,10 @@ export default class SelectRoom extends React.Component {
       currentVal: event.target.value,
       buttonClicked: false
     });
+  }
+
+  playChime() {
+    new Audio(enterChat).play();
   }
 
   buttonClicked() {
@@ -35,6 +41,10 @@ export default class SelectRoom extends React.Component {
       return false;
     } else {
       event.preventDefault();
+
+      // TEST AUDIO
+      const audio = new Audio(enterChat);
+      audio.play();
 
       const reqObj = {};
       reqObj.chatRoomName = this.state.currentVal;
@@ -59,13 +69,14 @@ export default class SelectRoom extends React.Component {
           console.log(window.location.hash);
         });
       if (this.state.currentVal !== null && this.selectClicked) return <Redirect to="message" />;
+
     }
   }
 
   render() {
     if (this.state.buttonClicked === true && this.state.currentVal === null) {
       return (
-        <div className='container-fluid' >
+        <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
@@ -97,7 +108,7 @@ export default class SelectRoom extends React.Component {
       );
     } else if (this.state.currentVal !== null && this.selectClicked) {
       return (
-        <div className='container-fluid' >
+        <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
@@ -129,7 +140,7 @@ export default class SelectRoom extends React.Component {
       );
     } else {
       return (
-        <div className='container-fluid'>
+        <div className='container-fluid mt-5 pt-5'>
           <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>

@@ -61,7 +61,7 @@ export default class NewUserName extends React.Component {
   render() {
     if ((this.state.userName.length < 7) && (this.state.userName.length >= 1)) {
       return (
-        <div className='container-fluid' >
+        <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
@@ -84,7 +84,7 @@ export default class NewUserName extends React.Component {
       );
     } else if (this.state.userName.length >= 7) {
       return (
-        <div className='container-fluid' >
+        <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
@@ -107,7 +107,7 @@ export default class NewUserName extends React.Component {
       );
     } else {
       return (
-        <div className='container-fluid' >
+        <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
