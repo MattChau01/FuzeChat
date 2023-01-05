@@ -93,7 +93,7 @@ app.post('/api/users', (req, res, next) => {
 
 });
 
-// POST REQUEST FOR ROOM SELECTION
+// POST REQUEST FOR ROOM SELECTION (TEST)
 app.post('/api/usersInChat', (req, res, next) => {
   const { chatRoomName, userName } = req.body;
 

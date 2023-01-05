@@ -1,5 +1,4 @@
 import React from 'react';
-import Redirect from './redirect';
 import enterChat from '../../server/public/enterChat.mp3';
 
 export default class SelectRoom extends React.Component {
@@ -64,12 +63,8 @@ export default class SelectRoom extends React.Component {
           this.setState({
             currentVal: event.target.value
           });
-          window.location.hash = 'message';
-          // eslint-disable-next-line
-          console.log(window.location.hash);
+          window.location.hash = `message?choose-room?${this.state.userName}=${this.state.currentVal}`;
         });
-      if (this.state.currentVal !== null && this.selectClicked) return <Redirect to="message" />;
-
     }
   }
 

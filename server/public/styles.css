@@ -156,8 +156,14 @@ body {
   font-size: 14px;
 }
 
-.just-joined {
-  font-size: 13px;
+.welcome-to-chat {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.bolded {
+  font-size: 15px;
+  font-weight: 600;
 }
 
 @media screen and (min-width: 500px) {

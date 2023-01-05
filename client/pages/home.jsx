@@ -27,8 +27,6 @@ export default class Home extends React.Component {
       return (
         <NewUserName />
       );
-      // COMMENTING OUT <NEWUSERNAME /> FOR NOW TO TEST CHAT ROOM
-      // return (<ChatRoom />);
     }
     if (path === 'choose-room') {
       return (
@@ -37,7 +35,6 @@ export default class Home extends React.Component {
     }
     if (path === 'message') {
       return (<ChatRoom />);
-
     }
   }
 
@@ -48,17 +45,6 @@ export default class Home extends React.Component {
         { this.renderPage() }
       </div>
 
-    // <div className='container-fluid' >
-    //   <div className='mt-5 pt-5'>
-    //     <div className='mt-5'>
-    //       <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
-    //         <div>
-    //           {this.renderPage()}
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     );
   }
 
