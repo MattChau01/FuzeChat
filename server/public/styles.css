@@ -127,8 +127,9 @@ body {
 }
 
 .message-bar {
+  margin-left: 5px;
   font-family: Helvetica, sans-serif;
-  width: 340px;
+  width: 335px;
   height: 40px;
   font-size: 14px;
   border-style: none;
