@@ -1,6 +1,6 @@
 import React from 'react';
 import ParseRoute from '../lib/parse-route';
-// import NewUserName from '../components/username';
+import NewUserName from '../components/username';
 import SelectRoom from '../components/room-select';
 import ChatRoom from '../components/chat-room';
 
@@ -24,16 +24,19 @@ export default class Home extends React.Component {
   renderPage() {
     const { path } = this.state.route;
     if (path === '') {
-      // return (
-      //   <NewUserName />
-      // );
+      return (
+        <NewUserName />
+      );
       // COMMENTING OUT <NEWUSERNAME /> FOR NOW TO TEST CHAT ROOM
-      return (<ChatRoom />);
+      // return (<ChatRoom />);
     }
     if (path === 'choose-room') {
       return (
         <SelectRoom />
       );
+    }
+    if (path === 'message') {
+      return (<ChatRoom />);
     }
   }
 

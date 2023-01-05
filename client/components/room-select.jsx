@@ -1,4 +1,5 @@
 import React from 'react';
+import Redirect from './redirect';
 
 export default class SelectRoom extends React.Component {
   constructor(props) {
@@ -53,8 +54,11 @@ export default class SelectRoom extends React.Component {
           this.setState({
             currentVal: event.target.value
           });
-
+          window.location.hash = 'message';
+          // eslint-disable-next-line
+          console.log(window.location.hash);
         });
+      if (this.state.currentVal !== null && this.selectClicked) return <Redirect to="message" />;
     }
   }
 
