@@ -7,11 +7,13 @@ import Sender from './chat room components/sender';
 export default class ChatRoom extends React.Component {
   render() {
     return (
-      <>
-        <RoomName />
-        <ChatBox />
-        <Sender />
-      </>
+      <div className='d-flex align-items-center justify-content-center text-center'>
+        <div>
+          <RoomName />
+          <ChatBox />
+          <Sender />
+        </div>
+      </div>
     );
   }
 }

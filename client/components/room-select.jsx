@@ -61,78 +61,100 @@ export default class SelectRoom extends React.Component {
   render() {
     if (this.state.buttonClicked === true && this.state.currentVal === null) {
       return (
-        <div className='pt-1'>
-          <div className='select mt-5'>
-            <form onSubmit={this.handleSubmit}>
-              <div className='pt-4'>
-                <label htmlFor='rooms' className='instruct pt-3 wrong'>Please select a chat room to join!</label>
-              </div>
-              <div className='pt-5'>
-                <select required className='selection' name='rooms' onClick={this.selectClicked}>
-                  <option value=''>Select a room here..</option>
-                  <option value='rc1022' >rc1022</option>
-                  <option value='lfz2022'>lfz2022</option>
-                  <option value='zoomuni'>zoomuni</option>
-                </select>
-              </div>
-              <div className='mt-5 pt-4'>
-                <div className='mt-5'>
-                  <button type='submit' className='next grn' onClick={this.buttonClicked}>NEXT</button>
+        <div className='container-fluid' >
+          <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
+            <div>
+              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+              <div className='pt-1'>
+                <div className='select mt-5'>
+                  <form onSubmit={this.handleSubmit}>
+                    <div className='pt-4'>
+                      <label htmlFor='rooms' className='instruct pt-3 wrong'>Please select a chat room to join!</label>
+                    </div>
+                    <div className='pt-5'>
+                      <select required className='selection' name='rooms' onClick={this.selectClicked}>
+                        <option value=''>Select a room here..</option>
+                        <option value='rc1022' >rc1022</option>
+                        <option value='lfz2022'>lfz2022</option>
+                        <option value='zoomuni'>zoomuni</option>
+                      </select>
+                    </div>
+                    <div className='mt-5 pt-4'>
+                      <div className='mt-5'>
+                        <button type='submit' className='next grn' onClick={this.buttonClicked}>NEXT</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       );
     } else if (this.state.currentVal !== null && this.selectClicked) {
       return (
-        <div className='pt-1'>
-          <div className='select mt-5'>
-            <form onSubmit={this.handleSubmit}>
-              <div className='pt-4'>
-                <label htmlFor='rooms' className='instruct pt-3 correct'>Please click next after selecting!</label>
-              </div>
-              <div className='pt-5'>
-                <select required className='selection' name='rooms' onClick={this.selectClicked}>
-                  <option value=''>Select a room here..</option>
-                  <option value='rc1022' >rc1022</option>
-                  <option value='lfz2022' >lfz2022</option>
-                  <option value='zoomuni' >zoomuni</option>
-                </select>
-              </div>
-              <div className='mt-5 pt-4'>
-                <div className='mt-5'>
-                  <button type='submit' className='next grn' onClick={this.buttonClicked}>NEXT</button>
+        <div className='container-fluid' >
+          <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
+            <div>
+              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+              <div className='pt-1'>
+                <div className='select mt-5'>
+                  <form onSubmit={this.handleSubmit}>
+                    <div className='pt-4'>
+                      <label htmlFor='rooms' className='instruct pt-3 correct'>Please click next after selecting!</label>
+                    </div>
+                    <div className='pt-5'>
+                      <select required className='selection' name='rooms' onClick={this.selectClicked}>
+                        <option value=''>Select a room here..</option>
+                        <option value='rc1022' >rc1022</option>
+                        <option value='lfz2022' >lfz2022</option>
+                        <option value='zoomuni' >zoomuni</option>
+                      </select>
+                    </div>
+                    <div className='mt-5 pt-4'>
+                      <div className='mt-5'>
+                        <button type='submit' className='next grn' onClick={this.buttonClicked}>NEXT</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       );
     } else {
       return (
-        <div className='pt-1'>
-          <div className='select mt-5'>
-            <form onSubmit={this.handleSubmit}>
-              <div className='pt-4'>
-                <label htmlFor='rooms' className='instruct pt-3 wht-txt'>Please select a chat room to join</label>
-              </div>
-              <div className='pt-5'>
-                <select required className='selection' name='rooms' onClick={this.selectClicked}>
-                  <option value=''>Select a room here..</option>
-                  <option value='rc1022' >rc1022</option>
-                  <option value='lfz2022' >lfz2022</option>
-                  <option value='zoomuni' >zoomuni</option>
-                </select>
-              </div>
-              <div className='mt-5 pt-4'>
-                <div className='mt-5'>
-                  <button type='submit' className='next grn' onClick={this.buttonClicked}>NEXT</button>
+        <div className='container-fluid'>
+          <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
+            <div>
+              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+              <div className='pt-1'>
+                <div className='select mt-5'>
+                  <form onSubmit={this.handleSubmit}>
+                    <div className='pt-4'>
+                      <label htmlFor='rooms' className='instruct pt-3 wht-txt'>Please select a chat room to join</label>
+                    </div>
+                    <div className='pt-5'>
+                      <select required className='selection' name='rooms' onClick={this.selectClicked}>
+                        <option value=''>Select a room here..</option>
+                        <option value='rc1022' >rc1022</option>
+                        <option value='lfz2022' >lfz2022</option>
+                        <option value='zoomuni' >zoomuni</option>
+                      </select>
+                    </div>
+                    <div className='mt-5 pt-4'>
+                      <div className='mt-5'>
+                        <button type='submit' className='next grn' onClick={this.buttonClicked}>NEXT</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
+
       );
     }
   }
