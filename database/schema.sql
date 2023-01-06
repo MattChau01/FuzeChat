@@ -18,7 +18,7 @@ CREATE TABLE "public"."chatRooms" (
 
 CREATE TABLE "public"."users" (
 	"userId" serial NOT NULL,
-	"userName" TEXT NOT NULL,
+	"userName" TEXT NOT NULL UNIQUE,
 	"createdAt" timestamptz(6) NOT NULL default now(),
 	CONSTRAINT "users_pk" PRIMARY KEY ("userId")
 ) WITH (
