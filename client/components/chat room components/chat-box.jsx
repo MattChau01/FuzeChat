@@ -12,6 +12,9 @@ export default class ChatBox extends React.Component {
   render() {
     // console.log('username: ', this.state.userName);
     // console.log('another split: ', (this.state.userName).split('='));
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    // console.log('Time: ', time);
+    // console.log('Typeof time: ', time);
 
     return (
       <div className='chat-box mt-3'>
@@ -21,7 +24,7 @@ export default class ChatBox extends React.Component {
         <div id='messages'>
           <div className='row'>
             <p className='col wht-txt px-4 bolded'>{this.state.userName} has joined!</p>
-            <p className='col-3 wht-txt bolded'>12:30 PM</p>
+            <p className='col-3 wht-txt bolded'>{time}</p>
           </div>
           <div className='wht-txt px-3 message'>
             <p>This is a test for a really really reaaaally long message from a test user!!!</p>
