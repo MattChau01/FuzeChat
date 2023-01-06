@@ -27,35 +27,6 @@ app.use(errorMiddleware);
 const io = socket(server);
 socketEvents(io);
 
-app.get('/api/users', (req, res, next) => {
-  const sql = `
-    select *
-    from "users"
-  `;
-
-  db.query(sql)
-    .then(result => {
-      const usersList = result.rows;
-      res.json(usersList);
-    })
-    .catch(err => next(err));
-});
-
-// GET REQUEST FOR CHATROOMS
-app.get('/api/chatRooms', (req, res, next) => {
-  const sql = `
-    select *
-    from "chatRooms"
-  `;
-
-  db.query(sql)
-    .then(result => {
-      const roomsList = result.rows;
-      res.json(roomsList);
-    })
-    .catch(err => next(err));
-});
-
 // SOCKETS and EMITTERS
 app.use((req, res, next) => {
   req.io = io;
@@ -70,6 +41,34 @@ app.get('/api/messages', (req, res) => {
   res.json({
     msg: 'this is a test endpoint'
   });
+});
+
+app.get('/api/users', (req, res, next) => {
+  const sql = `
+    select *
+    from "users"
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const usersList = result.rows;
+      res.json(usersList);
+    })
+    .catch(err => next(err));
+});
+
+app.get('/api/chatRooms', (req, res, next) => {
+  const sql = `
+    select *
+    from "chatRooms"
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const roomsList = result.rows;
+      res.json(roomsList);
+    })
+    .catch(err => next(err));
 });
 
 // POST REQUEST FOR NEW USER
