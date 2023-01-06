@@ -1,5 +1,11 @@
 require('dotenv/config');
 const express = require('express');
+// eslint-disable-next-line
+const http = require('http');
+// eslint-disable-next-line
+const socket = require('socket.io');
+// eslint-disable-next-line
+const socketEvents = require('./public/socket-events');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 const ClientError = require('./client-error');
@@ -48,8 +54,8 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// TEST
-app.get('/api/usersInChat', (req, res, next) => {
+// GET REQUEST FOR SOCKET MESSAGES
+app.get('/api/messages', (req, res, next) => {
   const { chatRoomName } = req.body;
 
   const sql = `
@@ -65,7 +71,6 @@ app.get('/api/usersInChat', (req, res, next) => {
     })
     .catch(err => next(err));
 });
-// TEST ABOVE
 
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
