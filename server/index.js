@@ -71,6 +71,34 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// WORKING ON POST REQUEST
+// POST REQUEST TO MESSAGES
+app.post('/api/messages', (req, res, next) => {
+  const { messages, roomName, userName } = req.body;
+
+  if (!messages || !roomName || !userName) {
+    throw new ClientError(400, 'Invalid input');
+  }
+
+  const sql = `
+    insert into "messages" ("newMessage", "chatRoomId", "userId")
+    values (
+      $1,
+      (select "userId" from "users" where "userName" = $3),
+      (select "chatRoomId" from "chatRooms" where "chatRoomName" = $2)
+    )
+  `;
+
+  const params = [messages, roomName, userName];
+
+  db.query(sql, params)
+    .then(result => {
+      const msg = result.rows[0];
+      res.status(201).json(msg);
+    })
+    .catch(err => next(err));
+});
+
 // POST REQUEST FOR NEW USER
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;

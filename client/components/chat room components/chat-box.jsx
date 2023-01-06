@@ -1,13 +1,13 @@
 import React from 'react';
-import NewUser from '../../lib/print-username';
+// import NewUser from '../../lib/print-username';
 
 export default class ChatBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: NewUser(window.location.hash)
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     userName: NewUser(window.location.hash)
+  //   };
+  // }
 
   render() {
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -19,11 +19,12 @@ export default class ChatBox extends React.Component {
         </div>
         <div id='messages'>
           <div className='row'>
-            <p className='col wht-txt px-4 bolded'>{this.state.userName} has joined!</p>
+            <p className='col wht-txt px-4 bolded'>{this.props.userName} has joined!</p>
             <p className='col-3 wht-txt bolded'>{time}</p>
           </div>
           <div className='wht-txt px-3 message'>
-            <p>This is a test for a really really reaaaally long message from a test user!!!</p>
+            {/* WAITING FOR POST REQUEST TO APPEND TO PAGE */}
+            <p onSubmit={this.props.handleSubmit} />
           </div>
         </div>
       </div>
