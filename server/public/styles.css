@@ -136,6 +136,7 @@ body {
   border-style: none;
   border-radius: 5rem;
   outline: none;
+  cursor: pointer;
 }
 
 .send {
