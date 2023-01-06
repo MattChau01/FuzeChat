@@ -41,7 +41,6 @@ export default class SelectRoom extends React.Component {
     } else {
       event.preventDefault();
 
-      // TEST AUDIO
       const audio = new Audio(enterChat);
       audio.play();
 
@@ -164,7 +163,6 @@ export default class SelectRoom extends React.Component {
             </div>
           </div>
         </div>
-
       );
     }
   }
