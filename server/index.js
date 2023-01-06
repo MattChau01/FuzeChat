@@ -1,10 +1,7 @@
 require('dotenv/config');
 const express = require('express');
-// eslint-disable-next-line
 const http = require('http');
-// eslint-disable-next-line
 const socket = require('socket.io');
-// eslint-disable-next-line
 const socketEvents = require('./public/socket-events');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
@@ -21,9 +18,14 @@ const db = new pg.Pool({
 
 const app = express();
 const jsonMiddleWare = express.json();
+const server = http.Server(app);
 
 app.use(staticMiddleware);
 app.use(jsonMiddleWare);
+app.use(errorMiddleware);
+
+const io = socket(server);
+socketEvents(io);
 
 app.get('/api/users', (req, res, next) => {
   const sql = `
@@ -54,24 +56,23 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// GET REQUEST FOR SOCKET MESSAGES
-app.get('/api/messages', (req, res, next) => {
-  const { chatRoomName } = req.body;
-
-  const sql = `
-
-  `;
-
-  const params = [chatRoomName];
-
-  db.query(sql, params)
-    .then(result => {
-      const activeUsers = result.rows;
-      res.json(activeUsers);
-    })
-    .catch(err => next(err));
+// SOCKETS and EMITTERS
+app.use((req, res, next) => {
+  req.io = io;
+  next();
 });
 
+app.get('/api/messages', (req, res) => {
+  req.io.emit('message', {
+    type: 'test',
+    text: 'Somebody messaged'
+  });
+  res.json({
+    msg: 'this is a test endpoint'
+  });
+});
+
+// POST REQUEST FOR NEW USER
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
 
@@ -98,7 +99,7 @@ app.post('/api/users', (req, res, next) => {
 
 });
 
-// POST REQUEST FOR ROOM SELECTION (TEST)
+// POST REQUEST FOR ROOM SELECTION
 app.post('/api/usersInChat', (req, res, next) => {
   const { chatRoomName, userName } = req.body;
 
@@ -126,10 +127,7 @@ app.post('/api/usersInChat', (req, res, next) => {
 
 });
 
-app.use(errorMiddleware);
-
 // ADDING A DELETE REQUEST
-
 app.delete('/api/users/:userId', (req, res, next) => {
   const id = Number(req.params.userId);
 
