@@ -10,11 +10,7 @@ export default class ChatBox extends React.Component {
   }
 
   render() {
-    // console.log('username: ', this.state.userName);
-    // console.log('another split: ', (this.state.userName).split('='));
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    // console.log('Time: ', time);
-    // console.log('Typeof time: ', time);
 
     return (
       <div className='chat-box mt-3'>

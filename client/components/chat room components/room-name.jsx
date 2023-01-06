@@ -10,9 +10,6 @@ export default class RoomName extends React.Component {
   }
 
   render() {
-    // console.log('currentRoom: ', this.state.currentRoom);
-    // console.log('length: ', (this.state.currentRoom).length);
-
     return (
       <div className='location mt-3'>
         <div className='row justify-content-center'>
