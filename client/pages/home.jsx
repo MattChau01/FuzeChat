@@ -2,6 +2,7 @@ import React from 'react';
 import ParseRoute from '../lib/parse-route';
 import NewUserName from '../components/username';
 import SelectRoom from '../components/room-select';
+import ChatRoom from '../components/chat-room';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -22,30 +23,28 @@ export default class Home extends React.Component {
 
   renderPage() {
     const { path } = this.state.route;
-    // eslint-disable-next-line
-    console.log('path: ', path);
     if (path === '') {
-      return (<NewUserName />);
+      return (
+        <NewUserName />
+      );
     }
     if (path === 'choose-room') {
-      return <SelectRoom />;
+      return (
+        <SelectRoom />
+      );
+    }
+    if (path === 'message') {
+      return (<ChatRoom />);
     }
   }
 
   render() {
     return (
-      <div className='container-fluid' >
-        <div className='mt-5 pt-5'>
-          <div className='mt-5'>
-            <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
-              <div>
-                <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
-                {this.renderPage()}
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div className=''>
+        { this.renderPage() }
       </div>
+
     );
   }
 

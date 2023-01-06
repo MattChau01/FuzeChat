@@ -41,6 +41,7 @@ CREATE TABLE "public"."messages" (
 
 CREATE TABLE "public"."usersInChat" (
 	"numberOfUsers" serial NOT NULL,
+	"joinedChatAt" timestamptz(6) NOT NULL default now(),
 	"chatRoomId" integer NOT NULL,
 	"userId" integer NOT NULL
 ) WITH (

@@ -61,59 +61,74 @@ export default class NewUserName extends React.Component {
   render() {
     if ((this.state.userName.length < 7) && (this.state.userName.length >= 1)) {
       return (
-        <>
-          <div className='instruct wht-txt'>
-            <p className='wrong'>Username is invalid, please try again!</p>
+        <div className='container-fluid mt-5 pt-5' >
+          <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
+            <div>
+              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+              <div className='instruct wht-txt'>
+                <p className='wrong'>Username is invalid, please try again!</p>
+              </div>
+              <form onSubmit={this.handleSubmitUserName}>
+                <div className='mt-5'>
+                  <label htmlFor='username'>
+                    <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
+                  </label>
+                </div>
+                <div className='mt-5'>
+                  <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
+                </div>
+              </form>
+            </div>
           </div>
-          <form onSubmit={this.handleSubmitUserName}>
-            <div className='mt-5'>
-              <label htmlFor='username'>
-                <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
-              </label>
-            </div>
-            <div className='mt-5'>
-              <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
-            </div>
-          </form>
-        </>
+        </div>
       );
     } else if (this.state.userName.length >= 7) {
       return (
-        <>
-          <div className='instruct wht-txt'>
-            <p className='correct'>Success! Please click next.</p>
+        <div className='container-fluid mt-5 pt-5' >
+          <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
+            <div>
+              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+              <div className='instruct wht-txt'>
+                <p className='correct'>Success! Please click next.</p>
+              </div>
+              <form onSubmit={this.handleSubmitUserName}>
+                <div className='mt-5'>
+                  <label htmlFor='username'>
+                    <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
+                  </label>
+                </div>
+                <div className='mt-5'>
+                  <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
+                </div>
+              </form>
+            </div>
           </div>
-          <form onSubmit={this.handleSubmitUserName}>
-            <div className='mt-5'>
-              <label htmlFor='username'>
-                <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
-              </label>
-            </div>
-            <div className='mt-5'>
-              <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
-            </div>
-          </form>
-        </>
+        </div>
       );
     } else {
       return (
-        <>
-          <div className='instruct wht-txt'>
-            <p>Please enter a username below</p>
-          </div>
-          <form onSubmit={this.handleSubmitUserName}>
-            <div className='mt-5'>
-              <label htmlFor='username'>
-                <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
-              </label>
-            </div>
-            <div className='mt-5'>
-              <div className='mt-5'>
-                <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
+        <div className='container-fluid mt-5 pt-5' >
+          <div className='mt-5 pt-5 d-flex align-items-center justify-content-center text-center'>
+            <div>
+              <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
+              <div className='instruct wht-txt'>
+                <p>Please enter a username below</p>
               </div>
+              <form onSubmit={this.handleSubmitUserName}>
+                <div className='mt-5'>
+                  <label htmlFor='username'>
+                    <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
+                  </label>
+                </div>
+                <div className='mt-5'>
+                  <div className='mt-5'>
+                    <button type='submit' className='next grn' href='#choose-room'>NEXT</button>
+                  </div>
+                </div>
+              </form>
             </div>
-          </form>
-        </>
+          </div>
+        </div>
       );
     }
   }
