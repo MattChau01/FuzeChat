@@ -1,11 +1,11 @@
 import React from 'react';
-// import FindRoom from '../../lib/select-room';
+import FindRoom from '../../lib/select-room';
 
 export default class RoomName extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentRoom: FindRoom(window.location.hash)
+      currentRoom: FindRoom(window.location.hash)
     };
   }
 

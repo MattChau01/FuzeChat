@@ -1,8 +1,8 @@
 import React from 'react';
 
-import RoomName from './chat room components/room-name';
-import ChatBox from './chat room components/chat-box';
-import Sender from './chat room components/sender';
+import RoomName from './chat-room-components/room-name';
+import ChatBox from './chat-room-components/chat-box';
+import Sender from './chat-room-components/sender';
 import FindRoom from '../lib/select-room';
 import NewUser from '../lib/print-username';
 
@@ -10,6 +10,7 @@ export default class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: '',
       messages: [],
       currentRoom: FindRoom(window.location.hash),
       userName: NewUser(window.location.hash)
@@ -56,7 +57,7 @@ export default class ChatRoom extends React.Component {
       )
       .then(data => {
         this.setState({
-          messages: []
+          messages: this.state.value
         });
       });
   }

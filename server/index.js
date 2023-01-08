@@ -43,7 +43,6 @@ app.get('/api/messages', (req, res) => {
   });
 });
 
-// GET REQUEST FOR USERS
 app.get('/api/users', (req, res, next) => {
   const sql = `
     select *
@@ -58,7 +57,6 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// GET REQUEST FOR CHATROOMS
 app.get('/api/chatRooms', (req, res, next) => {
   const sql = `
     select *
@@ -73,7 +71,21 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// POST REQUEST TO MESSAGES
+// retreives timestamp
+app.get('/api/usersInChat', (req, res, next) => {
+  const sql = `
+    select "joinedChatAt" from "usersInChat"
+    order by "numberOfUsers" desc
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const joinedAt = result.rows[0];
+      res.json(joinedAt);
+    })
+    .catch(err => next(err));
+});
+
 app.post('/api/messages', (req, res, next) => {
   const { newMessage, chatRoomName, userName } = req.body;
 
@@ -106,7 +118,6 @@ app.post('/api/messages', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// POST REQUEST FOR NEW USER
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
 
@@ -133,7 +144,6 @@ app.post('/api/users', (req, res, next) => {
 
 });
 
-// POST REQUEST FOR ROOM SELECTION
 app.post('/api/usersInChat', (req, res, next) => {
   const { chatRoomName, userName } = req.body;
 
@@ -161,7 +171,6 @@ app.post('/api/usersInChat', (req, res, next) => {
 
 });
 
-// DELETE REQUEST
 app.delete('/api/users/:userId', (req, res, next) => {
   const id = Number(req.params.userId);
 
