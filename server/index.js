@@ -2,7 +2,7 @@ require('dotenv/config');
 const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
-const socketEvents = require('./public/socket-events');
+const socketEvents = require('./socket-events');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 const ClientError = require('./client-error');
@@ -74,9 +74,13 @@ app.get('/api/chatRooms', (req, res, next) => {
 // WORKING ON POST REQUEST
 // POST REQUEST TO MESSAGES
 app.post('/api/messages', (req, res, next) => {
-  const { messages, roomName, userName } = req.body;
+  const { newMessage, chatRoomName, userName } = req.body;
 
-  if (!messages || !roomName || !userName) {
+  // console.log('messages: ', newMessage);
+  // console.log('roomName: ', chatRoomName);
+  // console.log('userName: ', userName);
+
+  if (!newMessage || !chatRoomName || !userName) {
     throw new ClientError(400, 'Invalid input');
   }
 
@@ -84,17 +88,20 @@ app.post('/api/messages', (req, res, next) => {
     insert into "messages" ("newMessage", "chatRoomId", "userId")
     values (
       $1,
-      (select "userId" from "users" where "userName" = $3),
-      (select "chatRoomId" from "chatRooms" where "chatRoomName" = $2)
+      (select "chatRoomId" from "chatRooms" where "chatRoomName" = $2),
+      (select "userId" from "users" where "userName" = $3)
+    returning *
     )
   `;
 
-  const params = [messages, roomName, userName];
+  const params = [newMessage, chatRoomName, userName];
 
   db.query(sql, params)
     .then(result => {
-      const msg = result.rows[0];
-      res.status(201).json(msg);
+      // const msg = result.rows[0];
+      // console.log('msg: ', msg);
+      // console.log('result', result);
+      res.status(201).json(result);
     })
     .catch(err => next(err));
 });

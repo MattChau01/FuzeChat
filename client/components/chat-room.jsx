@@ -29,9 +29,36 @@ export default class ChatRoom extends React.Component {
     event.preventDefault();
     // eslint-disable-next-line
     console.log('message to send: ', this.state.messages);
-    return (
-      this.state.messages
-    );
+
+    const reqObj = {
+      newMessage: this.state.messages,
+      chatRoomName: this.state.currentRoom,
+      userName: this.state.userName
+    };
+    // reqObj.newMessage = this.state.messages;
+    // reqObj.chatRoomName = this.state.currentRoom;
+    // reqObj.userName = this.state.userName;
+
+    // console.log('value of reqObj: ', reqObj);
+
+    const req = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reqObj)
+    };
+
+    fetch('/api/messages', req)
+      // .then(() => console.log('post request handled!'))
+      .then(res =>
+        res.json()
+      )
+      .then(data => {
+        this.setState({
+          messages: []
+        });
+      });
   }
 
   render() {

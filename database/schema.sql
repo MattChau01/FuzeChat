@@ -8,7 +8,7 @@ create schema "public";
 
 CREATE TABLE "public"."chatRooms" (
 	"chatRoomName" TEXT NOT NULL UNIQUE,
-	"chatRoomId" serial NOT NULL,
+	"chatRoomId" serial NOT NULL UNIQUE ,
 	CONSTRAINT "chatRooms_pk" PRIMARY KEY ("chatRoomId")
 ) WITH (
   OIDS=FALSE
