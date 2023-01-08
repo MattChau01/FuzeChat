@@ -6,24 +6,9 @@ export default class Sender extends React.Component {
     super(props);
     this.state = {
       value: ''
-      // messages: []
     };
     this.socket = io().connect();
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // handleChange(event) {
-  //   this.setState({
-  //     messages: event.target.value
-  //   });
-  // }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   console.log('message to send: ', this.state.messages);
-
-  // }
 
   componentDidMount() {
     this.socket.emit('message', {
@@ -32,7 +17,6 @@ export default class Sender extends React.Component {
     });
 
     this.socket.on('message', newMessage => {
-      // console.log('newMessage: ', newMessage);
       this.setState({
         messages: [
           ...this.state.messages,
@@ -47,8 +31,6 @@ export default class Sender extends React.Component {
   }
 
   render() {
-    // console.log('message: ', this.state.messages);
-    // console.log('location: ', window.location.hash);
     return (
       <div className='message-area text-center'>
         <div className='mt-3'>

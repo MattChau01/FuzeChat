@@ -35,9 +35,9 @@ export default class ChatRoom extends React.Component {
       chatRoomName: this.state.currentRoom,
       userName: this.state.userName
     };
-    // reqObj.newMessage = this.state.messages;
-    // reqObj.chatRoomName = this.state.currentRoom;
-    // reqObj.userName = this.state.userName;
+    reqObj.newMessage = this.state.messages;
+    reqObj.chatRoomName = this.state.currentRoom;
+    reqObj.userName = this.state.userName;
 
     // console.log('value of reqObj: ', reqObj);
 
@@ -62,6 +62,7 @@ export default class ChatRoom extends React.Component {
   }
 
   render() {
+    // console.log('this.state: ', this.state);
     return (
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>
         <div>

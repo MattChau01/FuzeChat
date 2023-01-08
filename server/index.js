@@ -43,6 +43,7 @@ app.get('/api/messages', (req, res) => {
   });
 });
 
+// GET REQUEST FOR USERS
 app.get('/api/users', (req, res, next) => {
   const sql = `
     select *
@@ -57,6 +58,7 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// GET REQUEST FOR CHATROOMS
 app.get('/api/chatRooms', (req, res, next) => {
   const sql = `
     select *
@@ -71,7 +73,6 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// WORKING ON POST REQUEST
 // POST REQUEST TO MESSAGES
 app.post('/api/messages', (req, res, next) => {
   const { newMessage, chatRoomName, userName } = req.body;
@@ -90,7 +91,6 @@ app.post('/api/messages', (req, res, next) => {
       $1,
       (select "chatRoomId" from "chatRooms" where "chatRoomName" = $2),
       (select "userId" from "users" where "userName" = $3)
-    returning *
     )
   `;
 
@@ -161,7 +161,7 @@ app.post('/api/usersInChat', (req, res, next) => {
 
 });
 
-// ADDING A DELETE REQUEST
+// DELETE REQUEST
 app.delete('/api/users/:userId', (req, res, next) => {
   const id = Number(req.params.userId);
 
@@ -196,6 +196,6 @@ app.delete('/api/users/:userId', (req, res, next) => {
 
 });
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });

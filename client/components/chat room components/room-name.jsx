@@ -2,14 +2,17 @@ import React from 'react';
 // import FindRoom from '../../lib/select-room';
 
 export default class RoomName extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     currentRoom: FindRoom(window.location.hash)
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      // currentRoom: FindRoom(window.location.hash)
+    };
+  }
 
   render() {
+    // console.log(this.props);
+    // console.log('props type', typeof this.props);
+
     return (
       <div className='location mt-3'>
         <div className='row justify-content-center'>
