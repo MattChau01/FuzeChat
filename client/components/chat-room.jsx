@@ -1,5 +1,4 @@
 import React from 'react';
-
 import RoomName from './chat-room-components/room-name';
 import ChatBox from './chat-room-components/chat-box';
 import Sender from './chat-room-components/sender';
@@ -25,7 +24,6 @@ export default class ChatRoom extends React.Component {
     });
   }
 
-  // working on submitting and appending to page
   handleSubmit(event) {
     event.preventDefault();
     // eslint-disable-next-line
@@ -36,11 +34,6 @@ export default class ChatRoom extends React.Component {
       chatRoomName: this.state.currentRoom,
       userName: this.state.userName
     };
-    reqObj.newMessage = this.state.messages;
-    reqObj.chatRoomName = this.state.currentRoom;
-    reqObj.userName = this.state.userName;
-
-    // console.log('value of reqObj: ', reqObj);
 
     const req = {
       method: 'POST',
@@ -51,7 +44,6 @@ export default class ChatRoom extends React.Component {
     };
 
     fetch('/api/messages', req)
-      // .then(() => console.log('post request handled!'))
       .then(res =>
         res.json()
       )
@@ -63,7 +55,6 @@ export default class ChatRoom extends React.Component {
   }
 
   render() {
-    // console.log('this.state: ', this.state);
     return (
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>
         <div>

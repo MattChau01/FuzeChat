@@ -27,19 +27,29 @@ app.use(errorMiddleware);
 const io = socket(server);
 socketEvents(io);
 
-// SOCKETS and EMITTERS
+io.on('connection', socket => {
+  // eslint-disable-next-line
+  console.log(`user connected ${socket.id}`);
+  socket.on('send_message', data => {
+    // eslint-disable-next-line
+    console.log(data);
+    socket.broadcast.emit('receive_message', data);
+  });
+});
+
 app.use((req, res, next) => {
   req.io = io;
   next();
 });
 
 app.get('/api/messages', (req, res) => {
+  // Test endpoint
   req.io.emit('message', {
-    type: 'test',
-    text: 'Somebody messaged'
+    type: 'text',
+    text: 'messaged sent'
   });
   res.json({
-    msg: 'this is a test endpoint'
+    msg: 'msg endpoint'
   });
 });
 
@@ -71,7 +81,6 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// retreives timestamp
 app.get('/api/usersInChat', (req, res, next) => {
   const sql = `
     select "joinedChatAt" from "usersInChat"
@@ -88,10 +97,6 @@ app.get('/api/usersInChat', (req, res, next) => {
 
 app.post('/api/messages', (req, res, next) => {
   const { newMessage, chatRoomName, userName } = req.body;
-
-  // console.log('messages: ', newMessage);
-  // console.log('roomName: ', chatRoomName);
-  // console.log('userName: ', userName);
 
   if (!newMessage || !chatRoomName || !userName) {
     throw new ClientError(400, 'Invalid input');
@@ -110,9 +115,7 @@ app.post('/api/messages', (req, res, next) => {
 
   db.query(sql, params)
     .then(result => {
-      // const msg = result.rows[0];
-      // console.log('msg: ', msg);
-      // console.log('result', result);
+
       res.status(201).json(result);
     })
     .catch(err => next(err));
@@ -151,7 +154,6 @@ app.post('/api/usersInChat', (req, res, next) => {
     throw new ClientError(400, 'Invalid input!');
   }
 
-  // SQL QUERY
   const sql = `
     insert into "usersInChat" ("chatRoomId", "userId")
       values (

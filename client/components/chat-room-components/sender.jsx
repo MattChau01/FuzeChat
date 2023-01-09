@@ -1,49 +1,39 @@
-import React from 'react';
-import io from '../../lib/io';
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
 
-export default class Sender extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    };
-    this.socket = io().connect();
-  }
+const socket = io.connect('http://localhost:3000');
 
-  componentDidMount() {
-    this.socket.emit('message', {
-      type: 'user-join',
-      text: `User ${this.props.userName} has joined`
+export default function Sender(props) {
+
+  const [message, setMessage] = useState('');
+  const [messageReceived, setMessageReceived] = useState('');
+
+  const handleSend = () => {
+    socket.emit('send_message', {
+      message
     });
+  };
 
-    this.socket.on('message', newMessage => {
-      this.setState({
-        messages: [
-          ...this.state.messages,
-          newMessage
-        ]
-      });
+  useEffect(() => {
+    socket.on('receive_message', data => {
+      setMessageReceived(data.message);
     });
-  }
+  });
 
-  componentWillUnmount() {
-    this.socket.close();
-  }
-
-  render() {
-    return (
-      <div className='message-area text-center'>
-        <div className='mt-3'>
-          <div>
-            <form onSubmit={this.props.handleSubmit}>
-              <label htmlFor='message' className='text-box'>
-                <input type='text' name='message' value={this.state.messages} placeholder='Message' className='message-bar' onChange={this.props.handleChange}/>
-                <button type='submit' className='send'><i className="fa-solid fa-arrow-up send-arrow" /></button>
-              </label>
-            </form>
-          </div>
+  return (
+    <div className='message-area text-center'>
+      <div className='mt-3'>
+        <div>
+          <form onSubmit={props.handleSubmit}>
+            <label htmlFor='message' className='text-box'>
+              <input type='text' name='message' value={message} placeholder='Message' className='message-bar' onChange={event => setMessage(event.target.value)} />
+              <button type='submit' className='send' onClick={handleSend}><i className="fa-solid fa-arrow-up send-arrow" /></button>
+              <p className='wht-txt'>{messageReceived}</p>
+            </label>
+          </form>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+
 }

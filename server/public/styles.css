@@ -167,6 +167,15 @@ body {
   font-weight: 600;
 }
 
+/* TEST FOR INCOMING MESSAGE */
+.receive {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 @media screen and (min-width: 500px) {
   .welcome {
     font-family: Helvetica, sans-serif;
