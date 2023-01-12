@@ -1,8 +1,8 @@
-insert into "users" (
-  "userName")
-values (
-  'UserOne'
-);
+-- insert into "users" (
+--   "userName")
+-- values (
+--   'UserOne'
+-- );
 
 -- INSERT INTO CHATROOMS
 insert into "chatRooms" (
@@ -13,5 +13,5 @@ insert into "chatRooms" (
   ('zoomuni');
 
 -- INSERT INTO USERSINCHAT
-insert into "usersInChat" ("userId", "chatRoomId")
-values (1, 3)
+-- insert into "usersInChat" ("userId", "chatRoomId")
+-- values (1, 3)
