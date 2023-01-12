@@ -9,6 +9,9 @@ export default function Sender(props) {
   const [messageReceived, setMessageReceived] = useState('');
 
   const handleSend = () => {
+    // console.log('useeffect');
+
+    // setMessage(props.messages);
     socket.emit('send_message', {
       message
     });

@@ -176,6 +176,14 @@ body {
   left: 0;
 }
 
+@media screen and (max-height: 700px) {
+  .chat-box {
+    background-color: rgb(40, 60, 70, 100%);
+    width: 390px;
+    height: 460px;
+  }
+}
+
 @media screen and (min-width: 500px) {
   .welcome {
     font-family: Helvetica, sans-serif;
