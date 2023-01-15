@@ -68,7 +68,7 @@ export default class NewUserName extends React.Component {
               <div className='instruct wht-txt'>
                 <p className='wrong'>Username is invalid, please try again!</p>
               </div>
-              <form onSubmit={this.handleSubmitUserName}>
+              <form autoComplete='off' onSubmit={this.handleSubmitUserName}>
                 <div className='mt-5'>
                   <label htmlFor='username'>
                     <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
@@ -91,7 +91,7 @@ export default class NewUserName extends React.Component {
               <div className='instruct wht-txt'>
                 <p className='correct'>Success! Please click next.</p>
               </div>
-              <form onSubmit={this.handleSubmitUserName}>
+              <form autoComplete='off' onSubmit={this.handleSubmitUserName}>
                 <div className='mt-5'>
                   <label htmlFor='username'>
                     <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
@@ -114,7 +114,7 @@ export default class NewUserName extends React.Component {
               <div className='instruct wht-txt'>
                 <p>Please enter a username below</p>
               </div>
-              <form onSubmit={this.handleSubmitUserName}>
+              <form autoComplete='off' onSubmit={this.handleSubmitUserName}>
                 <div className='mt-5'>
                   <label htmlFor='username'>
                     <input name='username' type='text' placeholder='Type a username here' className='user-input' value={this.state.userName} onChange={this.handleUserName} onClick={this.handleClick} />
