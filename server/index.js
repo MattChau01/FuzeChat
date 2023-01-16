@@ -28,8 +28,24 @@ const io = socket(server);
 socketEvents(io);
 
 io.on('connection', socket => {
+  // TEST with a GET request
+  const sql = `
+    select "userName"
+      from "users"
+  order by "userId" desc
+    limit 1
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const user = result.rows[0];
+      // eslint-disable-next-line
+      console.log(`User ${user} was connected to socket`);
+    });
+
   // eslint-disable-next-line
-  console.log(`user connected ${socket.id}`);
+  // console.log(`user connected ${socket.id}`);
+
   socket.on('send_message', data => {
     // eslint-disable-next-line
     console.log(data);
