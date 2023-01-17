@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
+import Messages from './message';
+
 const socket = io.connect('http://localhost:3000');
 
 // export default class Sender extends React.Component {
@@ -18,13 +20,19 @@ export default function Sender(props) {
 
   // trying to set props.messages to equal to 'message'
   const [message, setMessage] = useState('');
-  const [messageReceived, setMessageReceived] = useState('');
+  const [messageReceived, setMessageReceived] = useState(() => {
+    // eslint-disable-next-line
+    console.log('message sent!');
+  });
 
   const handleSend = () => {
     // eslint-disable-next-line
     console.log('useeffect');
 
     setMessage(props.messages);
+    // eslint-disable-next-line
+    console.log('setMessage: ', setMessage);
+
     socket.emit('send_message', {
       message
     });
@@ -112,7 +120,9 @@ export default function Sender(props) {
             <p className='col-3 wht-txt bolded'>{time}</p>
           </div>
           <div className='wht-txt px-3 message'>
-            <p>{messageReceived}</p>
+            <div>
+              <Messages newMsg={messageReceived} />
+            </div>
           </div>
         </div>
       </div>
@@ -121,7 +131,7 @@ export default function Sender(props) {
           <div>
             <form onSubmit={props.handleSubmit}>
               <label htmlFor='message' className='text-box'>
-                <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar' onChange={event => setMessage(event.target.value)} />
+                <input autoComplete='off' type='text' name='message' value={props.messages} placeholder='Message' className='message-bar' onChange={props.handleChange} />
                 <button type='submit' className='send' onClick={handleSend}><i className="fa-solid fa-arrow-up send-arrow" /></button>
               </label>
             </form>

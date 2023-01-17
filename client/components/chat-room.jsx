@@ -22,6 +22,7 @@ export default class ChatRoom extends React.Component {
     this.setState({
       messages: event.target.value
     });
+
   }
 
   handleSubmit(event) {

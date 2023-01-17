@@ -48,8 +48,11 @@ io.on('connection', socket => {
 
   socket.on('send_message', data => {
     // eslint-disable-next-line
-    console.log(data);
-    socket.broadcast.emit('receive_message', data);
+    console.log('data: ', data);
+    // broadcast.emit sends message to everyone but the person that sent the message
+    // socket.broadcast.emit('receive_message', data);
+
+    io.emit('receive_message', data);
   });
 });
 
