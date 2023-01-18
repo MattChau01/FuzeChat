@@ -20,10 +20,7 @@ export default function Sender(props) {
 
   // trying to set props.messages to equal to 'message'
   const [message, setMessage] = useState('');
-  const [messageReceived, setMessageReceived] = useState(() => {
-    // eslint-disable-next-line
-    console.log('message sent!');
-  });
+  const [messageReceived, setMessageReceived] = useState('');
 
   const handleSend = () => {
     // eslint-disable-next-line
@@ -121,7 +118,7 @@ export default function Sender(props) {
           </div>
           <div className='wht-txt px-3 message'>
             <div>
-              <Messages newMsg={messageReceived} />
+              <Messages newMsg={messageReceived} username={props.userName}/>
             </div>
           </div>
         </div>
