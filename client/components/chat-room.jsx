@@ -18,7 +18,7 @@ export default class ChatRoom extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     // TEST
-    // this.getTimeStamp = this.getTimeStamp.bind(this);
+    this.getTimeStamp = this.getTimeStamp.bind(this);
   }
 
   // componentDidMount() {
@@ -38,17 +38,25 @@ export default class ChatRoom extends React.Component {
 
   // GET REQUEST FOR TIMESTAMP
 
-  // getTimeStamp() {
-  //   fetch('/api/usersInChat')
-  //     .then(res => res.json())
-  //     .then(time => {
-  //       console.log('time:', time.joinChatAt);
-  //       this.setState({
-  //         enteredAt: time.joinedChatAt
-  //       });
-  //     })
-  //     .catch(err => console.error(err));
-  // }
+  getTimeStamp() {
+    // console.log(this.state.messages);
+    fetch('/api/usersInChat')
+      .then(res => res.json())
+      .then(time => {
+        // console.log('time:', time.joinedChatAt);
+        this.setState({
+          enteredAt: time.joinedChatAt
+        });
+        // console.log('time:', this.state.enteredAt);
+      })
+      .catch(err => console.error(err));
+
+    // console.log('enteredAt: ', this.state.enteredAt);
+  }
+
+  componentDidMount() {
+    this.getTimeStamp();
+  }
 
   handleChange(event) {
     this.setState({
@@ -59,6 +67,7 @@ export default class ChatRoom extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.getTimeStamp();
     // eslint-disable-next-line
     console.log('message to send: ', this.state.messages);
 
