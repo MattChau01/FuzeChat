@@ -104,6 +104,7 @@ app.get('/api/usersInChat', (req, res, next) => {
   const sql = `
     select "joinedChatAt" from "usersInChat"
     order by "numberOfUsers" desc
+    limit 1
   `;
 
   db.query(sql)

@@ -12,11 +12,43 @@ export default class ChatRoom extends React.Component {
       value: '',
       messages: [],
       currentRoom: FindRoom(window.location.hash),
-      userName: NewUser(window.location.hash)
+      userName: NewUser(window.location.hash),
+      enteredAt: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // TEST
+    // this.getTimeStamp = this.getTimeStamp.bind(this);
   }
+
+  // componentDidMount() {
+
+  //   fetch('api/usersInChat')
+  //     .then(res => res.json())
+  //     .then(time => {
+  //       console.log('time', time);
+  //       this.setState({
+  //         enteredAt: time
+  //       });
+  //     })
+  //     .catch(err => console.error(err));
+
+  //   console.log('enteredAt: ', this.state.enteredAt);
+  // }
+
+  // GET REQUEST FOR TIMESTAMP
+
+  // getTimeStamp() {
+  //   fetch('/api/usersInChat')
+  //     .then(res => res.json())
+  //     .then(time => {
+  //       console.log('time:', time.joinChatAt);
+  //       this.setState({
+  //         enteredAt: time.joinedChatAt
+  //       });
+  //     })
+  //     .catch(err => console.error(err));
+  // }
 
   handleChange(event) {
     this.setState({
@@ -36,7 +68,7 @@ export default class ChatRoom extends React.Component {
       userName: this.state.userName
     };
 
-    const req = {
+    const req1 = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -44,7 +76,7 @@ export default class ChatRoom extends React.Component {
       body: JSON.stringify(reqObj)
     };
 
-    fetch('/api/messages', req)
+    fetch('/api/messages', req1)
       .then(res =>
         res.json()
       )
