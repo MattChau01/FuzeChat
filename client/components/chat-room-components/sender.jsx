@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-import Messages from './message';
+import Messages from './messages';
 
 const socket = io.connect('http://localhost:3000');
 

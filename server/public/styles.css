@@ -104,7 +104,8 @@ body {
 .chat-box {
   background-color: rgb(40, 60, 70, 100%);
   width: 390px;
-  height: 600px;
+
+  /* height: 600px; */
 }
 
 .message-area {
