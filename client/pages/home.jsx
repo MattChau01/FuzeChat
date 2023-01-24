@@ -25,12 +25,16 @@ export default class Home extends React.Component {
     const { path } = this.state.route;
     if (path === '') {
       return (
-        <NewUserName />
+        // <NewUserName />
+        <SelectRoom />
       );
     }
-    if (path === 'choose-room') {
+    // Refactoring order
+    // if (path === 'choose-room') {
+    if (path === 'user-name') {
       return (
-        <SelectRoom />
+        // <SelectRoom />
+        <NewUserName />
       );
     }
     if (path === 'message') {

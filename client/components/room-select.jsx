@@ -1,5 +1,5 @@
 import React from 'react';
-import enterChat from '../../server/public/enterChat.mp3';
+// import enterChat from '../../server/public/enterChat.mp3';
 
 export default class SelectRoom extends React.Component {
   constructor(props) {
@@ -7,13 +7,14 @@ export default class SelectRoom extends React.Component {
     this.state = {
       buttonClicked: false,
       selectClicked: false,
-      currentVal: null,
-      userName: window.location.hash.slice(13)
+      currentVal: null
+      // REVIEW HOW TO DO HASH ROUTE, NEED TO REMOVE THE UNDEFINED VALUE IN URL
+      // userName: window.location.hash.slice(13)
     };
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.playChime = this.playChime.bind(this);
+    // this.playChime = this.playChime.bind(this);
   }
 
   selectClicked(event) {
@@ -24,9 +25,9 @@ export default class SelectRoom extends React.Component {
     });
   }
 
-  playChime() {
-    new Audio(enterChat).play();
-  }
+  // playChime() {
+  //   new Audio(enterChat).play();
+  // }
 
   buttonClicked() {
     this.setState({
@@ -41,29 +42,37 @@ export default class SelectRoom extends React.Component {
     } else {
       event.preventDefault();
 
-      const audio = new Audio(enterChat);
-      audio.play();
+      this.setState({
+        currentVal: event.target.value
+      });
 
-      const reqObj = {};
-      reqObj.chatRoomName = this.state.currentVal;
-      reqObj.userName = this.state.userName;
+      // const audio = new Audio(enterChat);
+      // audio.play();
 
-      const req = {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(reqObj)
-      };
+      // const reqObj = {};
+      // reqObj.chatRoomName = this.state.currentVal;
+      // reqObj.userName = this.state.userName;
 
-      fetch('/api/usersInChat', req)
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            currentVal: event.target.value
-          });
-          window.location.hash = `message?choose-room?${this.state.userName}=${this.state.currentVal}`;
-        });
+      // const req = {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-type': 'application/json'
+      //   },
+      //   body: JSON.stringify(reqObj)
+      // };
+
+      // fetch('/api/usersInChat', req)
+      //   .then(res => res.json())
+      //   .then(data => {
+      //     this.setState({
+      //       currentVal: event.target.value
+      //     });
+      //     // Refactoring order
+      //     window.location.hash = `message?choose-room?${this.state.userName}=${this.state.currentVal}`;
+      //     window.location.hash = `user-name?${this.state.currentVal}`;
+      //   });
+      window.location.hash = `user-name?${this.state.currentVal}`;
+
     }
   }
 

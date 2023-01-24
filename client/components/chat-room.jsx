@@ -1,12 +1,12 @@
 import React from 'react';
 import RoomName from './chat-room-components/room-name';
 // import ChatBox from './chat-room-components/chat-box';
-import Sender from './chat-room-components/sender';
+// import Sender from './chat-room-components/sender';
 import FindRoom from '../lib/select-room';
 import NewUser from '../lib/print-username';
 
 // REFACTOR TEST
-// import ChatContainer from './chat-container/chat-container';
+import ChatContainer from './chat-container/chat-container';
 
 export default class ChatRoom extends React.Component {
   constructor(props) {
@@ -107,10 +107,10 @@ export default class ChatRoom extends React.Component {
           {/* <ChatBox messages={this.state.messages} handleSubmit={this.handleSubmit} userName={this.state.userName}/> */}
 
           {/* Will be commenting Sender component to start test refactoring */}
-          <Sender messages={this.state.messages} handleChange={this.handleChange} handleSubmit={this.handleSubmit} userName={this.state.userName} />
+          {/* <Sender messages={this.state.messages} handleChange={this.handleChange} handleSubmit={this.handleSubmit} userName={this.state.userName} /> */}
 
           {/* Refactored components */}
-          {/* <ChatContainer user={this.state.userName}/> */}
+          <ChatContainer user={this.state.userName}/>
         </div>
       </div>
     );

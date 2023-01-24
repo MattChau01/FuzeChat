@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import ChatBoxReceiver, { ChatBoxSender } from './chat-box';
 import InputText from './input-text';
-import NewUserName from '../username';
+// import NewUserName from '../username';
 
 export default function ChatContainer(props) {
 
@@ -35,18 +35,18 @@ export default function ChatContainer(props) {
   function ChatsLists() {
     return chats.map((chat, index) => {
       if (chat.user === user) {
-        return <ChatBoxSender key={index} message={chat.message} user={chat.user} />;
+        return <ChatBoxSender key={index} message={chat.message} user={props.user} />;
       }
-      return <ChatBoxReceiver key={index} message={chat.message} user={chat.user} />;
+      return <ChatBoxReceiver key={index} message={chat.message} user={props.user} />;
     });
   }
 
   return (
     <div>
-      {user
+      {/* {user
         ? <div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-            <h4 style={{ margin: 10 }}>
+            <h4 style={{ margin: 10, color: '#fff' }}>
               Username: {props.user}
             </h4>
             <p onClick={() => logout()} style={{ margin: 10, color: '#fff', cursor: 'pointer', backgroundColor: '#FF7376', padding: 10, borderRadius: '1rem' }}>
@@ -57,17 +57,17 @@ export default function ChatContainer(props) {
           <InputText addMessage={addMessage} />
         </div>
         : <NewUserName setUser={setUser} user={user} />
-      }
+      } */}
 
       {/* TEST WITH THIS ONE: */}
 
-      {/* <div>
+      <div>
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
           <h4 style={{ margin: 10, color: '#fff' }}>
             Username: {props.user}
           </h4>
 
-          Will need to refactor this button to the icon
+          {/* Will need to refactor this button to the icon */}
           <p onClick={() => logout()} style={{ margin: 10, color: '#fff', cursor: 'pointer', backgroundColor: '#FF7376', padding: 10, borderRadius: '1rem' }}>
             Log out
           </p>
@@ -77,9 +77,9 @@ export default function ChatContainer(props) {
         <InputText addMessage={addMessage} />
       </div>
 
-      TEST TEXT
-      <div ><p style={{ color: '#fff' }}>TEST</p></div>
- */}
+      {/* TEST TEXT
+      <div ><p style={{ color: '#fff' }}>TEST</p></div> */}
+
     </div>
   );
 }

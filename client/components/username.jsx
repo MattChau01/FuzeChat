@@ -1,5 +1,6 @@
 import React from 'react';
 import Redirect from './redirect';
+import enterChat from '../../server/public/enterChat.mp3';
 
 export default class NewUserName extends React.Component {
   constructor(props) {
@@ -11,6 +12,11 @@ export default class NewUserName extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleUserName = this.handleUserName.bind(this);
     this.handleSubmitUserName = this.handleSubmitUserName.bind(this);
+    this.playChime = this.playChime.bind(this);
+  }
+
+  playChime() {
+    new Audio(enterChat).play();
   }
 
   handleClick() {
@@ -32,6 +38,10 @@ export default class NewUserName extends React.Component {
       return false;
     } else {
 
+      // adding chime when user enters
+      const audio = new Audio(enterChat);
+      audio.play();
+
       event.preventDefault();
 
       const reqObj = {};
@@ -51,7 +61,9 @@ export default class NewUserName extends React.Component {
           this.setState({
             userName: ''
           });
-          window.location.hash = `choose-room?${this.state.userName}`;
+          // Refactoring order
+          // window.location.hash = `choose-room?${this.state.userName}`;
+          window.location.hash = `message?user-name?${this.state.currentVal}=${this.state.userName}`;
         });
 
       if (this.state.userName.length >= 7) return <Redirect to="choose-room" />;

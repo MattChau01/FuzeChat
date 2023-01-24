@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ChatBoxReceiver({ user, message }) {
+export default function ChatBoxReceiver(props, { user, message }) {
   return (
     <div style={{
       display: 'flex',
@@ -16,7 +16,7 @@ export default function ChatBoxReceiver({ user, message }) {
         <strong style={{
           fontSize: 13
         }}>
-          {user}
+          {props.user}
         </strong><br />
         {message}
       </p>
@@ -24,7 +24,7 @@ export default function ChatBoxReceiver({ user, message }) {
   );
 }
 
-export function ChatBoxSender({ user, message }) {
+export function ChatBoxSender(props, { user, message }) {
   return (
     <div style={{
       display: 'flex',
@@ -38,9 +38,9 @@ export function ChatBoxSender({ user, message }) {
         maxWidth: '60%'
       }}>
         <strong style={{ fontSize: 13, color: 'black' }}>
-          {user}
+          {props.user}
         </strong><br />
-        {message}
+        {props.message}
       </p>
     </div>
   );
