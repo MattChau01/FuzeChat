@@ -5,7 +5,8 @@ export default function ChatBoxReceiver(props, { user, message }) {
     <div style={{
       display: 'flex',
       justifyContent: 'flex-start',
-      flexDirection: 'row'
+      flexDirection: 'row',
+      margin: 5
     }}>
       <p style={{
         padding: 10,
@@ -29,7 +30,8 @@ export function ChatBoxSender(props, { user, message }) {
     <div style={{
       display: 'flex',
       justifyContent: 'flex-end',
-      flexDirection: 'row'
+      flexDirection: 'row',
+      margin: 5
     }}>
       <p style={{
         padding: 10,

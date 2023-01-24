@@ -28,32 +28,41 @@ const io = socket(server);
 socketEvents(io);
 
 io.on('connection', socket => {
+  // eslint-disable-next-line
+  console.log('connected!');
   // TEST with a GET request
-  const sql = `
-    select "userName"
-      from "users"
-  order by "userId" desc
-    limit 1
-  `;
+  // MAY NOT NEED THIS REQUEST
+  // const sql = `
+  //   select "userName"
+  //     from "users"
+  // order by "userId" desc
+  //   limit 1
+  // `;
 
-  db.query(sql)
-    .then(result => {
-      const user = result.rows[0];
-      // eslint-disable-next-line
-      console.log(`User ${user} was connected to socket`);
-    });
+  // db.query(sql)
+  //   .then(result => {
+  //     const user = result.rows[0];
+  //     // eslint-disable-next-line
+  //     console.log(`User ${user} was connected to socket`);
+  //   });
 
   // eslint-disable-next-line
   // console.log(`user connected ${socket.id}`);
 
-  socket.on('send_message', data => {
+  socket.on('chat', chat => {
     // eslint-disable-next-line
-    console.log('data: ', data);
+    console.log('chat: ', chat);
     // broadcast.emit sends message to everyone but the person that sent the message
     // socket.broadcast.emit('receive_message', data);
 
-    io.emit('receive_message', data);
+    io.emit('chat', chat);
   });
+
+  socket.on('disconnect', () => {
+    // eslint-disable-next-line
+    console.log('disconnected');
+  });
+
 });
 
 app.use((req, res, next) => {

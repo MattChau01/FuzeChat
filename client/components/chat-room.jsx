@@ -100,6 +100,8 @@ export default class ChatRoom extends React.Component {
   }
 
   render() {
+    // console.log('current room: ', this.state.currentRoom);
+
     return (
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>
         <div>

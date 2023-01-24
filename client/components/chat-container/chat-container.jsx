@@ -6,9 +6,14 @@ import InputText from './input-text';
 
 export default function ChatContainer(props) {
 
+  // console.log(window.location.hash.split('&')[2]);
+  const userName = window.location.hash.split('&')[2];
+
   const socketio = socketIOClient('http://localhost:3000');
   const [chats, setChats] = useState([]);
-  const [user, setUser] = useState(('user'));
+  const [user] = useState((props.user));
+
+  // console.log(user);
 
   useEffect(() => {
     socketio.on('chat', senderChats => {
@@ -18,6 +23,7 @@ export default function ChatContainer(props) {
 
   function sendChatToSocket(chat) {
     socketio.emit('chat', chat);
+    // console.log('chat: ', chat);
   }
 
   function addMessage(chat) {
@@ -26,15 +32,15 @@ export default function ChatContainer(props) {
     sendChatToSocket([...chats, newChat]);
   }
 
-  function logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('avatar');
-    setUser('');
-  }
+  // function logout() {
+  //   localStorage.removeItem('user');
+  //   localStorage.removeItem('avatar');
+  //   setUser('');
+  // }
 
   function ChatsLists() {
     return chats.map((chat, index) => {
-      if (chat.user === user) {
+      if (chat.user === userName) {
         return <ChatBoxSender key={index} message={chat.message} user={props.user} />;
       }
       return <ChatBoxReceiver key={index} message={chat.message} user={props.user} />;
@@ -68,9 +74,9 @@ export default function ChatContainer(props) {
           </h4>
 
           {/* Will need to refactor this button to the icon */}
-          <p onClick={() => logout()} style={{ margin: 10, color: '#fff', cursor: 'pointer', backgroundColor: '#FF7376', padding: 10, borderRadius: '1rem' }}>
+          {/* <p onClick={() => logout()} style={{ margin: 10, color: '#fff', cursor: 'pointer', backgroundColor: '#FF7376', padding: 10, borderRadius: '1rem' }}>
             Log out
-          </p>
+          </p> */}
 
         </div>
         <ChatsLists />

@@ -8,7 +8,6 @@ export default class SelectRoom extends React.Component {
       buttonClicked: false,
       selectClicked: false,
       currentVal: null
-      // REVIEW HOW TO DO HASH ROUTE, NEED TO REMOVE THE UNDEFINED VALUE IN URL
       // userName: window.location.hash.slice(13)
     };
     this.selectClicked = this.selectClicked.bind(this);
@@ -71,7 +70,7 @@ export default class SelectRoom extends React.Component {
       //     window.location.hash = `message?choose-room?${this.state.userName}=${this.state.currentVal}`;
       //     window.location.hash = `user-name?${this.state.currentVal}`;
       //   });
-      window.location.hash = `user-name?${this.state.currentVal}`;
+      window.location.hash = `user-name&${this.state.currentVal}`;
 
     }
   }

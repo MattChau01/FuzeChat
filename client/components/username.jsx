@@ -7,7 +7,8 @@ export default class NewUserName extends React.Component {
     super(props);
     this.state = {
       isClicked: false,
-      userName: ''
+      userName: '',
+      currentVal: window.location.hash.slice(11)
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleUserName = this.handleUserName.bind(this);
@@ -38,6 +39,9 @@ export default class NewUserName extends React.Component {
       return false;
     } else {
 
+      // TEST with local storage
+      localStorage.setItem('username: ', this.state.userName);
+
       // adding chime when user enters
       const audio = new Audio(enterChat);
       audio.play();
@@ -63,7 +67,9 @@ export default class NewUserName extends React.Component {
           });
           // Refactoring order
           // window.location.hash = `choose-room?${this.state.userName}`;
-          window.location.hash = `message?user-name?${this.state.currentVal}=${this.state.userName}`;
+          //     window.location.hash = `message?choose-room?${this.state.userName}=${this.state.currentVal}`;
+
+          window.location.hash = `message&${this.state.currentVal}&${this.state.userName}`;
         });
 
       if (this.state.userName.length >= 7) return <Redirect to="choose-room" />;
@@ -71,6 +77,9 @@ export default class NewUserName extends React.Component {
   }
 
   render() {
+    // console.log(window.location.hash);
+    // console.log(window.location.hash.slice(11));
+
     if ((this.state.userName.length < 7) && (this.state.userName.length >= 1)) {
       return (
         <div className='container-fluid mt-5 pt-5' >
