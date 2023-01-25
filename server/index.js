@@ -28,26 +28,8 @@ const io = socket(server);
 socketEvents(io);
 
 io.on('connection', socket => {
-  // TEST with a GET request
-  // MAY NOT NEED THIS REQUEST
-  // const sql = `
-  //   select "userName"
-  //     from "users"
-  // order by "userId" desc
-  //   limit 1
-  // `;
-
-  // db.query(sql)
-  //   .then(result => {
-  //     const user = result.rows[0];
-  //     // eslint-disable-next-line
-  //   });
 
   socket.on('chat', chat => {
-
-    // broadcast.emit sends message to everyone but the person that sent the message
-    // socket.broadcast.emit('receive_message', data);
-
     io.emit('chat', chat);
   });
 
@@ -59,7 +41,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/messages', (req, res) => {
-  // Test endpoint
   req.io.emit('message', {
     type: 'text',
     text: 'messaged sent'

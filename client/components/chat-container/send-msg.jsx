@@ -38,7 +38,6 @@ export default function SendMessage(props) {
       message
     });
 
-    // TEST POST BELOW
     const reqObj = {
       newMessage: message,
       chatRoomName: props.currentRoom,
@@ -61,8 +60,6 @@ export default function SendMessage(props) {
         setMessage('');
       });
 
-    // TEST POST ABOVE
-
     setMessage('');
   }
 
@@ -72,9 +69,6 @@ export default function SendMessage(props) {
 
   return (
     <div style={styles.textContainer}>
-      {/* <textarea style={styles.textarea} rows={6} placeholder="Write message here..." value={message} onChange={e => setMessage(e.target.value)} />
-      <button onClick={() => addAMessage()} style={styles.button}>SEND</button> */}
-
       <form onSubmit={formSubmit}>
         <label htmlFor='message' className='text-box'>
           <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar' onChange={e => setMessage(e.target.value)} />
@@ -83,7 +77,6 @@ export default function SendMessage(props) {
           }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
         </label>
       </form>
-
     </div>
   );
 }

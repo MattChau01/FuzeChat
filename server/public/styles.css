@@ -103,8 +103,6 @@ body {
 .chat-box {
   background-color: rgb(40, 60, 70, 100%);
   width: 390px;
-
-  /* height: 600px; */
 }
 
 .message-area {
@@ -159,7 +157,6 @@ body {
   font-weight: 600;
 }
 
-/* TEST FOR INCOMING MESSAGE */
 .receive {
   position: absolute;
   top: 0;

@@ -1,28 +1,6 @@
 import React from 'react';
 
-// import React, { useEffect, useState } from 'react';
-// import io from 'socket.io-client';
-
-// const socket = io.connect('http://localhost:3000');
 export default class ChatBox extends React.Component {
-
-  // const [message, setMessage] = useState('');
-  // const [messageReceived, setMessageReceived] = useState('');
-
-  // const handleSend = () => {
-
-  // setMessage(props.messages);
-  // socket.emit('send_message', {
-  //   message
-  // });
-  // };
-
-  // useEffect(() => {
-  //   socket.on('receive_message', data => {
-  //     setMessageReceived(data.message);
-  //   });
-  // });
-
   render() {
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 

@@ -1,11 +1,7 @@
 import React from 'react';
 import RoomName from './chat-room-components/room-name';
-// import ChatBox from './chat-room-components/chat-box';
-// import Sender from './chat-room-components/sender';
 import FindRoom from '../lib/select-room';
 import NewUser from '../lib/print-username';
-
-// REFACTOR TEST
 import ChatContainer from './chat-container/chat-container';
 
 export default class ChatRoom extends React.Component {
@@ -19,25 +15,8 @@ export default class ChatRoom extends React.Component {
       enteredAt: ''
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    // TEST
     this.getTimeStamp = this.getTimeStamp.bind(this);
   }
-
-  // componentDidMount() {
-
-  //   fetch('api/usersInChat')
-  //     .then(res => res.json())
-  //     .then(time => {
-  //       this.setState({
-  //         enteredAt: time
-  //       });
-  //     })
-  //     .catch(err => console.error(err));
-
-  // }
-
-  // GET REQUEST FOR TIMESTAMP
 
   getTimeStamp() {
     fetch('/api/usersInChat')
@@ -61,48 +40,12 @@ export default class ChatRoom extends React.Component {
 
   }
 
-  // no londer needed: submit handled in send=msg.jsx
-  handleSubmit(event) {
-    event.preventDefault();
-    this.getTimeStamp();
-
-    const reqObj = {
-      newMessage: this.state.messages,
-      chatRoomName: this.state.currentRoom,
-      userName: this.state.userName
-    };
-
-    const req = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(reqObj)
-    };
-
-    fetch('/api/messages', req)
-      .then(res =>
-        res.json()
-      )
-      .then(data => {
-        this.setState({
-          messages: this.state.value
-        });
-      });
-  }
-
   render() {
 
     return (
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>
         <div>
           <RoomName currentRoom={this.state.currentRoom}/>
-          {/* <ChatBox messages={this.state.messages} handleSubmit={this.handleSubmit} userName={this.state.userName}/> */}
-
-          {/* Will be commenting Sender component to start test refactoring */}
-          {/* <Sender messages={this.state.messages} handleChange={this.handleChange} handleSubmit={this.handleSubmit} userName={this.state.userName} /> */}
-
-          {/* Refactored components */}
           <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} />
         </div>
       </div>

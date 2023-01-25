@@ -1,24 +1,11 @@
-// import React from 'react';
-
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-
 import Messages from './messages';
 
 const socket = io.connect('http://localhost:3000');
 
-// export default class Sender extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       value: ''
-
-//     };
-//   }
-
 export default function Sender(props) {
 
-  // trying to set props.messages to equal to 'message'
   const [message, setMessage] = useState(props.messages);
   const [messageReceived, setMessageReceived] = useState(props.messages);
 
@@ -35,20 +22,6 @@ export default function Sender(props) {
     });
   });
 
-  // let enteredAt = '';
-  // const getTimestamp = () => {
-
-  //   fetch('api/usersInChat')
-  //     .then(res => res.json())
-  //     .then(time => {
-  //       enteredAt = (time.joinedChatAt);
-  //     })
-  //     .catch(err => console.error(err));
-  //   return enteredAt;
-  // };
-
-  // getTimestamp();
-
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
@@ -64,7 +37,6 @@ export default function Sender(props) {
           </div>
           <div className='wht-txt px-3 message'>
             <div>
-              {/* <p>{props.getTimeStamp}</p> */}
               <Messages newMsg={messageReceived} username={props.userName} />
             </div>
           </div>
@@ -84,5 +56,4 @@ export default function Sender(props) {
       </div>
     </>
   );
-
 }
