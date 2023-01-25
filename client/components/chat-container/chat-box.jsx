@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default function ChatBoxReceiver(props, { user, message }) {
-  // console.log('props receiver: ', props);
-  // console.log('user: ', props.user);
 
   return (
     <div style={{
@@ -29,8 +27,6 @@ export default function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
-  // console.log('props sender: ', props);
-  // console.log(': ', props)
 
   return (
     <div style={{

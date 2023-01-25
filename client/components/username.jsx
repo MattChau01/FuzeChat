@@ -77,8 +77,6 @@ export default class NewUserName extends React.Component {
   }
 
   render() {
-    // console.log(window.location.hash);
-    // console.log(window.location.hash.slice(11));
 
     if ((this.state.userName.length < 7) && (this.state.userName.length >= 1)) {
       return (
@@ -164,7 +162,6 @@ export default class NewUserName extends React.Component {
 // export default function NewUserName({ setUser }) {
 
 //   const [user, setAUser] = useState('');
-//   console.log('user: ', user);
 
 //   // function playChime() {
 //   //   new Audio(enterChat).play();
@@ -179,7 +176,6 @@ export default class NewUserName extends React.Component {
 //   // let userName = '';
 
 //   // function handleUserName(event) {
-//   //   console.log('value: ', event.target.value);
 //   //   setAUser(event.target.value);
 //   // }
 

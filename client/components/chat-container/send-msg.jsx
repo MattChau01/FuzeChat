@@ -37,7 +37,6 @@ export default function SendMessage(props) {
     props.addMessage({
       message
     });
-    // console.log('message: ', message);
 
     // TEST POST BELOW
     const reqObj = {

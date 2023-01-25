@@ -28,8 +28,6 @@ const io = socket(server);
 socketEvents(io);
 
 io.on('connection', socket => {
-  // eslint-disable-next-line
-  console.log('connected!');
   // TEST with a GET request
   // MAY NOT NEED THIS REQUEST
   // const sql = `
@@ -43,24 +41,14 @@ io.on('connection', socket => {
   //   .then(result => {
   //     const user = result.rows[0];
   //     // eslint-disable-next-line
-  //     console.log(`User ${user} was connected to socket`);
   //   });
 
-  // eslint-disable-next-line
-  // console.log(`user connected ${socket.id}`);
-
   socket.on('chat', chat => {
-    // eslint-disable-next-line
-    console.log('chat: ', chat);
+
     // broadcast.emit sends message to everyone but the person that sent the message
     // socket.broadcast.emit('receive_message', data);
 
     io.emit('chat', chat);
-  });
-
-  socket.on('disconnect', () => {
-    // eslint-disable-next-line
-    console.log('disconnected');
   });
 
 });

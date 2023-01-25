@@ -1,7 +1,5 @@
 module.exports = io => {
   io.on('connection', socket => {
-    // eslint-disable-next-line no-console
-    console.log('User connected!');
 
     socket.on('message', message => {
       io.emit('message', message);

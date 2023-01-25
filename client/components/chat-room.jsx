@@ -29,32 +29,25 @@ export default class ChatRoom extends React.Component {
   //   fetch('api/usersInChat')
   //     .then(res => res.json())
   //     .then(time => {
-  //       console.log('time', time);
   //       this.setState({
   //         enteredAt: time
   //       });
   //     })
   //     .catch(err => console.error(err));
 
-  //   console.log('enteredAt: ', this.state.enteredAt);
   // }
 
   // GET REQUEST FOR TIMESTAMP
 
   getTimeStamp() {
-    // console.log(this.state.messages);
     fetch('/api/usersInChat')
       .then(res => res.json())
       .then(time => {
-        // console.log('time:', time.joinedChatAt);
         this.setState({
           enteredAt: time.joinedChatAt
         });
-        // console.log('time:', this.state.enteredAt);
       })
       .catch(err => console.error(err));
-
-    // console.log('enteredAt: ', this.state.enteredAt);
   }
 
   componentDidMount() {
@@ -72,8 +65,6 @@ export default class ChatRoom extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.getTimeStamp();
-    // eslint-disable-next-line
-    console.log('message to send: ', this.state.messages);
 
     const reqObj = {
       newMessage: this.state.messages,
@@ -101,7 +92,6 @@ export default class ChatRoom extends React.Component {
   }
 
   render() {
-    // console.log('current room: ', this.state.currentRoom);
 
     return (
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>

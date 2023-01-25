@@ -21,27 +21,15 @@ export default function Sender(props) {
   // trying to set props.messages to equal to 'message'
   const [message, setMessage] = useState(props.messages);
   const [messageReceived, setMessageReceived] = useState(props.messages);
-  // console.log('message: ', message);
-  // console.log('setMessage: ', setMessage);
-  // console.log('messageReceived: ', messageReceived);
-  // console.log('setMessageReceived: ', setMessageReceived);
 
   const handleSend = () => {
-    // eslint-disable-next-line
-    console.log('useeffect');
-
     setMessage(props.messages);
-    // eslint-disable-next-line
-    console.log('setMessage: ', setMessage);
-
     socket.emit('send_message', {
       message
     });
   };
 
   useEffect(() => {
-    // console.log('messageReceived', messageReceived);
-
     socket.on('receive_message', data => {
       setMessageReceived(data.message);
     });
@@ -53,17 +41,13 @@ export default function Sender(props) {
   //   fetch('api/usersInChat')
   //     .then(res => res.json())
   //     .then(time => {
-  //       // console.log('time', time.joinedChatAt);
   //       enteredAt = (time.joinedChatAt);
-  //       console.log('enteredAt: ', enteredAt);
   //     })
   //     .catch(err => console.error(err));
-  //   // console.log('RETURNING enteredAt: ', enteredAt);
   //   return enteredAt;
   // };
 
   // getTimestamp();
-  // console.log('enteredAt: ', enteredAt); // logs an empty string
 
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 

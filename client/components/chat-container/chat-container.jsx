@@ -6,7 +6,6 @@ import SendMessage from './send-msg';
 
 export default function ChatContainer(props) {
 
-  // console.log(window.location.hash.split('&')[2]);
   const userName = window.location.hash.split('&')[2];
 
   const socketio = socketIOClient('http://localhost:3000');
@@ -16,8 +15,6 @@ export default function ChatContainer(props) {
 
   // const [user, setUser] = useState(localStorage.getItem('user'));
 
-  // console.log(user);
-
   useEffect(() => {
     socketio.on('chat', senderChats => {
       setChats(senderChats);
@@ -26,7 +23,6 @@ export default function ChatContainer(props) {
 
   function sendChatToSocket(chat) {
     socketio.emit('chat', chat);
-    // console.log('line 29 ', chat);
   }
 
   const msgIndex = Date.now();
@@ -46,9 +42,7 @@ export default function ChatContainer(props) {
 
   function ChatsLists() {
     return chats.map((chat, index) => {
-      // console.log('chat: ', chat);
-      // console.log('chat.user: ', chat.user);
-      // console.log('line 46', chat);
+
       if (chat.user === userName) {
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} />;
       }
@@ -77,7 +71,7 @@ export default function ChatContainer(props) {
       {/* TEST WITH THIS ONE: */}
 
       <div>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
           <h4 style={{ margin: 10, color: '#fff' }}>
             Username: {props.user}
           </h4>

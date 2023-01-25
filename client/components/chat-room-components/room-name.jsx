@@ -10,8 +10,6 @@ export default class RoomName extends React.Component {
   }
 
   render() {
-    // console.log(this.props);
-    // console.log('props type', typeof this.props);
 
     return (
       <div className='location mt-3'>

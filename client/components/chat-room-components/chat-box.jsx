@@ -10,7 +10,6 @@ export default class ChatBox extends React.Component {
   // const [messageReceived, setMessageReceived] = useState('');
 
   // const handleSend = () => {
-  // console.log('useeffect');
 
   // setMessage(props.messages);
   // socket.emit('send_message', {
