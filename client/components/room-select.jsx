@@ -1,5 +1,4 @@
 import React from 'react';
-import enterChat from '../../server/public/enterChat.mp3';
 
 export default class SelectRoom extends React.Component {
   constructor(props) {
@@ -7,13 +6,11 @@ export default class SelectRoom extends React.Component {
     this.state = {
       buttonClicked: false,
       selectClicked: false,
-      currentVal: null,
-      userName: window.location.hash.slice(13)
+      currentVal: null
     };
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.playChime = this.playChime.bind(this);
   }
 
   selectClicked(event) {
@@ -22,10 +19,6 @@ export default class SelectRoom extends React.Component {
       currentVal: event.target.value,
       buttonClicked: false
     });
-  }
-
-  playChime() {
-    new Audio(enterChat).play();
   }
 
   buttonClicked() {
@@ -41,29 +34,10 @@ export default class SelectRoom extends React.Component {
     } else {
       event.preventDefault();
 
-      const audio = new Audio(enterChat);
-      audio.play();
-
-      const reqObj = {};
-      reqObj.chatRoomName = this.state.currentVal;
-      reqObj.userName = this.state.userName;
-
-      const req = {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(reqObj)
-      };
-
-      fetch('/api/usersInChat', req)
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            currentVal: event.target.value
-          });
-          window.location.hash = `message?choose-room?${this.state.userName}=${this.state.currentVal}`;
-        });
+      this.setState({
+        currentVal: event.target.value
+      });
+      window.location.hash = `user-name&${this.state.currentVal}`;
     }
   }
 
@@ -84,8 +58,7 @@ export default class SelectRoom extends React.Component {
                       <select required className='selection' name='rooms' onClick={this.selectClicked}>
                         <option value=''>Select a room here..</option>
                         <option value='rc1022' >rc1022</option>
-                        <option value='lfz2022'>lfz2022</option>
-                        <option value='zoomuni'>zoomuni</option>
+
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>
@@ -116,8 +89,7 @@ export default class SelectRoom extends React.Component {
                       <select required className='selection' name='rooms' onClick={this.selectClicked}>
                         <option value=''>Select a room here..</option>
                         <option value='rc1022' >rc1022</option>
-                        <option value='lfz2022' >lfz2022</option>
-                        <option value='zoomuni' >zoomuni</option>
+
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>
@@ -148,8 +120,7 @@ export default class SelectRoom extends React.Component {
                       <select required className='selection' name='rooms' onClick={this.selectClicked}>
                         <option value=''>Select a room here..</option>
                         <option value='rc1022' >rc1022</option>
-                        <option value='lfz2022' >lfz2022</option>
-                        <option value='zoomuni' >zoomuni</option>
+
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>

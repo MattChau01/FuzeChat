@@ -25,12 +25,12 @@ export default class Home extends React.Component {
     const { path } = this.state.route;
     if (path === '') {
       return (
-        <NewUserName />
+        <SelectRoom />
       );
     }
-    if (path === 'choose-room') {
+    if (path === 'user-name') {
       return (
-        <SelectRoom />
+        <NewUserName />
       );
     }
     if (path === 'message') {
@@ -40,11 +40,9 @@ export default class Home extends React.Component {
 
   render() {
     return (
-
       <div className=''>
         { this.renderPage() }
       </div>
-
     );
   }
 

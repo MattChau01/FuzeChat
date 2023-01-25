@@ -1,5 +1,8 @@
 require('dotenv/config');
 const express = require('express');
+const http = require('http');
+const socket = require('socket.io');
+const socketEvents = require('./socket-events');
 const staticMiddleware = require('./static-middleware');
 const errorMiddleware = require('./error-middleware');
 const ClientError = require('./client-error');
@@ -15,9 +18,37 @@ const db = new pg.Pool({
 
 const app = express();
 const jsonMiddleWare = express.json();
+const server = http.Server(app);
 
 app.use(staticMiddleware);
 app.use(jsonMiddleWare);
+app.use(errorMiddleware);
+
+const io = socket(server);
+socketEvents(io);
+
+io.on('connection', socket => {
+
+  socket.on('chat', chat => {
+    io.emit('chat', chat);
+  });
+
+});
+
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
+app.get('/api/messages', (req, res) => {
+  req.io.emit('message', {
+    type: 'text',
+    text: 'messaged sent'
+  });
+  res.json({
+    msg: 'msg endpoint'
+  });
+});
 
 app.get('/api/users', (req, res, next) => {
   const sql = `
@@ -33,7 +64,6 @@ app.get('/api/users', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// GET REQUEST FOR CHATROOMS
 app.get('/api/chatRooms', (req, res, next) => {
   const sql = `
     select *
@@ -48,24 +78,46 @@ app.get('/api/chatRooms', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// TEST
 app.get('/api/usersInChat', (req, res, next) => {
-  const { chatRoomName } = req.body;
-
   const sql = `
-
+    select "joinedChatAt" from "usersInChat"
+    order by "numberOfUsers" desc
+    limit 1
   `;
 
-  const params = [chatRoomName];
-
-  db.query(sql, params)
+  db.query(sql)
     .then(result => {
-      const activeUsers = result.rows;
-      res.json(activeUsers);
+      const joinedAt = result.rows[0];
+      res.json(joinedAt);
     })
     .catch(err => next(err));
 });
-// TEST ABOVE
+
+app.post('/api/messages', (req, res, next) => {
+  const { newMessage, chatRoomName, userName } = req.body;
+
+  if (!newMessage || !chatRoomName || !userName) {
+    throw new ClientError(400, 'Invalid input');
+  }
+
+  const sql = `
+    insert into "messages" ("newMessage", "chatRoomId", "userId")
+    values (
+      $1,
+      (select "chatRoomId" from "chatRooms" where "chatRoomName" = $2),
+      (select "userId" from "users" where "userName" = $3)
+    )
+  `;
+
+  const params = [newMessage, chatRoomName, userName];
+
+  db.query(sql, params)
+    .then(result => {
+
+      res.status(201).json(result);
+    })
+    .catch(err => next(err));
+});
 
 app.post('/api/users', (req, res, next) => {
   const { userName } = req.body;
@@ -93,7 +145,6 @@ app.post('/api/users', (req, res, next) => {
 
 });
 
-// POST REQUEST FOR ROOM SELECTION (TEST)
 app.post('/api/usersInChat', (req, res, next) => {
   const { chatRoomName, userName } = req.body;
 
@@ -101,7 +152,6 @@ app.post('/api/usersInChat', (req, res, next) => {
     throw new ClientError(400, 'Invalid input!');
   }
 
-  // SQL QUERY
   const sql = `
     insert into "usersInChat" ("chatRoomId", "userId")
       values (
@@ -120,10 +170,6 @@ app.post('/api/usersInChat', (req, res, next) => {
     .catch(err => next(err));
 
 });
-
-app.use(errorMiddleware);
-
-// ADDING A DELETE REQUEST
 
 app.delete('/api/users/:userId', (req, res, next) => {
   const id = Number(req.params.userId);
@@ -159,6 +205,6 @@ app.delete('/api/users/:userId', (req, res, next) => {
 
 });
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
