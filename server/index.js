@@ -10,7 +10,7 @@ const ClientError = require('./client-error');
 const pg = require('pg');
 
 const db = new pg.Pool({
-  connectionString: 'postgresql://dev:dev@localhost/fuzeChat',
+  connectionString: `${process.env.DATABASE_URL}`,
   ssl: {
     rejectUnauthorized: false
   }

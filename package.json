@@ -18,10 +18,14 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
+<<<<<<< feature-four
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
     "socket.io": "^4.5.4",
     "socket.io-client": "^4.5.4"
+=======
+    "react-dom": "^18.2.0"
+>>>>>>> main
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
