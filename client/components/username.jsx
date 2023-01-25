@@ -40,7 +40,7 @@ export default class NewUserName extends React.Component {
     } else {
 
       // TEST with local storage
-      localStorage.setItem('username: ', this.state.userName);
+      // localStorage.setItem('username: ', this.state.userName);
 
       // adding chime when user enters
       const audio = new Audio(enterChat);

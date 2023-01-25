@@ -30,17 +30,44 @@ const styles = {
   }
 };
 
-export default function InputText({ addMessage }) {
+export default function SendMessage(props) {
 
   const [message, setMessage] = useState('');
   function addAMessage() {
-    addMessage({
+    props.addMessage({
       message
     });
+    // console.log('message: ', message);
+
+    // TEST POST BELOW
+    const reqObj = {
+      newMessage: message,
+      chatRoomName: props.currentRoom,
+      userName: props.userName
+    };
+
+    const req = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reqObj)
+    };
+
+    fetch('/api/messages', req)
+      .then(res =>
+        res.json()
+      )
+      .then(data => {
+        setMessage('');
+      });
+
+    // TEST POST ABOVE
+
     setMessage('');
   }
 
-  function handleSubmit(event) {
+  function formSubmit(event) {
     event.preventDefault();
   }
 
@@ -49,7 +76,7 @@ export default function InputText({ addMessage }) {
       {/* <textarea style={styles.textarea} rows={6} placeholder="Write message here..." value={message} onChange={e => setMessage(e.target.value)} />
       <button onClick={() => addAMessage()} style={styles.button}>SEND</button> */}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formSubmit}>
         <label htmlFor='message' className='text-box'>
           <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar' onChange={e => setMessage(e.target.value)} />
           <button type='submit' className='send' onClick={() => {

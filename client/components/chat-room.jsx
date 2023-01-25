@@ -80,7 +80,7 @@ export default class ChatRoom extends React.Component {
       userName: this.state.userName
     };
 
-    const req1 = {
+    const req = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export default class ChatRoom extends React.Component {
       body: JSON.stringify(reqObj)
     };
 
-    fetch('/api/messages', req1)
+    fetch('/api/messages', req)
       .then(res =>
         res.json()
       )
@@ -112,7 +112,7 @@ export default class ChatRoom extends React.Component {
           {/* <Sender messages={this.state.messages} handleChange={this.handleChange} handleSubmit={this.handleSubmit} userName={this.state.userName} /> */}
 
           {/* Refactored components */}
-          <ChatContainer user={this.state.userName}/>
+          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} />
         </div>
       </div>
     );

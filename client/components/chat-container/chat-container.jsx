@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import ChatBoxReceiver, { ChatBoxSender } from './chat-box';
-import InputText from './input-text';
+import SendMessage from './send-msg';
 // import NewUserName from '../username';
 
 export default function ChatContainer(props) {
@@ -89,7 +89,7 @@ export default function ChatContainer(props) {
 
         </div>
         <ChatsLists />
-        <InputText addMessage={addMessage} handleSubmit={props.handleSubmit}/>
+        <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
       </div>
 
       {/* TEST TEXT
