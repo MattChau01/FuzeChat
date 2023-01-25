@@ -68,6 +68,7 @@ export default class ChatRoom extends React.Component {
 
   }
 
+  // no londer needed: submit handled in send=msg.jsx
   handleSubmit(event) {
     event.preventDefault();
     this.getTimeStamp();
