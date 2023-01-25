@@ -11,7 +11,10 @@ export default function ChatContainer(props) {
 
   const socketio = socketIOClient('http://localhost:3000');
   const [chats, setChats] = useState([]);
+  // BELOW WORKS, commenting out to test local storage
   const [user] = useState((props.user));
+
+  // const [user, setUser] = useState(localStorage.getItem('user'));
 
   // console.log(user);
 
@@ -23,13 +26,16 @@ export default function ChatContainer(props) {
 
   function sendChatToSocket(chat) {
     socketio.emit('chat', chat);
-    // console.log('chat: ', chat);
+    // console.log('line 29 ', chat);
   }
 
+  const msgIndex = Date.now();
+
   function addMessage(chat) {
-    const newChat = { ...chat, user };
+    const newChat = { ...chat, user, msgIndex };
     setChats([...chats, newChat]);
     sendChatToSocket([...chats, newChat]);
+    // msgIndex = msgIndex + 1;
   }
 
   // function logout() {
@@ -40,10 +46,13 @@ export default function ChatContainer(props) {
 
   function ChatsLists() {
     return chats.map((chat, index) => {
+      // console.log('chat: ', chat);
+      // console.log('chat.user: ', chat.user);
+      // console.log('line 46', chat);
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} message={chat.message} user={props.user} />;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} />;
       }
-      return <ChatBoxReceiver key={index} message={chat.message} user={props.user} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} />;
     });
   }
 
@@ -63,8 +72,8 @@ export default function ChatContainer(props) {
           <InputText addMessage={addMessage} />
         </div>
         : <NewUserName setUser={setUser} user={user} />
-      } */}
-
+      }
+ */}
       {/* TEST WITH THIS ONE: */}
 
       <div>
@@ -80,7 +89,7 @@ export default function ChatContainer(props) {
 
         </div>
         <ChatsLists />
-        <InputText addMessage={addMessage} />
+        <InputText addMessage={addMessage} handleSubmit={props.handleSubmit}/>
       </div>
 
       {/* TEST TEXT
