@@ -50,6 +50,7 @@ app.use((req, res, next) => {
 //   });
 // });
 
+// Retrieves timestamp
 app.get('/api/messages', (req, res, next) => {
 
   const pst = '"createdAt" at time zone \'America/Los_Angeles\'';
