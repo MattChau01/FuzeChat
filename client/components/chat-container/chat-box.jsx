@@ -2,6 +2,10 @@ import React from 'react';
 
 export default function ChatBoxReceiver(props, { user, message }) {
 
+  const date = new Date();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+
   return (
     <div style={{
       display: 'flex',
@@ -15,11 +19,16 @@ export default function ChatBoxReceiver(props, { user, message }) {
         borderRadius: 10,
         maxWidth: '60%'
       }}>
-        <strong style={{
-          fontSize: 13
-        }}>
-          {props.user}
-        </strong><br />
+        <div className='row'>
+          <div className='col'>
+            <strong style={{ fontSize: 16, color: 'black' }}>
+              {props.user}
+            </strong>
+          </div>
+          <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+            {`${hour}:${minutes}`}
+          </div>
+        </div>
         {props.message}
       </p>
     </div>
@@ -27,6 +36,10 @@ export default function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
+
+  const date = new Date();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
 
   return (
     <div style={{
@@ -41,9 +54,16 @@ export function ChatBoxSender(props, { user, message }) {
         borderRadius: 10,
         maxWidth: '60%'
       }}>
-        <strong style={{ fontSize: 13, color: 'black' }}>
-          {props.user}
-        </strong><br />
+        <div className='row'>
+          <div className='col'>
+            <strong style={{ fontSize: 16, color: 'black' }}>
+              {props.user}
+            </strong>
+          </div>
+          <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+            {`${hour}:${minutes}`}
+          </div>
+        </div>
         {props.message}
       </p>
     </div>
