@@ -15,29 +15,12 @@ export default class ChatRoom extends React.Component {
       enteredAt: ''
     };
     this.handleChange = this.handleChange.bind(this);
-    this.getTimeStamp = this.getTimeStamp.bind(this);
-  }
-
-  getTimeStamp() {
-    fetch('/api/usersInChat')
-      .then(res => res.json())
-      .then(time => {
-        this.setState({
-          enteredAt: time.joinedChatAt
-        });
-      })
-      .catch(err => console.error(err));
-  }
-
-  componentDidMount() {
-    this.getTimeStamp();
   }
 
   handleChange(event) {
     this.setState({
       messages: event.target.value
     });
-
   }
 
   render() {
