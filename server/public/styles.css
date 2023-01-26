@@ -88,9 +88,8 @@ body {
 
 .location {
   background-color: rgb(40, 60, 70, 100%);
-  width: 360px;
+  width: 100%;
   height: 35px;
-  margin-left: 15px;
 }
 
 .text-box {

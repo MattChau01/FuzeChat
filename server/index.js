@@ -40,14 +40,30 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/messages', (req, res) => {
-  req.io.emit('message', {
-    type: 'text',
-    text: 'messaged sent'
-  });
-  res.json({
-    msg: 'msg endpoint'
-  });
+// app.get('/api/messages', (req, res) => {
+//   req.io.emit('message', {
+//     type: 'text',
+//     text: 'messaged sent'
+//   });
+//   res.json({
+//     msg: 'msg endpoint'
+//   });
+// });
+
+app.get('/api/messages', (req, res, next) => {
+  const sql = `
+    select "newMessage", "createdAt", "userId"
+      from "messages"
+    order by "entryId" desc
+    limit 1
+  `;
+
+  db.query(sql)
+    .then(result => {
+      const message = result.rows;
+      res.json(message);
+    })
+    .catch(err => next(err));
 });
 
 app.get('/api/users', (req, res, next) => {
