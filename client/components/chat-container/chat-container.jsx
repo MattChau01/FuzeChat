@@ -29,12 +29,13 @@ export default function ChatContainer(props) {
   }
 
   function ChatsLists() {
+    // console.log('chat-container');
     return chats.map((chat, index) => {
 
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} />;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} msgTime={props.msgTime}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} msgTime={props.msgTime} />;
     });
   }
 

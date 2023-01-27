@@ -8,13 +8,15 @@ export default class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      // value: '',
       messages: [],
       currentRoom: FindRoom(window.location.hash),
-      userName: NewUser(window.location.hash),
-      enteredAt: ''
+      userName: NewUser(window.location.hash)
+      // enteredAt: '',
+      // messagedAt: null
     };
     this.handleChange = this.handleChange.bind(this);
+    // this.messageTimeStamp = this.messageTimeStamp.bind(this);
     // this.getTimeStamp = this.getTimeStamp.bind(this);
   }
 
@@ -27,6 +29,15 @@ export default class ChatRoom extends React.Component {
   //       });
   //     })
   //     .catch(err => console.error(err));
+  // }
+
+  // messageTimeStamp() {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(msgTime => this.setState({
+  //       messagedAt: msgTime
+  //     }));
+  //   return this.state.messagedAt;
   // }
 
   componentDidMount() {
@@ -63,7 +74,7 @@ export default class ChatRoom extends React.Component {
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>
         <div>
           <RoomName currentRoom={this.state.currentRoom}/>
-          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} />
+          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} msgTime={this.messageTimeStamp}/>
         </div>
       </div>
     );

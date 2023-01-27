@@ -1,10 +1,22 @@
 import React from 'react';
 
+// let messagedAt = null;
+
+// function messageTimeStamp() {
+//   fetch('/api/messages')
+//     .then(res => res.json())
+//     .then(msgTime => { messagedAt = msgTime; });
+//   console.log('messagedAt: ', messagedAt);
+//   return messagedAt;
+// }
+
 export default function ChatBoxReceiver(props, { user, message }) {
 
   const date = new Date();
-  const hour = date.getHours();
-  const minutes = date.getMinutes();
+  // const hour = date.getHours();
+  // const minutes = date.getMinutes();
+
+  // console.log('receiver');
 
   return (
     <div style={{
@@ -13,7 +25,7 @@ export default function ChatBoxReceiver(props, { user, message }) {
       flexDirection: 'row',
       margin: 5
     }}>
-      <p style={{
+      <div style={{
         padding: 10,
         backgroundColor: '#dcf8c6',
         borderRadius: 10,
@@ -26,11 +38,12 @@ export default function ChatBoxReceiver(props, { user, message }) {
             </strong>
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
-            {`${hour}:${minutes}`}
+            {/* {`${hour}:${minutes}`} */}
+            {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))}
           </div>
         </div>
         {props.message}
-      </p>
+      </div>
     </div>
   );
 }
@@ -38,8 +51,10 @@ export default function ChatBoxReceiver(props, { user, message }) {
 export function ChatBoxSender(props, { user, message }) {
 
   const date = new Date();
-  const hour = date.getHours();
-  const minutes = date.getMinutes();
+  // const hour = date.getHours();
+  // const minutes = date.getMinutes();
+
+  // console.log('sender');
 
   return (
     <div style={{
@@ -48,7 +63,7 @@ export function ChatBoxSender(props, { user, message }) {
       flexDirection: 'row',
       margin: 5
     }}>
-      <p style={{
+      <div style={{
         padding: 10,
         backgroundColor: '#fff',
         borderRadius: 10,
@@ -61,11 +76,12 @@ export function ChatBoxSender(props, { user, message }) {
             </strong>
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
-            {`${hour}:${minutes}`}
+            {/* {`${hour}:${minutes}`} */}
+            {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))}
           </div>
         </div>
         {props.message}
-      </p>
+      </div>
     </div>
   );
 }
