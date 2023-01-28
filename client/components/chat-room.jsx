@@ -37,11 +37,13 @@ export default class ChatRoom extends React.Component {
   //     .then(msgTime => this.setState({
   //       messagedAt: msgTime
   //     }));
+  //   console.log(this.state.messagedAt);
   //   return this.state.messagedAt;
   // }
 
   componentDidMount() {
     // this.getTimeStamp();
+    // this.messageTimeStamp();
 
     const reqObj = {};
     reqObj.chatRoomName = this.state.currentRoom;
@@ -74,7 +76,7 @@ export default class ChatRoom extends React.Component {
       <div className='d-flex align-items-center justify-content-center overflow-hidden'>
         <div>
           <RoomName currentRoom={this.state.currentRoom}/>
-          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} msgTime={this.messageTimeStamp}/>
+          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName}/>
         </div>
       </div>
     );

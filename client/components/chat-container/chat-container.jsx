@@ -9,6 +9,11 @@ export default function ChatContainer(props) {
   const socketio = socketIOClient('http://localhost:3000');
   const [chats, setChats] = useState([]);
   const [user] = useState((props.user));
+  // console.log('current user: ', user);
+
+  // TEST usestate on timestamp
+  const date = new Date();
+  const [timeStamp] = useState((date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8)));
 
   useEffect(() => {
     socketio.on('chat', senderChats => {
@@ -20,22 +25,25 @@ export default function ChatContainer(props) {
     socketio.emit('chat', chat);
   }
 
-  const msgIndex = Date.now();
+  // const msgIndex = Date.now();
 
   function addMessage(chat) {
-    const newChat = { ...chat, user, msgIndex };
+    const newChat = { ...chat, user, timeStamp };
     setChats([...chats, newChat]);
     sendChatToSocket([...chats, newChat]);
   }
 
   function ChatsLists() {
     // console.log('chat-container');
+    // const date = new Date();
+    // const stamp = (date.toLocaleTimeString().slice(0, 5)) + ' ' + (date.toLocaleTimeString().slice(8));
+    // console.log(stamp);
     return chats.map((chat, index) => {
 
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} msgTime={props.msgTime}/>;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.timeStamp} />;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} msgTime={props.msgTime} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.timeStamp} />;
     });
   }
 
