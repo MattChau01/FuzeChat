@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
 
 // let messagedAt = null;
 
@@ -12,7 +13,8 @@ import React, { useState } from 'react';
 
 export default function ChatBoxReceiver(props, { user, message }) {
 
-  const date = new Date();
+  // const date = new Date();
+
   // const hour = date.getHours();
   // const minutes = date.getMinutes();
 
@@ -39,7 +41,8 @@ export default function ChatBoxReceiver(props, { user, message }) {
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
             {/* {`${hour}:${minutes}`} */}
-            {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))}
+            {/* {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))} */}
+            {/* {date} */}
             <br />
             {/* {props.timeStamp} */}
           </div>
@@ -52,30 +55,29 @@ export default function ChatBoxReceiver(props, { user, message }) {
 
 export function ChatBoxSender(props, { user, message }) {
 
-  const date = new Date();
+  // const date = new Date();
   // const hour = date.getHours();
   // const minutes = date.getMinutes();
 
-  // console.log('sender');
-
   // let timeStamp = null;
 
-  const getTime = () => {
-    fetch('/api/messages')
-      .then(res => res.json())
-      .then(time => {
-        // console.log('time', time[0].timestamp);
-        const msgTime = time[0].timestamp;
-        // console.log('timeStamp', timeStamp);
-        return msgTime;
-      })
-      .catch(err => console.error(err));
-    // console.log('line 75', timeStamp);
-  };
+  // WORKING HERE:
 
-  const [timeStamp] = useState(getTime());
+  // const [time, setTime] = useState([]);
+
+  // const getTime = () => {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(time => {
+  //       setTime(time);
+  //       console.log('time', time);
+  //     })
+  //     .catch(err => console.error(err));
+  // };
+
+  // WORKING ABOVE:
+
   // getTime();
-  // console.log(getTime);
 
   return (
     <div style={{
@@ -98,9 +100,9 @@ export function ChatBoxSender(props, { user, message }) {
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
             {/* {`${hour}:${minutes}`} */}
-            {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))}
+            {/* {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))} */}
             <br/>
-            {timeStamp}
+            {/* {JSON.stringify(time)} */}
           </div>
         </div>
         {props.message}
