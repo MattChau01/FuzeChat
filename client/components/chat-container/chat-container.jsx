@@ -12,8 +12,20 @@ export default function ChatContainer(props) {
   // console.log('current user: ', user);
 
   // TEST usestate on timestamp
-  const date = new Date();
-  const [timeStamp] = useState((date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8)));
+  // const date = new Date();
+  // const [timeStamp] = useState((date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8)));
+
+  const [time, setTime] = useState([]);
+  const getTime = () => {
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => {
+        setTime(data[0].timestamp);
+        // console.log('data: ', data);
+        // console.log('updated time: ', time);
+      })
+      .catch(err => console.error(err));
+  };
 
   useEffect(() => {
     socketio.on('chat', senderChats => {
@@ -28,22 +40,27 @@ export default function ChatContainer(props) {
   // const msgIndex = Date.now();
 
   function addMessage(chat) {
-    const newChat = { ...chat, user, timeStamp };
+    const newChat = { ...chat, user, time };
     setChats([...chats, newChat]);
     sendChatToSocket([...chats, newChat]);
   }
 
   function ChatsLists() {
+
+    getTime();
+
     // console.log('chat-container');
     // const date = new Date();
     // const stamp = (date.toLocaleTimeString().slice(0, 5)) + ' ' + (date.toLocaleTimeString().slice(8));
     // console.log(stamp);
     return chats.map((chat, index) => {
 
+      // console.log('chat: ', chat);
+
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.timeStamp} />;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.timeStamp} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} />;
     });
   }
 

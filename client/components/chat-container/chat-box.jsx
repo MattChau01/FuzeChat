@@ -63,17 +63,22 @@ export function ChatBoxSender(props, { user, message }) {
 
   // WORKING HERE:
 
+  // moved fetch request to parent component
+
   // const [time, setTime] = useState([]);
 
   // const getTime = () => {
   //   fetch('/api/messages')
   //     .then(res => res.json())
-  //     .then(time => {
-  //       setTime(time);
-  //       console.log('time', time);
+  //     .then(data => {
+  //       setTime(data[0].timestamp);
+  //       // console.log('data: ', data);
+  //       // console.log('updated time: ', time);
   //     })
   //     .catch(err => console.error(err));
   // };
+
+  // console.log(time);
 
   // WORKING ABOVE:
 
@@ -99,11 +104,16 @@ export function ChatBoxSender(props, { user, message }) {
             </strong>
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+            {props.timeStamp}
             {/* {`${hour}:${minutes}`} */}
             {/* {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))} */}
             <br/>
             {/* {JSON.stringify(time)} */}
           </div>
+          {/* DIV TEST */}
+          {/* <div>
+            {time}
+          </div> */}
         </div>
         {props.message}
       </div>
