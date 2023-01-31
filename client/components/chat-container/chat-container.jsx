@@ -15,7 +15,7 @@ export default function ChatContainer(props) {
   // const date = new Date();
   // const [timeStamp] = useState((date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8)));
 
-  const [time, setTime] = useState([]);
+  const [time, setTime] = useState('');
   const getTime = () => {
     fetch('/api/messages')
       .then(res => res.json())
@@ -28,6 +28,11 @@ export default function ChatContainer(props) {
   };
 
   useEffect(() => {
+
+    // getTime();
+
+    // console.log('rendered!');
+
     socketio.on('chat', senderChats => {
       setChats(senderChats);
     });
@@ -47,7 +52,7 @@ export default function ChatContainer(props) {
 
   function ChatsLists() {
 
-    getTime();
+    // getTime();
 
     // console.log('chat-container');
     // const date = new Date();
@@ -73,7 +78,7 @@ export default function ChatContainer(props) {
           </h4>
         </div>
         <ChatsLists />
-        <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+        <SendMessage getTime={getTime} addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
       </div>
     </div>
   );

@@ -65,6 +65,8 @@ export default function SendMessage(props) {
 
   function formSubmit(event) {
     event.preventDefault();
+
+    // props.getTime();
   }
 
   return (

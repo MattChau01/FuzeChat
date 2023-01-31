@@ -40,6 +40,7 @@ export default function ChatBoxReceiver(props, { user, message }) {
             </strong>
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+            {props.timeStamp}
             {/* {`${hour}:${minutes}`} */}
             {/* {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))} */}
             {/* {date} */}
