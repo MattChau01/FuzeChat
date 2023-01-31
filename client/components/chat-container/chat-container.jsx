@@ -21,6 +21,7 @@ export default function ChatContainer(props) {
       .then(res => res.json())
       .then(data => {
         setTime(data[0].timestamp);
+        // setTime(timeStamp);
         // console.log('data: ', data);
         // console.log('updated time: ', time);
       })
@@ -31,6 +32,8 @@ export default function ChatContainer(props) {
 
     // getTime();
 
+    // document.title = `current timestamp: ${time}`;
+    // console.log(`current timestamp: ${time}`);
     // console.log('rendered!');
 
     socketio.on('chat', senderChats => {
@@ -52,20 +55,19 @@ export default function ChatContainer(props) {
 
   function ChatsLists() {
 
-    // getTime();
-
     // console.log('chat-container');
     // const date = new Date();
     // const stamp = (date.toLocaleTimeString().slice(0, 5)) + ' ' + (date.toLocaleTimeString().slice(8));
     // console.log(stamp);
     return chats.map((chat, index) => {
+      getTime();
 
       // console.log('chat: ', chat);
 
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time}/>;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time} />;
     });
   }
 

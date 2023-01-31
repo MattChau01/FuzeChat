@@ -61,12 +61,27 @@ export default function SendMessage(props) {
       });
 
     setMessage('');
+
+    // props.getTime();
   }
+
+  // const [time, setTime] = useState('');
+  // const getTime = () => {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setTime(data[0].timestamp);
+  //       // setTime(timeStamp);
+  //       // console.log('data: ', data);
+  //       // console.log('updated time: ', time);
+  //     })
+  //     .catch(err => console.error(err));
+  // };
 
   function formSubmit(event) {
     event.preventDefault();
 
-    // props.getTime();
+    // getTime();
   }
 
   return (
