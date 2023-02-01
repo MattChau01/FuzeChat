@@ -9,7 +9,6 @@ export default function ChatContainer(props) {
   const socketio = socketIOClient('http://localhost:3000');
   const [chats, setChats] = useState([]);
   const [user] = useState((props.user));
-  // console.log('current user: ', user);
 
   // TEST usestate on timestamp
   // const date = new Date();
@@ -22,10 +21,7 @@ export default function ChatContainer(props) {
   //     .then(data => {
   //       setTime(data[0].timestamp);
   //       // setTime(timeStamp);
-  //       // console.log('data: ', data);
-  //       // console.log('updated time: ', time);
   //     })
-  //     .catch(err => console.error(err));
   // };
 
   // TESTING HERE
@@ -39,10 +35,8 @@ export default function ChatContainer(props) {
   //     setTime(data[0].timestamp);
 
   //     // setTime(timeStamp);
-  //     // console.log('data: ', data);
-  //     // console.log('updated time: ', time);
+
   //   })
-  //   .catch(err => console.error(err));
 
   // TEST ABOVE
 
@@ -51,8 +45,6 @@ export default function ChatContainer(props) {
     // getTime();
 
     // document.title = `current timestamp: ${time}`;
-    // console.log(`current timestamp: ${time}`);
-    // console.log('rendered!');
 
     socketio.on('chat', senderChats => {
       setChats(senderChats);
@@ -77,14 +69,12 @@ export default function ChatContainer(props) {
     fetch('/api/messages')
       .then(res => res.json())
       .then(data => {
-        // console.log('data: ', data);
         const timestamp = data[0].timestamp;
         const newChat = { ...chat, user, timestamp };
         setChats([...chats, newChat]);
         sendChatToSocket([...chats, newChat]);
         // setTime(timeStamp);
-        // console.log('data: ', data);
-        // console.log('updated time: ', time);
+
       })
       .catch(err => console.error(err));
 
@@ -93,14 +83,10 @@ export default function ChatContainer(props) {
 
   function ChatsLists() {
 
-    // console.log('chat-container');
     // const date = new Date();
     // const stamp = (date.toLocaleTimeString().slice(0, 5)) + ' ' + (date.toLocaleTimeString().slice(8));
-    // console.log(stamp);
     return chats.map((chat, index) => {
       // getTime();
-
-      // console.log('chat: ', chat);
 
       if (chat.user === userName) {
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;

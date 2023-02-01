@@ -7,7 +7,6 @@ import React from 'react';
 //   fetch('/api/messages')
 //     .then(res => res.json())
 //     .then(msgTime => { messagedAt = msgTime; });
-//   console.log('messagedAt: ', messagedAt);
 //   return messagedAt;
 // }
 
@@ -17,8 +16,6 @@ export default function ChatBoxReceiver(props, { user, message }) {
 
   // const hour = date.getHours();
   // const minutes = date.getMinutes();
-
-  // console.log('receiver');
 
   return (
     <div style={{
@@ -71,13 +68,8 @@ export function ChatBoxSender(props, { user, message }) {
   //     .then(res => res.json())
   //     .then(data => {
   //       setTime(data[0].timestamp);
-  //       // console.log('data: ', data);
-  //       // console.log('updated time: ', time);
-  //     })
-  //     .catch(err => console.error(err));
-  // };
 
-  // console.log(time);
+  // };
 
   // WORKING ABOVE:
 

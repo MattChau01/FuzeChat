@@ -28,7 +28,6 @@ export default class ChatRoom extends React.Component {
   //         enteredAt: time.joinedChatAt
   //       });
   //     })
-  //     .catch(err => console.error(err));
   // }
 
   // messageTimeStamp() {
@@ -37,7 +36,6 @@ export default class ChatRoom extends React.Component {
   //     .then(msgTime => this.setState({
   //       messagedAt: msgTime
   //     }));
-  //   console.log(this.state.messagedAt);
   //   return this.state.messagedAt;
   // }
 
@@ -59,7 +57,6 @@ export default class ChatRoom extends React.Component {
 
     fetch('/api/usersInChat', req)
       .then(res => res.json());
-    // .then(data => console.log(data));
     // window.location.hash = 'message';
   }
 

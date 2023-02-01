@@ -72,8 +72,7 @@ export default function SendMessage(props) {
   //     .then(data => {
   //       setTime(data[0].timestamp);
   //       // setTime(timeStamp);
-  //       // console.log('data: ', data);
-  //       // console.log('updated time: ', time);
+
   //     })
   //     .catch(err => console.error(err));
   // };
