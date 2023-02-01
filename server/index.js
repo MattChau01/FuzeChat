@@ -40,17 +40,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/api/messages', (req, res) => {
-//   req.io.emit('message', {
-//     type: 'text',
-//     text: 'messaged sent'
-//   });
-//   res.json({
-//     msg: 'msg endpoint'
-//   });
-// });
-
-// Retrieves timestamp ( THIS ONE WORKING )
 app.get('/api/messages', (req, res, next) => {
 
   const pst = '"createdAt" at time zone \'America/Los_Angeles\'';
@@ -71,29 +60,6 @@ app.get('/api/messages', (req, res, next) => {
     })
     .catch(err => next(err));
 });
-
-// TEST: RETRIEVE TIMESTAMP WHERE MESSAGE = 'STRING'
-// app.get('/api/messages/:message', (req, res, next) => {
-
-//   const { message } = req.body;
-// const pst = '"createdAt" at time zone \'America/Los_Angeles\'';
-// (to_char(${pst}, 'HH24:MI')) as timestamp
-
-//   const sql = `
-//     select "createdAt", "userId"
-//       from "messages"
-//     where "newMessage" = $1
-//   `;
-
-//   const params = [message];
-
-//   db.query(sql, params)
-//     .then(result => {
-//       const message = result.rows;
-//       res.json(message);
-//     })
-//     .catch(err => next(err));
-// });
 
 app.get('/api/users', (req, res, next) => {
   const sql = `

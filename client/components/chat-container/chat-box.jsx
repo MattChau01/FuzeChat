@@ -1,21 +1,6 @@
-// import React, { useState } from 'react';
 import React from 'react';
 
-// let messagedAt = null;
-
-// function messageTimeStamp() {
-//   fetch('/api/messages')
-//     .then(res => res.json())
-//     .then(msgTime => { messagedAt = msgTime; });
-//   return messagedAt;
-// }
-
 export default function ChatBoxReceiver(props, { user, message }) {
-
-  // const date = new Date();
-
-  // const hour = date.getHours();
-  // const minutes = date.getMinutes();
 
   return (
     <div style={{
@@ -38,8 +23,6 @@ export default function ChatBoxReceiver(props, { user, message }) {
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
             {props.tStamp}
-            {/* BELOW WORKS */}
-            {/* {props.timeStamp} */}
 
           </div>
         </div>
@@ -50,30 +33,6 @@ export default function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
-
-  // const date = new Date();
-  // const hour = date.getHours();
-  // const minutes = date.getMinutes();
-
-  // let timeStamp = null;
-
-  // WORKING HERE:
-
-  // moved fetch request to parent component
-
-  // const [time, setTime] = useState([]);
-
-  // const getTime = () => {
-  //   fetch('/api/messages')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setTime(data[0].timestamp);
-
-  // };
-
-  // WORKING ABOVE:
-
-  // getTime();
 
   return (
     <div style={{
@@ -96,8 +55,6 @@ export function ChatBoxSender(props, { user, message }) {
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
             {props.tStamp}
-            {/* BELOW WORKS */}
-            {/* {props.timeStamp} */}
 
           </div>
         </div>

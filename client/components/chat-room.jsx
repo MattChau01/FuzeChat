@@ -8,40 +8,14 @@ export default class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // value: '',
       messages: [],
       currentRoom: FindRoom(window.location.hash),
       userName: NewUser(window.location.hash)
-      // enteredAt: '',
-      // messagedAt: null
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.messageTimeStamp = this.messageTimeStamp.bind(this);
-    // this.getTimeStamp = this.getTimeStamp.bind(this);
   }
 
-  // getTimeStamp() {
-  //   fetch('/api/usersInChat')
-  //     .then(res => res.json())
-  //     .then(time => {
-  //       this.setState({
-  //         enteredAt: time.joinedChatAt
-  //       });
-  //     })
-  // }
-
-  // messageTimeStamp() {
-  //   fetch('/api/messages')
-  //     .then(res => res.json())
-  //     .then(msgTime => this.setState({
-  //       messagedAt: msgTime
-  //     }));
-  //   return this.state.messagedAt;
-  // }
-
   componentDidMount() {
-    // this.getTimeStamp();
-    // this.messageTimeStamp();
 
     const reqObj = {};
     reqObj.chatRoomName = this.state.currentRoom;
@@ -57,7 +31,6 @@ export default class ChatRoom extends React.Component {
 
     fetch('/api/usersInChat', req)
       .then(res => res.json());
-    // window.location.hash = 'message';
   }
 
   handleChange(event) {
