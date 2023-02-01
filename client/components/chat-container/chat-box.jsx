@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ChatBoxReceiver(props, { user, message }) {
-
   return (
     <div style={{
       display: 'flex',
@@ -9,25 +8,29 @@ export default function ChatBoxReceiver(props, { user, message }) {
       flexDirection: 'row',
       margin: 5
     }}>
-      <p style={{
+      <div style={{
         padding: 10,
         backgroundColor: '#dcf8c6',
         borderRadius: 10,
         maxWidth: '60%'
       }}>
-        <strong style={{
-          fontSize: 13
-        }}>
-          {props.user}
-        </strong><br />
+        <div className='row'>
+          <div className='col'>
+            <strong style={{ fontSize: 16, color: 'black' }}>
+              {props.user}
+            </strong>
+          </div>
+          <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+            {props.tStamp}
+          </div>
+        </div>
         {props.message}
-      </p>
+      </div>
     </div>
   );
 }
 
 export function ChatBoxSender(props, { user, message }) {
-
   return (
     <div style={{
       display: 'flex',
@@ -35,17 +38,24 @@ export function ChatBoxSender(props, { user, message }) {
       flexDirection: 'row',
       margin: 5
     }}>
-      <p style={{
+      <div style={{
         padding: 10,
         backgroundColor: '#fff',
         borderRadius: 10,
         maxWidth: '60%'
       }}>
-        <strong style={{ fontSize: 13, color: 'black' }}>
-          {props.user}
-        </strong><br />
+        <div className='row'>
+          <div className='col'>
+            <strong style={{ fontSize: 16, color: 'black' }}>
+              {props.user}
+            </strong>
+          </div>
+          <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+            {props.tStamp}
+          </div>
+        </div>
         {props.message}
-      </p>
+      </div>
     </div>
   );
 }

@@ -14,27 +14,30 @@ export default function ChatContainer(props) {
     socketio.on('chat', senderChats => {
       setChats(senderChats);
     });
-  });
+  }, [socketio]);
 
   function sendChatToSocket(chat) {
     socketio.emit('chat', chat);
   }
 
-  const msgIndex = Date.now();
-
   function addMessage(chat) {
-    const newChat = { ...chat, user, msgIndex };
-    setChats([...chats, newChat]);
-    sendChatToSocket([...chats, newChat]);
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => {
+        const timestamp = data[0].timestamp;
+        const newChat = { ...chat, user, timestamp };
+        setChats([...chats, newChat]);
+        sendChatToSocket([...chats, newChat]);
+      })
+      .catch(err => console.error(err));
   }
 
   function ChatsLists() {
     return chats.map((chat, index) => {
-
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} />;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
   }
 
