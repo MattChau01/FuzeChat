@@ -16,17 +16,31 @@ export default function ChatContainer(props) {
   // const [timeStamp] = useState((date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8)));
 
   const [time, setTime] = useState('');
-  const getTime = () => {
-    fetch('/api/messages')
-      .then(res => res.json())
-      .then(data => {
-        setTime(data[0].timestamp);
-        // setTime(timeStamp);
-        // console.log('data: ', data);
-        // console.log('updated time: ', time);
-      })
-      .catch(err => console.error(err));
-  };
+  // const getTime = () => {
+  //   fetch('/api/messages')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setTime(data[0].timestamp);
+  //       // setTime(timeStamp);
+  //       // console.log('data: ', data);
+  //       // console.log('updated time: ', time);
+  //     })
+  //     .catch(err => console.error(err));
+  // };
+
+  // TESTING HERE
+  fetch('/api/messages')
+    .then(res => res.json())
+    .then(data => {
+      setTime(data[0].timestamp);
+
+      // setTime(timeStamp);
+      // console.log('data: ', data);
+      // console.log('updated time: ', time);
+    })
+    .catch(err => console.error(err));
+
+  // TEST ABOVE
 
   useEffect(() => {
 
@@ -39,7 +53,7 @@ export default function ChatContainer(props) {
     socketio.on('chat', senderChats => {
       setChats(senderChats);
     });
-  });
+  }, [socketio]);
 
   function sendChatToSocket(chat) {
     socketio.emit('chat', chat);
@@ -47,11 +61,16 @@ export default function ChatContainer(props) {
 
   // const msgIndex = Date.now();
 
+  // DO NOT DELETE BELOW:
   function addMessage(chat) {
-    const newChat = { ...chat, user, time };
+    const timestamp = new Date().toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', timeZone: 'America/Los_Angeles'
+    });
+    const newChat = { ...chat, user, timestamp };
     setChats([...chats, newChat]);
     sendChatToSocket([...chats, newChat]);
   }
+  // DO NOT DELETE ABOVE:
 
   function ChatsLists() {
 
@@ -60,14 +79,14 @@ export default function ChatContainer(props) {
     // const stamp = (date.toLocaleTimeString().slice(0, 5)) + ' ' + (date.toLocaleTimeString().slice(8));
     // console.log(stamp);
     return chats.map((chat, index) => {
-      getTime();
+      // getTime();
 
       // console.log('chat: ', chat);
 
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time}/>;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time} tStamp={chat.timestamp}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time} tStamp={chat.timestamp} />;
     });
   }
 
@@ -80,7 +99,7 @@ export default function ChatContainer(props) {
           </h4>
         </div>
         <ChatsLists />
-        <SendMessage getTime={getTime} addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+        <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
       </div>
     </div>
   );

@@ -40,14 +40,10 @@ export default function ChatBoxReceiver(props, { user, message }) {
             </strong>
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
-            {props.timeStamp}
-            <br />
-            {props.time}
-            {/* {`${hour}:${minutes}`} */}
-            {/* {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))} */}
-            {/* {date} */}
-            <br />
+            {props.tStamp}
+            {/* BELOW WORKS */}
             {/* {props.timeStamp} */}
+
           </div>
         </div>
         {props.message}
@@ -107,18 +103,11 @@ export function ChatBoxSender(props, { user, message }) {
             </strong>
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
-            {props.timeStamp}
-            <br/>
-            {props.time}
-            {/* {`${hour}:${minutes}`} */}
-            {/* {(date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8))} */}
-            <br/>
-            {/* {JSON.stringify(time)} */}
+            {props.tStamp}
+            {/* BELOW WORKS */}
+            {/* {props.timeStamp} */}
+
           </div>
-          {/* DIV TEST */}
-          {/* <div>
-            {time}
-          </div> */}
         </div>
         {props.message}
       </div>
