@@ -11,7 +11,6 @@ export default function ChatContainer(props) {
   const [user] = useState((props.user));
 
   useEffect(() => {
-
     socketio.on('chat', senderChats => {
       setChats(senderChats);
     });
@@ -22,7 +21,6 @@ export default function ChatContainer(props) {
   }
 
   function addMessage(chat) {
-
     fetch('/api/messages')
       .then(res => res.json())
       .then(data => {
@@ -30,16 +28,12 @@ export default function ChatContainer(props) {
         const newChat = { ...chat, user, timestamp };
         setChats([...chats, newChat]);
         sendChatToSocket([...chats, newChat]);
-
       })
       .catch(err => console.error(err));
-
   }
 
   function ChatsLists() {
-
     return chats.map((chat, index) => {
-
       if (chat.user === userName) {
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
       }

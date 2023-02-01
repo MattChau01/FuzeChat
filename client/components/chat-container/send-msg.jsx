@@ -31,7 +31,6 @@ const styles = {
 };
 
 export default function SendMessage(props) {
-
   const [message, setMessage] = useState('');
   function addAMessage() {
     props.addMessage({
@@ -59,14 +58,11 @@ export default function SendMessage(props) {
       .then(data => {
         setMessage('');
       });
-
     setMessage('');
-
   }
 
   function formSubmit(event) {
     event.preventDefault();
-
   }
 
   return (

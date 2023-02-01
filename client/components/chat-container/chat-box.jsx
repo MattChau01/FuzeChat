@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function ChatBoxReceiver(props, { user, message }) {
-
   return (
     <div style={{
       display: 'flex',
@@ -23,7 +22,6 @@ export default function ChatBoxReceiver(props, { user, message }) {
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
             {props.tStamp}
-
           </div>
         </div>
         {props.message}
@@ -33,7 +31,6 @@ export default function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
-
   return (
     <div style={{
       display: 'flex',
@@ -55,7 +52,6 @@ export function ChatBoxSender(props, { user, message }) {
           </div>
           <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
             {props.tStamp}
-
           </div>
         </div>
         {props.message}
