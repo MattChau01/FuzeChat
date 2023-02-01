@@ -75,7 +75,7 @@ export default class NewUserName extends React.Component {
             <div>
               <p className='welcome wht-txt'>Welcome to FuzeChat!</p>
               <div className='instruct wht-txt'>
-                <p className='wrong'>Username is invalid, please try again!</p>
+                <p className='wrong'>Username must be at least 7 characters!</p>
               </div>
               <form autoComplete='off' onSubmit={this.handleSubmitUserName}>
                 <div className='mt-5'>

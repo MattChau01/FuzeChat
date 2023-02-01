@@ -49,7 +49,10 @@ export default function ChatContainer(props) {
             Username: {props.user}
           </h4>
         </div>
-        <ChatsLists />
+        {/* REFACTOR TEST */}
+        <div style={{ height: '60vh', minHeight: '63vh' }} className='scroll-bar mb-3' >
+          <ChatsLists />
+        </div>
         <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
       </div>
     </div>

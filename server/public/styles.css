@@ -129,6 +129,14 @@ body {
   font-weight: 600;
 }
 
+.scroll-bar {
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  background: rgb(115, 134, 143, 50%);
+}
+
 @media screen and (min-width: 500px) {
   .welcome {
     font-size: 33px;
