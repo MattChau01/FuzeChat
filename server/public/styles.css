@@ -166,4 +166,8 @@ body {
   .message-bar {
     width: 300px;
   }
+
+  .chat-container {
+    /* width: ; */
+  }
 }
