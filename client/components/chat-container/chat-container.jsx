@@ -15,7 +15,7 @@ export default function ChatContainer(props) {
   // const date = new Date();
   // const [timeStamp] = useState((date.toLocaleTimeString().slice(0, 4)) + ' ' + (date.toLocaleTimeString().slice(8)));
 
-  const [time, setTime] = useState('');
+  // const [time, setTime] = useState('');
   // const getTime = () => {
   //   fetch('/api/messages')
   //     .then(res => res.json())
@@ -29,16 +29,20 @@ export default function ChatContainer(props) {
   // };
 
   // TESTING HERE
-  fetch('/api/messages')
-    .then(res => res.json())
-    .then(data => {
-      setTime(data[0].timestamp);
+  // STARTING POINT FOR TEST
+  /// ///
 
-      // setTime(timeStamp);
-      // console.log('data: ', data);
-      // console.log('updated time: ', time);
-    })
-    .catch(err => console.error(err));
+  /// ///
+  // fetch('/api/messages')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setTime(data[0].timestamp);
+
+  //     // setTime(timeStamp);
+  //     // console.log('data: ', data);
+  //     // console.log('updated time: ', time);
+  //   })
+  //   .catch(err => console.error(err));
 
   // TEST ABOVE
 
@@ -63,12 +67,27 @@ export default function ChatContainer(props) {
 
   // DO NOT DELETE BELOW:
   function addMessage(chat) {
-    const timestamp = new Date().toLocaleTimeString('en-US', {
-      hour: '2-digit', minute: '2-digit', timeZone: 'America/Los_Angeles'
-    });
-    const newChat = { ...chat, user, timestamp };
-    setChats([...chats, newChat]);
-    sendChatToSocket([...chats, newChat]);
+    // const timestamp = new Date().toLocaleTimeString('en-US', {
+    //   hour: '2-digit', minute: '2-digit', timeZone: 'America/Los_Angeles'
+    // });
+    // const newChat = { ...chat, user, timestamp };
+    // setChats([...chats, newChat]);
+    // sendChatToSocket([...chats, newChat]);
+
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => {
+        // console.log('data: ', data);
+        const timestamp = data[0].timestamp;
+        const newChat = { ...chat, user, timestamp };
+        setChats([...chats, newChat]);
+        sendChatToSocket([...chats, newChat]);
+        // setTime(timeStamp);
+        // console.log('data: ', data);
+        // console.log('updated time: ', time);
+      })
+      .catch(err => console.error(err));
+
   }
   // DO NOT DELETE ABOVE:
 
@@ -84,9 +103,9 @@ export default function ChatContainer(props) {
       // console.log('chat: ', chat);
 
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time} tStamp={chat.timestamp}/>;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} time={time} tStamp={chat.timestamp} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
   }
 

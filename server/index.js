@@ -58,8 +58,10 @@ app.get('/api/messages', (req, res, next) => {
   const sql = `
     select "newMessage", (to_char(${pst}, 'HH24:MI')) as timestamp, "userId"
       from "messages"
-    order by "entryId" desc
-    limit 1
+    where "createdAt" = (
+      select max("createdAt")
+      from "messages"
+    )
   `;
 
   db.query(sql)
