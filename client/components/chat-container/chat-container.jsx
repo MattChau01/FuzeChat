@@ -42,19 +42,25 @@ export default function ChatContainer(props) {
   }
 
   return (
-    <div>
+    <>
       <div>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '100%' }}>
-          <h4 style={{ margin: 10, color: '#fff' }}>
-            Username: {props.user}
-          </h4>
+        <div>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+            <h4 style={{ margin: 10, color: '#fff' }}>
+              Username: {props.user}
+            </h4>
+          </div>
         </div>
-        {/* REFACTOR TEST */}
-        <div style={{ height: '60vh', minHeight: '63vh', backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
-          <ChatsLists />
-        </div>
-        <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
       </div>
-    </div>
+      <div className='chat-list'>
+        <div>
+          {/* REFACTOR TEST */}
+          <div style={{ height: '60vh', minHeight: '63vh', backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
+            <ChatsLists />
+          </div>
+          <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+        </div>
+      </div>
+    </>
   );
 }

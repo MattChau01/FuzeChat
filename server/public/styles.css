@@ -167,7 +167,27 @@ body {
     width: 300px;
   }
 
-  .chat-container {
-    /* width: ; */
+  /* .scroll-bar {
+    width: 100%;
+  } */
+
+  /* prob wont use */
+
+  /* .chat-list {
+    width: 600px;
+  } */
+}
+
+/* TEST with width first */
+
+/* @media screen and (min-width: 700px) {
+  .chat-list {
+    width: 600px;
   }
 }
+
+@media screen and (min-width: 1000px) {
+  .chat-list {
+    width: 800px;
+  }
+} */

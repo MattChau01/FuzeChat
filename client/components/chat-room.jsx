@@ -41,7 +41,7 @@ export default class ChatRoom extends React.Component {
   render() {
     return (
       <div className='d-flex align-items-center justify-content-center'>
-        <div>
+        <div style={{ width: '90%' }} >
           <RoomName currentRoom={this.state.currentRoom}/>
           <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName}/>
         </div>
