@@ -15,7 +15,7 @@ export default class RoomName extends React.Component {
       <div className='location mt-3'>
         <div className='row justify-content-center'>
           <p className='col wht-txt mt-1 px-3'>Current room: {this.props.currentRoom}</p>
-          <i className='col-2 fa-solid fa-door-open wht-txt mt-2'
+          <i className='col-1 fa-solid fa-door-open wht-txt mt-2'
           style={{
             textAlign: 'end',
             marginRight: 15,

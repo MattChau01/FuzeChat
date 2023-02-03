@@ -34,13 +34,15 @@ export default class Home extends React.Component {
       );
     }
     if (path === 'message') {
-      return (<ChatRoom />);
+      return (
+        <ChatRoom />
+      );
     }
   }
 
   render() {
     return (
-      <div className=''>
+      <div>
         { this.renderPage() }
       </div>
     );
