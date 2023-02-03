@@ -3,8 +3,6 @@ import ParseRoute from '../lib/parse-route';
 import NewUserName from '../components/username';
 import SelectRoom from '../components/room-select';
 import ChatRoom from '../components/chat-room';
-// REFACTOR TEST
-// import SendMessage from '../components/chat-container/send-msg';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -37,10 +35,7 @@ export default class Home extends React.Component {
     }
     if (path === 'message') {
       return (
-        <>
-          <ChatRoom />
-          {/* <SendMessage /> */}
-        </>
+        <ChatRoom />
       );
     }
   }

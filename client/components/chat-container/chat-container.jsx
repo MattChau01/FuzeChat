@@ -46,15 +46,14 @@ export default function ChatContainer(props) {
       <div>
         <div>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-            <h4 style={{ margin: 10, color: '#fff' }}>
+            <p style={{ margin: 10, color: '#fff', backgroundColor: '#283C46' }} className='px-2 py-1' >
               Username: {props.user}
-            </h4>
+            </p>
           </div>
         </div>
       </div>
       <div className='chat-list'>
         <div>
-          {/* REFACTOR TEST */}
           <div style={{ height: '60vh', minHeight: '63vh', backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
             <ChatsLists />
           </div>

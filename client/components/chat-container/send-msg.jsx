@@ -69,7 +69,8 @@ export default function SendMessage(props) {
     <div style={styles.textContainer}>
       <form onSubmit={formSubmit}>
         <label htmlFor='message' className='text-box'>
-          <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar' onChange={e => setMessage(e.target.value)} />
+          <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar'
+            onChange={e => { setMessage(e.target.value); }} />
           <button type='submit' className='send' onClick={() => {
             addAMessage();
           }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>

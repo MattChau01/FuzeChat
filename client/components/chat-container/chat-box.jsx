@@ -5,14 +5,13 @@ export default function ChatBoxReceiver(props, { user, message }) {
     <div style={{
       display: 'flex',
       justifyContent: 'flex-start',
-      flexDirection: 'row',
-      margin: 5
-    }}>
+      flexDirection: 'row'
+    }} className='mx-2 my-2'>
       <div style={{
         padding: 10,
         backgroundColor: '#dcf8c6',
         borderRadius: 10,
-        maxWidth: '60%'
+        maxWidth: '70%'
       }}>
         <div className='row'>
           <div className='col'>
@@ -35,14 +34,13 @@ export function ChatBoxSender(props, { user, message }) {
     <div style={{
       display: 'flex',
       justifyContent: 'flex-end',
-      flexDirection: 'row',
-      margin: 5
-    }}>
+      flexDirection: 'row'
+    }} className='mx-2 my-2'>
       <div style={{
         padding: 10,
         backgroundColor: '#fff',
         borderRadius: 10,
-        maxWidth: '60%'
+        maxWidth: '70%'
       }}>
         <div className='row'>
           <div className='col'>
