@@ -134,7 +134,15 @@ body {
 }
 
 ::-webkit-scrollbar {
-  background: rgb(115, 134, 143, 50%);
+  color: rgb(115, 134, 143, 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media screen and (min-width: 500px) {
