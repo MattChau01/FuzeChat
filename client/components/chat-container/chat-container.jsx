@@ -55,7 +55,7 @@ export default function ChatContainer(props) {
       <div className='mt-3'>
         <div className='chat-list'>
           <div>
-            <div style={{ height: '60vh', minHeight: '60vh', backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
+            <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
               <ChatsLists />
             </div>
             <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />

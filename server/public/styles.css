@@ -130,6 +130,8 @@ body {
 }
 
 .scroll-bar {
+  height: 60vh;
+  min-height: 63vh;
   overflow-y: scroll;
 }
 
@@ -172,6 +174,6 @@ body {
   }
 
   .message-bar {
-    width: 300px;
+    width: 385px;
   }
 }
