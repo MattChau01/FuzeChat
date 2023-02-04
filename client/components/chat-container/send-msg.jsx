@@ -68,8 +68,10 @@ export default function SendMessage(props) {
   return (
     <>
       <div>
-        <div className='wht-txt text-center mb-3'>
-          TEST
+        <div className='mb-3 d-flex justify-content-center'>
+          <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
+            <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
+          </div>
         </div>
       </div>
       <div style={styles.textContainer}>
