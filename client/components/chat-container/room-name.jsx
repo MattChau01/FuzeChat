@@ -2,6 +2,7 @@ import React from 'react';
 import NewUser from '../../lib/print-username';
 import FindRoom from '../../lib/select-room';
 
+// Might need to refactor RoomName to a function rather than class, parent already has currentRoom and userName
 export default class RoomName extends React.Component {
   constructor(props) {
     super(props);

@@ -1,5 +1,5 @@
 import React from 'react';
-import RoomName from './chat-room-components/room-name';
+import RoomName from './chat-container/room-name';
 import FindRoom from '../lib/select-room';
 import NewUser from '../lib/print-username';
 import ChatContainer from './chat-container/chat-container';

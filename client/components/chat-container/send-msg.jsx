@@ -63,16 +63,25 @@ export default function SendMessage(props) {
 
   function formSubmit(event) {
     event.preventDefault();
+    setInterval(newMessage(), 2000);
+
+    clearInterval(newMessage);
+  }
+
+  function newMessage() {
+    return (
+      <div>TEST!</div>
+    );
   }
 
   return (
     <>
       <div>
-        <div className='mb-3 d-flex justify-content-center'>
+        {/* <div className='mb-3 d-flex justify-content-center'>
           <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
             <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
           </div>
-        </div>
+        </div> */}
       </div>
       <div style={styles.textContainer}>
         <form onSubmit={formSubmit}>
