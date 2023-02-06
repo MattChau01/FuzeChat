@@ -3,6 +3,10 @@ import socketIOClient from 'socket.io-client';
 import ChatBoxReceiver, { ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
 
+// import toast container into component
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
 export default function ChatContainer(props) {
 
   const userName = window.location.hash.split('&')[2];
@@ -32,12 +36,38 @@ export default function ChatContainer(props) {
       .catch(err => console.error(err));
   }
 
+  // function notifyUser() {
+  //   console.log('toast!');
+  //   toast('Messaged!', {
+  //     position: 'top-right',
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light'
+  //   });
+  // }
+
   function ChatsLists() {
     return chats.map((chat, index) => {
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
+        // console.log('current user');
+        return (
+          <>
+            <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>
+            {/* <ToastContainer />; */}
+          </>
+        );
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
+      // console.log('other user');
+      return (
+        <>
+          <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />
+          {/* <ToastContainer />; */}
+        </>
+      );
     });
   }
 
