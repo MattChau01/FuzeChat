@@ -6,7 +6,7 @@ export default function ChatBoxReceiver(props, { user, message }) {
       display: 'flex',
       justifyContent: 'flex-start',
       flexDirection: 'row'
-    }} className='mx-2 my-2'>
+    }} className='mx-3 my-2'>
       <div style={{
         padding: 10,
         backgroundColor: '#dcf8c6',

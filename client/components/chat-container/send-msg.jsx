@@ -63,15 +63,37 @@ export default function SendMessage(props) {
 
   function formSubmit(event) {
     event.preventDefault();
-    setInterval(newMessage(), 2000);
+    // setInterval(newMessage(), 2000);
 
-    clearInterval(newMessage);
+    // clearInterval(newMessage);
   }
 
+  let [sentStatus, setStatus] = useState(false);
+
   function newMessage() {
-    return (
-      <div>TEST!</div>
-    );
+    // console.log('YUH!');
+    // console.log('sentStatus: ', sentStatus);
+
+    if (sentStatus === true) {
+      return (
+        <div className='mb-3 d-flex justify-content-center'>
+          <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
+            <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className='mt-2 pt-3'>
+        &nbsp;
+        </div>
+      );
+    }
+
+    // return (
+    //   <div className='wht-txt'>TEST!</div>
+    // );
+
   }
 
   return (
@@ -82,6 +104,7 @@ export default function SendMessage(props) {
             <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
           </div>
         </div> */}
+        {newMessage()}
       </div>
       <div style={styles.textContainer}>
         <form onSubmit={formSubmit}>
@@ -90,6 +113,7 @@ export default function SendMessage(props) {
             onChange={e => { setMessage(e.target.value); }} />
             <button type='submit' className='send' onClick={() => {
               addAMessage();
+              setStatus(sentStatus = true);
             }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
           </label>
         </form>
