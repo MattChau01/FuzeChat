@@ -68,32 +68,74 @@ export default function SendMessage(props) {
     // clearInterval(newMessage);
   }
 
+  // TESTING WITH USEEFFECT
+
   let [sentStatus, setStatus] = useState(false);
 
-  function newMessage() {
-    // console.log('YUH!');
-    // console.log('sentStatus: ', sentStatus);
+  // function newMessage() {
+  //   // console.log('YUH!');
+  //   // console.log('sentStatus: ', sentStatus);
 
-    if (sentStatus === true) {
-      return (
-        <div className='mb-3 d-flex justify-content-center'>
-          <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
-            <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
+  //   if (sentStatus === true) {
+  //     // return (
+  //     //   <div className='mb-3 d-flex justify-content-center'>
+  //     //     <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
+  //     //       <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
+  //     //     </div>
+  //     //   </div>
+  //     // );
+  //     const msgAlert = setInterval(() => {
+  //       return (
+  //         <div className='mb-3 d-flex justify-content-center'>
+  //           <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
+  //             <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
+  //           </div>
+  //         </div>
+  //       );
+  //     }, 2000);
+
+  //     clearInterval(msgAlert);
+
+  //   } else {
+  //     return (
+  //       <div className='mt-2 pt-3'>
+  //       &nbsp;
+  //       </div>
+  //     );
+  //   }
+
+  //   // return (
+  //   //   <div className='wht-txt'>TEST!</div>
+  //   // );
+
+  // }
+
+  function alertUser() {
+    // WILL CHANGE USEEFFECT INTO A FUNCTION TO TEST OUT
+
+    const alertInterval = setInterval(() => {
+      if (sentStatus === true) {
+        return (
+          <div className='mb-3 d-flex justify-content-center'>
+            <div className='text-center' style={{ backgroundColor: 'rgb(210, 224, 231, 100%)', width: '50%' }}>
+              <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
+            </div>
           </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className='mt-2 pt-3'>
-        &nbsp;
-        </div>
-      );
-    }
+        );
+      } else {
+        return (
+          <div>
+            <div className='mt-2 pt-3'>
+              &nbsp;
+            </div>
+          </div>
+        );
+      }
+    }, 2000);
 
-    // return (
-    //   <div className='wht-txt'>TEST!</div>
-    // );
+    alertUser();
 
+    return () => clearInterval(alertInterval);
   }
 
   return (
@@ -104,7 +146,8 @@ export default function SendMessage(props) {
             <i style={{ color: 'rgb(2, 175, 160, 100%)' }} className="fa-solid fa-chevron-up" /> &nbsp; <strong>New Message!</strong>
           </div>
         </div> */}
-        {newMessage()}
+        {/* {newMessage()} */}
+        {alertUser}
       </div>
       <div style={styles.textContainer}>
         <form onSubmit={formSubmit}>
