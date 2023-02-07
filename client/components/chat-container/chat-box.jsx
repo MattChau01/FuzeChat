@@ -1,34 +1,85 @@
 import React from 'react';
-// import toast container into component
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+// import React, { useEffect, useState } from 'react';
 
-export default function ChatBoxReceiver(props, { user, message }) {
+// commenting out useeffect and usestate
+
+// import toast container into component
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export function NotifyUser() {
+  // console.log('toast!');
+  toast('New message!', {
+    position: 'top-right',
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light'
+  });
+}
+
+export function ChatBoxReceiver(props, { user, message }) {
+
+  // function notifyUser() {
+  //   console.log('toast!');
+  //   toast('New Mmessage!', {
+  //     position: 'top-right',
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light'
+  //   });
+  // }
+  NotifyUser();
+  // const
+
+  // console.log('new msg!');
+
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'flex-start',
-      flexDirection: 'row'
-    }} className='mx-3 my-2'>
+    <>
       <div style={{
-        padding: 10,
-        backgroundColor: '#dcf8c6',
-        borderRadius: 10,
-        maxWidth: '70%'
-      }}>
-        <div className='row'>
-          <div className='col'>
-            <strong style={{ fontSize: 16, color: 'black' }}>
-              {props.user}
-            </strong>
+        display: 'flex',
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+      }} className='mx-3 my-2'>
+        <div style={{
+          padding: 10,
+          backgroundColor: '#dcf8c6',
+          borderRadius: 10,
+          maxWidth: '70%'
+        }}>
+          <div className='row'>
+            <div className='col'>
+              <strong style={{ fontSize: 16, color: 'black' }}>
+                {props.user}
+              </strong>
+            </div>
+            <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
+              {props.tStamp}
+            </div>
           </div>
-          <div className='col pt-1' style={{ textAlign: 'end', fontSize: 12 }}>
-            {props.tStamp}
-          </div>
+          {props.message}
         </div>
-        {props.message}
       </div>
-    </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 }
 

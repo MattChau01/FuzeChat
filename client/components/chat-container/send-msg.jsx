@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
 // import toast container into component
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+// TESTING IMPORT
+import { NotifyUser } from './chat-box';
 
 const styles = {
   button: {
@@ -147,19 +150,19 @@ export default function SendMessage(props) {
   //   );
   // };
 
-  function notify() {
-    // TOAST WORKS BUT IS PLACED IN WRONG COMPONENT
-    toast.info('New message!', {
-      position: 'top-right',
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light'
-    });
-  }
+  // function notify() {
+  //   // TOAST WORKS BUT IS PLACED IN WRONG COMPONENT
+  //   toast.info('New message!', {
+  //     position: 'top-right',
+  //     autoClose: 1000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light'
+  //   });
+  // }
 
   return (
     <>
@@ -170,7 +173,7 @@ export default function SendMessage(props) {
           </div>
         </div> */}
         {/* {newMessage()} */}
-        <ToastContainer
+        {/* <ToastContainer
           position="top-right"
           autoClose={2000}
           hideProgressBar={false}
@@ -181,7 +184,7 @@ export default function SendMessage(props) {
           draggable
           pauseOnHover
           theme="light"
-        />
+        /> */}
       </div>
       <div style={styles.textContainer}>
         <form onSubmit={formSubmit}>
@@ -191,7 +194,8 @@ export default function SendMessage(props) {
             <button type='submit' className='send' onClick={() => {
               addAMessage();
               // setStatus(sentStatus = true);
-              notify();
+              // notify();
+              NotifyUser();
             }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
           </label>
         </form>
