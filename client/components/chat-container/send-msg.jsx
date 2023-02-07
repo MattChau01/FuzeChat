@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 // import 'react-toastify/dist/ReactToastify.css';
 
 // TESTING IMPORT
-import { NotifyUser } from './chat-box';
+// import { NotifyUser } from './chat-box';
 
 const styles = {
   button: {
@@ -195,7 +195,7 @@ export default function SendMessage(props) {
               addAMessage();
               // setStatus(sentStatus = true);
               // notify();
-              NotifyUser();
+              // NotifyUser();
             }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
           </label>
         </form>

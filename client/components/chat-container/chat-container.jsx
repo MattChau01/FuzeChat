@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import { ChatBoxReceiver, ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
+
 // import toast container into component
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';

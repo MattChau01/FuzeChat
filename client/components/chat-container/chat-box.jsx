@@ -4,22 +4,22 @@ import React from 'react';
 // commenting out useeffect and usestate
 
 // import toast container into component
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
-export function NotifyUser() {
-  // console.log('toast!');
-  toast('New message!', {
-    position: 'top-right',
-    autoClose: 2000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'light'
-  });
-}
+// export function NotifyUser() {
+//   // console.log('toast!');
+//   toast('New message!', {
+//     position: 'top-right',
+//     autoClose: 2000,
+//     hideProgressBar: true,
+//     closeOnClick: true,
+//     pauseOnHover: true,
+//     draggable: true,
+//     progress: undefined,
+//     theme: 'light'
+//   });
+// }
 
 export function ChatBoxReceiver(props, { user, message }) {
 
@@ -36,7 +36,7 @@ export function ChatBoxReceiver(props, { user, message }) {
   //     theme: 'light'
   //   });
   // }
-  NotifyUser();
+  // NotifyUser();
   // const
 
   // console.log('new msg!');
@@ -67,7 +67,7 @@ export function ChatBoxReceiver(props, { user, message }) {
           {props.message}
         </div>
       </div>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
@@ -78,7 +78,7 @@ export function ChatBoxReceiver(props, { user, message }) {
         draggable
         pauseOnHover
         theme="light"
-      />
+      /> */}
     </>
   );
 }
