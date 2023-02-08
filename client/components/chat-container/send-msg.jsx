@@ -196,6 +196,7 @@ export default function SendMessage(props) {
               // setStatus(sentStatus = true);
               // notify();
               // NotifyUser();
+              // props.notifyUser();
             }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
           </label>
         </form>

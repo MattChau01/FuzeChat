@@ -49,6 +49,10 @@ export default function ChatContainer(props) {
   //   });
   // }
 
+  // DUPLICATING UNDERNEATH FOR TEST
+
+  // // // *** DO NOT DELETE ***
+
   function ChatsLists() {
     return chats.map((chat, index) => {
       if (chat.user === userName) {
@@ -56,9 +60,32 @@ export default function ChatContainer(props) {
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
       }
       // console.log('other user');
+      // notifyUser();
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
   }
+
+  // function ChatsLists() {
+  //   let fromSender = true;
+  //   return chats.map((chat, index) => {
+  //     if (chat.user === userName) {
+  //       // console.log('current user');
+  //       fromSender = false;
+  //       return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
+  //     }
+  //     if (fromSender) {
+  //       fromSender = true;
+  //       // notifyUser();
+  //       return (
+  //         <>
+  //           <ToastContainer />
+  //           <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
+  //         </>
+  //       );
+  //     }
+  //     return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
+  //   });
+  // }
 
   return (
     <>
@@ -71,6 +98,19 @@ export default function ChatContainer(props) {
           </div>
         </div>
       </div> */}
+      {/* <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        // limit={1}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      /> */}
       <div className='mt-3'>
         <div className='chat-list'>
           <div>
