@@ -9,6 +9,21 @@ import SendMessage from './send-msg';
 
 export default function ChatContainer(props) {
 
+  // function disconnected() {
+  //   // console.log('toast!');
+  //   // console.log('props: ', props);
+  //   toast.error('User disconnected!', {
+  //     position: 'top-right',
+  //     autoClose: 2000,
+  //     hideProgressBar: true,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light'
+  //   });
+  // }
+
   const userName = window.location.hash.split('&')[2];
   const socketio = socketIOClient('http://localhost:3000');
   const [chats, setChats] = useState([]);
@@ -17,7 +32,15 @@ export default function ChatContainer(props) {
   useEffect(() => {
     socketio.on('chat', senderChats => {
       setChats(senderChats);
+      // console.log('senderChats: ', senderChats);
+      // NotifyUser();
     });
+
+    // socketio.on('disconnect', () => {
+    //   // console.log('disconnected');
+    //   // disconnected();
+    // });
+
   }, [socketio]);
 
   function sendChatToSocket(chat) {
@@ -121,6 +144,7 @@ export default function ChatContainer(props) {
           </div>
         </div>
       </div>
+      {/* <ToastContainer /> */}
     </>
   );
 }

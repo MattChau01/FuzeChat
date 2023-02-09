@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export function NotifyUser(props) {
   // console.log('toast!');
   // console.log('props: ', props);
-  toast('Messaged!', {
+  toast.success('Connected with a user!', {
     position: 'top-right',
     autoClose: 2000,
     hideProgressBar: true,
