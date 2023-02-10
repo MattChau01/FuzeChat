@@ -30,6 +30,7 @@ export default function ChatContainer(props) {
   const [user] = useState((props.user));
 
   useEffect(() => {
+
     socketio.on('chat', senderChats => {
       setChats(senderChats);
       // console.log('senderChats: ', senderChats);
@@ -86,6 +87,7 @@ export default function ChatContainer(props) {
       // notifyUser();
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
+
   }
 
   // function ChatsLists() {
@@ -139,6 +141,8 @@ export default function ChatContainer(props) {
           <div>
             <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
               <ChatsLists />
+              {/* // TEST EMPTY DIV FOR AUTOSCROLL */}
+              <div>&nbsp;</div>
             </div>
             <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
           </div>

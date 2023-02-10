@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 
 // TESTING IMPORT
 // import { NotifyUser } from './chat-box';
+// import { notify } from './chat-box';
 
 const styles = {
   button: {
@@ -67,6 +68,20 @@ export default function SendMessage(props) {
       });
     setMessage('');
   }
+
+  // function notify() {
+  //   // TOAST WORKS BUT IS PLACED IN WRONG COMPONENT
+  //   toast.info('New message!', {
+  //     position: 'top-right',
+  //     autoClose: 1000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light'
+  //   });
+  // }
 
   function formSubmit(event) {
     event.preventDefault();
@@ -150,20 +165,6 @@ export default function SendMessage(props) {
   //   );
   // };
 
-  // function notify() {
-  //   // TOAST WORKS BUT IS PLACED IN WRONG COMPONENT
-  //   toast.info('New message!', {
-  //     position: 'top-right',
-  //     autoClose: 1000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: 'light'
-  //   });
-  // }
-
   return (
     <>
       <div>
@@ -190,7 +191,10 @@ export default function SendMessage(props) {
         <form onSubmit={formSubmit}>
           <label htmlFor='message' className='text-box'>
             <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar'
-            onChange={e => { setMessage(e.target.value); }} />
+            onChange={e => {
+              // console.log('input: ', e.target.value);
+              setMessage(e.target.value);
+            }} />
             <button type='submit' className='send' onClick={() => {
               addAMessage();
               // setStatus(sentStatus = true);

@@ -1,4 +1,5 @@
 import React from 'react';
+// import React, { useEffect } from 'react';
 // import React, { useEffect, useState } from 'react';
 
 // commenting out useeffect and usestate
@@ -10,19 +11,47 @@ import 'react-toastify/dist/ReactToastify.css';
 export function NotifyUser(props) {
   // console.log('toast!');
   // console.log('props: ', props);
+  // const id = Date.now();
+
   toast.success('Connected with a user!', {
     position: 'top-right',
-    autoClose: 2000,
+    autoClose: 500,
     hideProgressBar: true,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
+    // test with prevent default
+    preventDefault: false,
+    // test with prevent close
+    preventCloseOnClick: true,
     progress: undefined,
     theme: 'light'
   });
+
 }
 
+// export function notify() {
+//   toast.info('New message!', {
+//     position: 'top-right',
+//     autoClose: 1000,
+//     hideProgressBar: false,
+//     closeOnClick: true,
+//     pauseOnHover: true,
+//     draggable: true,
+//     progress: undefined,
+//     theme: 'light'
+//   });
+// }
+
 export function ChatBoxReceiver(props, { user, message }) {
+
+  // useEffect(() => {
+  //   if (window.onfocus) {
+  //     console.log('focused!');
+  //   } else {
+  //     console.log('UNfocused!');
+  //   }
+  // });
 
   // function notifyUser() {
   //   console.log('toast!');
@@ -74,14 +103,15 @@ export function ChatBoxReceiver(props, { user, message }) {
       </div>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={500}
         hideProgressBar={false}
         newestOnTop
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
+        pauseOnHover={false}
+        preventDefault={false}
         theme="light"
       />
     </>
@@ -89,6 +119,15 @@ export function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
+
+  // useEffect(() => {
+  //   if (window.onfocus) {
+  //     console.log('focused!');
+  //   } else {
+  //     console.log('UNfocused!');
+  //   }
+  // });
+
   return (
     <div style={{
       display: 'flex',
