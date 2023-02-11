@@ -3,6 +3,9 @@ import socketIOClient from 'socket.io-client';
 import { ChatBoxReceiver, ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
 
+// import test notification component
+// import { NotifyBox } from './notification';
+
 // import toast container into component
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -112,6 +115,24 @@ export default function ChatContainer(props) {
   //   });
   // }
 
+  function NewNotif() {
+    return chats.map((chat, index) => {
+      if (chat.user === userName) {
+        // WILL NEED TO TEST WITH A SET INTERVAL TO MAKE THIS POP UP FOR 2 SECONDS
+        return (
+          <div key={index} className='wht-txt'>
+            TEST 1
+          </div>
+        );
+      }
+      return (
+        <div key={index} className='wht-txt'>
+          TEST 2
+        </div>
+      );
+    });
+  }
+
   return (
     <>
       {/* <div>
@@ -142,8 +163,10 @@ export default function ChatContainer(props) {
             <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
               <ChatsLists />
               {/* // TEST EMPTY DIV FOR AUTOSCROLL */}
-              <div>&nbsp;</div>
+              {/* <div>&nbsp;</div> */}
             </div>
+            {/* TEST WITH NEW COMPONENT HERE */}
+            <NewNotif />
             <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
           </div>
         </div>

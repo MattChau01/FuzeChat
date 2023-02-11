@@ -6,6 +6,7 @@ import React from 'react';
 
 // import toast container into component
 import { ToastContainer, toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export function NotifyUser(props) {
@@ -15,7 +16,7 @@ export function NotifyUser(props) {
 
   toast.success('Connected with a user!', {
     position: 'top-right',
-    autoClose: 500,
+    autoClose: 1000,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -101,7 +102,8 @@ export function ChatBoxReceiver(props, { user, message }) {
           {props.message}
         </div>
       </div>
-      <ToastContainer
+      <ToastContainer />
+      {/* <ToastContainer
         position="top-right"
         autoClose={500}
         hideProgressBar={false}
@@ -113,7 +115,7 @@ export function ChatBoxReceiver(props, { user, message }) {
         pauseOnHover={false}
         preventDefault={false}
         theme="light"
-      />
+      /> */}
     </>
   );
 }
