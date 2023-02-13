@@ -1,4 +1,7 @@
 import React from 'react';
+// importing audio file for chime
+// eslint-disable-next-line
+import newMessage from '../../../server/public/newMessage.mp3';
 
 export function ChatBoxReceiver(props, { user, message }) {
 
