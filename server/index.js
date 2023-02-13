@@ -33,6 +33,10 @@ io.on('connection', socket => {
     io.emit('chat', chat);
   });
 
+  socket.on('disconnect', () => {
+    // console.log('disconnected!');
+  });
+
 });
 
 app.use((req, res, next) => {

@@ -31,6 +31,7 @@ const styles = {
 };
 
 export default function SendMessage(props) {
+
   const [message, setMessage] = useState('');
   function addAMessage() {
     props.addMessage({
@@ -68,9 +69,11 @@ export default function SendMessage(props) {
   return (
     <div style={styles.textContainer}>
       <form onSubmit={formSubmit}>
-        <label htmlFor='message' className='text-box'>
+        <label htmlFor='message' className='text-box' onClick={props.updateNotice}>
           <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar'
-            onChange={e => { setMessage(e.target.value); }} />
+            onChange={e => {
+              setMessage(e.target.value);
+            }} />
           <button type='submit' className='send' onClick={() => {
             addAMessage();
           }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
