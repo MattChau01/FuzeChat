@@ -12,7 +12,6 @@ export default class RoomName extends React.Component {
   }
 
   render() {
-
     return (
       <div className='location mt-3'>
         <div className='row justify-content-center'>

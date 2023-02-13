@@ -47,18 +47,13 @@ export default function ChatContainer(props) {
       }
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
-
   }
 
   function NewNotif() {
-
     if (listOfUsers.length > 0) {
-
       if (listOfUsers[listOfUsers.length - 1].user !== userName) {
-
         return (
           <div>
-
             {notice}
           </div>
         );
@@ -79,9 +74,7 @@ export default function ChatContainer(props) {
         <div>
           <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
             <ChatsLists />
-
           </div>
-
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
           </div>

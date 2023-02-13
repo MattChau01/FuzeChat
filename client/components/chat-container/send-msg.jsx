@@ -64,7 +64,6 @@ export default function SendMessage(props) {
 
   function formSubmit(event) {
     event.preventDefault();
-
   }
 
   return (
@@ -77,10 +76,6 @@ export default function SendMessage(props) {
             }} />
           <button type='submit' className='send' onClick={() => {
             addAMessage();
-            // setStatus(sentStatus = true);
-            // notify();
-            // NotifyUser();
-            // props.notifyUser();
           }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
         </label>
       </form>
