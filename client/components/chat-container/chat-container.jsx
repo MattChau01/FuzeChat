@@ -17,8 +17,7 @@ import { NotifyBox } from './notification';
 export default function ChatContainer(props) {
 
   // function disconnected() {
-  //   // console.log('toast!');
-  //   // console.log('props: ', props);
+
   //   toast.error('User disconnected!', {
   //     position: 'top-right',
   //     autoClose: 2000,
@@ -45,12 +44,10 @@ export default function ChatContainer(props) {
     socketio.on('chat', senderChats => {
       setChats(senderChats);
       updateList(senderChats);
-      // console.log('senderChats: ', senderChats);
       // NotifyUser();
     });
 
     // socketio.on('disconnect', () => {
-    //   // console.log('disconnected');
     //   // disconnected();
     // });
 
@@ -93,10 +90,8 @@ export default function ChatContainer(props) {
     NewNotif();
     return chats.map((chat, index) => {
       if (chat.user === userName) {
-        // console.log('current user');
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
       }
-      // console.log('other user');
       // notifyUser();
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
@@ -107,7 +102,6 @@ export default function ChatContainer(props) {
   //   let fromSender = true;
   //   return chats.map((chat, index) => {
   //     if (chat.user === userName) {
-  //       // console.log('current user');
   //       fromSender = false;
   //       return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
   //     }
@@ -126,10 +120,6 @@ export default function ChatContainer(props) {
   // }
 
   function NewNotif() {
-
-    // console.log('listOfUsers: ', listOfUsers);
-    // console.log('index of one: ', listOfUsers[listOfUsers.length - 1]);
-    // console.log('index of one: ', listOfUsers[listOfUsers.length - 1].user);
 
     if (listOfUsers.length > 0) {
       // ADDED VAR TO TOP OF PAGE
@@ -157,7 +147,6 @@ export default function ChatContainer(props) {
             {/* {setInterval(interval, 2000)} */}
             {/* {interval} */}
             {notice}
-            {/* {console.log('interval: ', interval)} */}
             {/* {clearInterval(interval)} */}
           </div>
         );
@@ -171,11 +160,6 @@ export default function ChatContainer(props) {
       }
     }
 
-  }
-
-  function UpdateNotice() {
-    // console.log('test');
-    // setNotice(<div>&nbsp;</div>);
   }
 
   return (
@@ -217,7 +201,7 @@ export default function ChatContainer(props) {
               {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
             </div>
             <div className='mt-3'>
-              <SendMessage updateNotice={UpdateNotice} addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+              <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
             </div>
           </div>
         </div>

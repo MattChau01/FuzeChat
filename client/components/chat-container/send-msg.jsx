@@ -40,10 +40,6 @@ const styles = {
 
 export default function SendMessage(props) {
 
-  // useEffect(() => {
-  //   console.log('props.notice: ', props.notice);
-  // });
-
   const [message, setMessage] = useState('');
   function addAMessage() {
     props.addMessage({
@@ -99,8 +95,6 @@ export default function SendMessage(props) {
   // let [sentStatus, setStatus] = useState(false);
 
   // function newMessage() {
-  //   // console.log('YUH!');
-  //   // console.log('sentStatus: ', sentStatus);
 
   //   if (sentStatus === true) {
   //     // return (
@@ -197,7 +191,6 @@ export default function SendMessage(props) {
           <label htmlFor='message' className='text-box' onClick={props.updateNotice}>
             <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar'
             onChange={e => {
-              // console.log('input: ', e.target.value);
               setMessage(e.target.value);
             }} />
             <button type='submit' className='send' onClick={() => {

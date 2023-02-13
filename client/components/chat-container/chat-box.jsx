@@ -10,8 +10,7 @@ import React from 'react';
 // import 'react-toastify/dist/ReactToastify.css';
 
 // export function NotifyUser(props) {
-//   // console.log('toast!');
-//   // console.log('props: ', props);
+
 //   // const id = Date.now();
 
 //   toast.success('Connected with a user!', {
@@ -84,14 +83,6 @@ export function ChatBoxReceiver(props, { user, message }) {
 export function ChatBoxSender(props, { user, message }) {
 
   // clearInterval(props.interval);
-
-  // useEffect(() => {
-  //   if (window.onfocus) {
-  //     console.log('focused!');
-  //   } else {
-  //     console.log('UNfocused!');
-  //   }
-  // });
 
   return (
     <div style={{
