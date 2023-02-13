@@ -39,6 +39,11 @@ const styles = {
 };
 
 export default function SendMessage(props) {
+
+  // useEffect(() => {
+  //   console.log('props.notice: ', props.notice);
+  // });
+
   const [message, setMessage] = useState('');
   function addAMessage() {
     props.addMessage({
@@ -189,7 +194,7 @@ export default function SendMessage(props) {
       </div>
       <div style={styles.textContainer}>
         <form onSubmit={formSubmit}>
-          <label htmlFor='message' className='text-box'>
+          <label htmlFor='message' className='text-box' onClick={props.updateNotice}>
             <input autoComplete='off' type='text' name='message' value={message} placeholder='Message' className='message-bar'
             onChange={e => {
               // console.log('input: ', e.target.value);

@@ -5,76 +5,37 @@ import React from 'react';
 // commenting out useeffect and usestate
 
 // import toast container into component
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 // import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
-export function NotifyUser(props) {
-  // console.log('toast!');
-  // console.log('props: ', props);
-  // const id = Date.now();
+// export function NotifyUser(props) {
+//   // console.log('toast!');
+//   // console.log('props: ', props);
+//   // const id = Date.now();
 
-  toast.success('Connected with a user!', {
-    position: 'top-right',
-    autoClose: 1000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: false,
-    draggable: true,
-    // test with prevent default
-    preventDefault: false,
-    // test with prevent close
-    preventCloseOnClick: true,
-    progress: undefined,
-    theme: 'light'
-  });
-
-}
-
-// export function notify() {
-//   toast.info('New message!', {
+//   toast.success('Connected with a user!', {
 //     position: 'top-right',
 //     autoClose: 1000,
-//     hideProgressBar: false,
+//     hideProgressBar: true,
 //     closeOnClick: true,
-//     pauseOnHover: true,
+//     pauseOnHover: false,
 //     draggable: true,
+//     // test with prevent default
+//     preventDefault: false,
+//     // test with prevent close
+//     preventCloseOnClick: true,
 //     progress: undefined,
 //     theme: 'light'
 //   });
+
 // }
 
 export function ChatBoxReceiver(props, { user, message }) {
 
-  // useEffect(() => {
-  //   if (window.onfocus) {
-  //     console.log('focused!');
-  //   } else {
-  //     console.log('UNfocused!');
-  //   }
-  // });
+  // NotifyUser();
 
-  // function notifyUser() {
-  //   console.log('toast!');
-  //   toast('New Mmessage!', {
-  //     position: 'top-right',
-  //     autoClose: 2000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: 'light'
-  //   });
-  // }
-  // console.log(props);
-  NotifyUser();
-  // const
-
-  // console.log('new msg!');
-
-  // console.log('props: ', props);
-  // props.notifyUser();
+  // clearInterval(props.interval);
 
   return (
     <>
@@ -102,7 +63,7 @@ export function ChatBoxReceiver(props, { user, message }) {
           {props.message}
         </div>
       </div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       {/* <ToastContainer
         position="top-right"
         autoClose={500}
@@ -121,6 +82,8 @@ export function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
+
+  // clearInterval(props.interval);
 
   // useEffect(() => {
   //   if (window.onfocus) {

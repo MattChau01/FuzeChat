@@ -4,11 +4,15 @@ import { ChatBoxReceiver, ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
 
 // import test notification component
-// import { NotifyBox } from './notification';
+import { NotifyBox } from './notification';
 
 // import toast container into component
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
+
+// TEST PASSING VAR AS PROPS (WORKS)
+// const interval = <NotifyBox />;
+// TEST USE STATE WITH INTERVAL ABOVE ON LINE 38
 
 export default function ChatContainer(props) {
 
@@ -31,11 +35,16 @@ export default function ChatContainer(props) {
   const socketio = socketIOClient('http://localhost:3000');
   const [chats, setChats] = useState([]);
   const [user] = useState((props.user));
+  const [notice] = useState(<NotifyBox />);
+
+  // TEST use state (WORKS)
+  const [listOfUsers, updateList] = useState({});
 
   useEffect(() => {
 
     socketio.on('chat', senderChats => {
       setChats(senderChats);
+      updateList(senderChats);
       // console.log('senderChats: ', senderChats);
       // NotifyUser();
     });
@@ -81,6 +90,7 @@ export default function ChatContainer(props) {
   // // // *** DO NOT DELETE ***
 
   function ChatsLists() {
+    NewNotif();
     return chats.map((chat, index) => {
       if (chat.user === userName) {
         // console.log('current user');
@@ -116,21 +126,56 @@ export default function ChatContainer(props) {
   // }
 
   function NewNotif() {
-    return chats.map((chat, index) => {
-      if (chat.user === userName) {
-        // WILL NEED TO TEST WITH A SET INTERVAL TO MAKE THIS POP UP FOR 2 SECONDS
+
+    // console.log('listOfUsers: ', listOfUsers);
+    // console.log('index of one: ', listOfUsers[listOfUsers.length - 1]);
+    // console.log('index of one: ', listOfUsers[listOfUsers.length - 1].user);
+
+    if (listOfUsers.length > 0) {
+      // ADDED VAR TO TOP OF PAGE
+      // const interval = <NotifyBox />;
+
+      // const interval = setInterval(() => {
+      //   // return <NotifyBox />;
+      //   return (
+      //     <div className='wht-txt'>
+      //       AGAIN
+      //     </div>
+      //   );
+      // }, 2000);
+      if (listOfUsers[listOfUsers.length - 1].user !== userName) {
+        // return (
+        //   <NotifyBox />
+        // );
+
+        // interval();
+        // clearInterval(interval);
+        // return interval;
+        // return (setInterval(interval, 2000));
         return (
-          <div key={index} className='wht-txt'>
-            TEST 1
+          <div>
+            {/* {setInterval(interval, 2000)} */}
+            {/* {interval} */}
+            {notice}
+            {/* {console.log('interval: ', interval)} */}
+            {/* {clearInterval(interval)} */}
+          </div>
+        );
+      } else {
+        // clearInterval(interval);
+        return (
+          <div>
+            &nbsp;
           </div>
         );
       }
-      return (
-        <div key={index} className='wht-txt'>
-          TEST 2
-        </div>
-      );
-    });
+    }
+
+  }
+
+  function UpdateNotice() {
+    // console.log('test');
+    // setNotice(<div>&nbsp;</div>);
   }
 
   return (
@@ -166,8 +211,14 @@ export default function ChatContainer(props) {
               {/* <div>&nbsp;</div> */}
             </div>
             {/* TEST WITH NEW COMPONENT HERE */}
-            <NewNotif />
-            <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+            {/* &nbsp; */}
+            {/* <NewNotif /> */}
+            <div>
+              {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
+            </div>
+            <div className='mt-3'>
+              <SendMessage updateNotice={UpdateNotice} addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+            </div>
           </div>
         </div>
       </div>
