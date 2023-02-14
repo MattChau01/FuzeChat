@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import newMessage from '../../../server/public/newMessage.mp3';
+
+const alert = new Audio(newMessage);
 
 export function ChatBoxReceiver(props, { user, message }) {
+
+  useEffect(() => {
+    alert.play();
+  }, []);
 
   return (
     <div style={{
