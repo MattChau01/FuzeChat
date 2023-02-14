@@ -1,22 +1,9 @@
-// import React from 'react';
 import React, { useEffect } from 'react';
-// importing audio file for chime
-// eslint-disable-next-line
 import newMessage from '../../../server/public/newMessage.mp3';
-
-// function playChime() {
-//   console.log('audio will be placed in this function');
-//   new Audio(newMessage).play();
-// }
 
 const alert = new Audio(newMessage);
 
 export function ChatBoxReceiver(props, { user, message }) {
-
-  // TEST CHIME FUNCTION
-  // playChime();
-  // const alert = new Audio(newMessage);
-  // alert.play();
 
   useEffect(() => {
     alert.play();

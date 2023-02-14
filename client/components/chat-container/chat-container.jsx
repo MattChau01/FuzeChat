@@ -3,8 +3,6 @@ import socketIOClient from 'socket.io-client';
 import { ChatBoxReceiver, ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
 import { NotifyBox } from './notification';
-// TESTING AUDIO FILE HERE
-// import newMessage from '../../../server/public/newMessage.mp3';
 
 export default function ChatContainer(props) {
 
