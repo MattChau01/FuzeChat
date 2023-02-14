@@ -186,6 +186,14 @@ app.post('/api/usersInChat', (req, res, next) => {
 
 });
 
+// Creating PATCH request here
+app.patch('/api/messages/:entryId', (req, res, next) => {
+  // console.log('patch request');
+
+  // const id = Number(req.params.entryId);
+
+});
+
 app.delete('/api/users/:userId', (req, res, next) => {
   const id = Number(req.params.userId);
 
