@@ -16,6 +16,7 @@ export default class NewUserName extends React.Component {
     this.playChime = this.playChime.bind(this);
   }
 
+  // Will need to test whether this function is needed or not. Line 42 declares a new audio file as well
   playChime() {
     new Audio(enterChat).play();
   }
