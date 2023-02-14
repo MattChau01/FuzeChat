@@ -190,7 +190,13 @@ app.post('/api/usersInChat', (req, res, next) => {
 app.patch('/api/messages/:entryId', (req, res, next) => {
   // console.log('patch request');
 
-  // const id = Number(req.params.entryId);
+  const id = Number(req.params.entryId);
+
+  if ((!Number.isInteger(id)) || (id <= 0)) {
+    res.status(400).json({
+      error: '`entryId` must be a positive integer'
+    });
+  }
 
 });
 
