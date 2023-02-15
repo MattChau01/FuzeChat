@@ -65,6 +65,16 @@ app.get('/api/messages', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// TESTING WITH GET MESSAGE BY ID
+app.get('api/messages/:entryId', (req, res, next) => {
+  // console.log('get by id');
+
+  // const entryId = req.params.id;
+  // console.log('entryId: ', entryId);
+
+});
+// TESTING ABOVE
+
 app.get('/api/users', (req, res, next) => {
   const sql = `
     select *
@@ -190,13 +200,43 @@ app.post('/api/usersInChat', (req, res, next) => {
 app.patch('/api/messages/:entryId', (req, res, next) => {
   // console.log('patch request');
 
-  const id = Number(req.params.entryId);
+  const entryId = Number(req.params.entryId);
+  // const message = req.params.message;
+  const message = req.body.message;
 
-  if ((!Number.isInteger(id)) || (id <= 0)) {
+  // console.log('line 207: ', message);
+
+  if ((!Number.isInteger(entryId)) || (entryId <= 0)) {
     res.status(400).json({
-      error: '`entryId` must be a positive integer'
+      error: 'Invalid input'
     });
+  } else {
+
+    const sql = `
+      update "messages"
+         set "newMessage" = $2
+       where "entryId" = $1
+    returning *
+    `;
+
+    const params = [entryId, message];
+    // console.log('message: ', message);
+
+    db.query(sql, params)
+      .then(result => {
+        // console.log(result);
+        const msg = (result.rows[0]);
+        // console.log('msg: ', msg);
+        res.status(200).json(msg);
+      })
+      .catch(err => next(err));
   }
+
+  //
+  // TESTING REQ BODY
+  // console.log('req body: ', message);
+  // console.log('req.params: ', req.params);
+  //
 
 });
 
