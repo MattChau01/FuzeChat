@@ -196,17 +196,107 @@ app.post('/api/usersInChat', (req, res, next) => {
 
 });
 
-// Creating PATCH request here
-app.patch('/api/messages/:entryId', (req, res, next) => {
+// PATCH REQUEST by entryId
+// app.patch('/api/messages/:entryId', (req, res, next) => {
+//   // console.log('patch request');
+
+//   const entryId = Number(req.params.entryId);
+//   // const message = req.params.message;
+//   const message = req.body.message;
+
+//   // console.log('line 207: ', message);
+
+//   if ((!Number.isInteger(entryId)) || (entryId <= 0)) {
+//     res.status(400).json({
+//       error: 'Invalid input'
+//     });
+//   } else {
+
+//     const sql = `
+//       update "messages"
+//          set "newMessage" = $2
+//        where "entryId" = $1
+//     returning *
+//     `;
+
+//     const params = [entryId, message];
+//     // console.log('message: ', message);
+
+//     db.query(sql, params)
+//       .then(result => {
+//         // console.log(result);
+//         const msg = (result.rows[0]);
+//         // console.log('msg: ', msg);
+//         res.status(200).json(msg);
+//       })
+//       .catch(err => next(err));
+//   }
+
+//   //
+//   // TESTING REQ BODY
+//   // console.log('req body: ', message);
+//   // console.log('req.params: ', req.params);
+//   //
+
+// });
+
+//
+
+// PATCH REQUEST by message
+// app.patch('/api/messages/:message', (req, res, next) => {
+//   // console.log('patch request');
+
+//   const message = req.params.message;
+//   // console.log('is string?: ', typeof message === 'string');
+//   // Will console log this to check
+//   const newMessage = req.body.newMessage;
+
+//   // console.log('line 254: ', newMessage);
+
+//   // ** HERE
+//   if (typeof message !== 'string') {
+//     res.status(400).json({
+//       error: 'Invalid input'
+//     });
+//   } else {
+
+//     const sql = `
+//       update "messages"
+//          set "newMessage" = $2
+//        where "newMessage" = $1
+//    returning *
+//     `;
+
+//     const params = [message, newMessage];
+//     // console.log('message: ', message);
+
+//     db.query(sql, params)
+//       .then(result => {
+//         // console.log(result);
+//         const msg = (result.rows[0]);
+//         // console.log('msg: ', msg);
+//         res.status(200).json(msg);
+//       })
+//       .catch(err => next(err));
+//   }
+// });
+
+app.patch('/api/messages/:message', (req, res, next) => {
+
+  // ************** DO NOT DELETE **************
+  // PATCH REQUEST by entryId where message is equal to message
+
   // console.log('patch request');
 
-  const entryId = Number(req.params.entryId);
-  // const message = req.params.message;
-  const message = req.body.message;
+  const message = req.params.message;
+  // console.log('is string?: ', typeof message === 'string');
+  // Will console log this to check
+  const newMessage = req.body.newMessage;
 
-  // console.log('line 207: ', message);
+  // console.log('line 254: ', newMessage);
 
-  if ((!Number.isInteger(entryId)) || (entryId <= 0)) {
+  // ** HERE
+  if (typeof message !== 'string') {
     res.status(400).json({
       error: 'Invalid input'
     });
@@ -215,11 +305,14 @@ app.patch('/api/messages/:entryId', (req, res, next) => {
     const sql = `
       update "messages"
          set "newMessage" = $2
-       where "entryId" = $1
-    returning *
+       where "entryId" = (
+        select "entryId"
+         where "newMessage" = $1
+       )
+   returning *
     `;
 
-    const params = [entryId, message];
+    const params = [message, newMessage];
     // console.log('message: ', message);
 
     db.query(sql, params)
@@ -231,13 +324,6 @@ app.patch('/api/messages/:entryId', (req, res, next) => {
       })
       .catch(err => next(err));
   }
-
-  //
-  // TESTING REQ BODY
-  // console.log('req body: ', message);
-  // console.log('req.params: ', req.params);
-  //
-
 });
 
 app.delete('/api/users/:userId', (req, res, next) => {

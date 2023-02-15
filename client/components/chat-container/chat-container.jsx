@@ -42,6 +42,7 @@ export default function ChatContainer(props) {
   function ChatsLists() {
     NewNotif();
     return chats.map((chat, index) => {
+      // console.log(`index: ${index} and ${chat.message}`);
       if (chat.user === userName) {
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
       }
