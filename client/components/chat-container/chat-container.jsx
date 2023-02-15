@@ -75,6 +75,7 @@ export default function ChatContainer(props) {
         <div>
           <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
             <ChatsLists />
+            {/* PASTE MODAL HERE */}
           </div>
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
