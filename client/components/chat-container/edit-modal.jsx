@@ -28,6 +28,7 @@ const styles = {
   buttonSize: {
     width: '70%',
     marginLeft: '1rem'
+    // color: '#fff'
   }
   // cancel: {
   //   backgroundColor: '#EB8E8E',
@@ -50,10 +51,23 @@ const styles = {
 
 export function EditModal(props) {
 
-  // ***** Working on styling modal and overlay *****
+  // ***** Working on styling modal and overlay (GOOD) *****
 
   // need to add `setMessage` as second parameter
   const [message, setMessage] = useState('');
+
+  // function patchReq() {
+  //   // WORKING ON THIS ****************
+  //   const reqObj = null;
+  //   const req = {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(reqObj)
+  //   };
+  //   // console.log('req: ', req);
+  // }
 
   return (
     <div className='overlay'>
