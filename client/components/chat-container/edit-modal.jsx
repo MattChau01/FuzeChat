@@ -79,7 +79,9 @@ export function EditModal(props) {
                 </div>
                 <div className='row'>
                   <div className='col mt-4'>
-                    <button style={styles.buttonSize} className='cancel' >Cancel</button>
+                    <button style={styles.buttonSize} className='cancel' onClick={e => {
+                      e.preventDefault(); props.HideModal();
+                    }} >Cancel</button>
                   </div>
                   <div className='col mt-4'>
                     <button style={styles.buttonSize} className='confirm' >Confirm</button>

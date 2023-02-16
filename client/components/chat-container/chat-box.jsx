@@ -39,12 +39,14 @@ export function ChatBoxReceiver(props, { user, message }) {
 
 export function ChatBoxSender(props, { user, message }) {
 
+  // const [edit, setEdit] = useState(false);
+
   return (
     <div style={{
       display: 'flex',
       justifyContent: 'flex-end',
       flexDirection: 'row'
-    }} className='mx-2 my-2'>
+    }} className='mx-2 my-2' >
       <div style={{
         padding: 10,
         backgroundColor: '#fff',
@@ -61,7 +63,26 @@ export function ChatBoxSender(props, { user, message }) {
             {props.tStamp}
           </div>
         </div>
-        {props.message}
+        {/* TESTING HOVER ON MESSAGE */}
+        <div className='row'>
+          <div className='col'>
+            {props.message}
+          </div>
+          <div className='col-1 px-3 text-right'>
+            <i style={{ fontSize: '.4rem' }} className="fa-solid fa-circle edit" onClick={props.editClick} />
+          </div>
+
+          {/* ANOTHER TEST */}
+          {/* <div onMouseEnter={() => {
+            console.log('test1');
+            return (
+              <div className='col-2 text-end'>
+                <i style={{ fontSize: '.5rem' }} className="fa-solid fa-pencil" />
+              </div>
+            );
+          }} /> */}
+
+        </div>
       </div>
     </div>
   );

@@ -13,8 +13,8 @@ export default function ChatContainer(props) {
   const [chats, setChats] = useState([]);
   const [user] = useState((props.user));
   const [notice] = useState(<NotifyBox />);
-
   const [listOfUsers, updateList] = useState({});
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
 
@@ -41,12 +41,36 @@ export default function ChatContainer(props) {
       .catch(err => console.error(err));
   }
 
+  function ShowModal() {
+    // console.log('modal will be placed here');
+    setEdit(true);
+
+  }
+
+  function HideModal() {
+    setEdit(false);
+  }
+
   function ChatsLists() {
+
     NewNotif();
     return chats.map((chat, index) => {
       // console.log(`index: ${index} and ${chat.message}`);
+
+      // TEST WITH BUTTON
+      function editClick() {
+        // **** SHOWS MESSAGE CONTENT *****
+        // console.log('button was clicked!');
+        // console.log('chat: ', chat);
+
+        // setEdit(true);
+        ShowModal();
+        // conditional show modal:
+        // console.log('status of edit: ', edit);
+      }
+
       if (chat.user === userName) {
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp}/>;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} editClick={editClick} />;
       }
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
@@ -79,7 +103,8 @@ export default function ChatContainer(props) {
           <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
             <ChatsLists />
             {/* PASTE MODAL HERE */}
-            <EditModal />
+            {/* <EditModal /> */}
+            {(edit === true) ? <EditModal HideModal={HideModal} /> : <div>&nbsp;</div> }
           </div>
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
