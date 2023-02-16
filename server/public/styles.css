@@ -131,10 +131,6 @@ body {
   margin-right: 3px;
 }
 
-.message {
-  font-size: 14px;
-}
-
 .welcome-to-chat {
   font-size: 20px;
   font-weight: 600;
@@ -158,9 +154,9 @@ body {
   background: #555;
 }
 
-.modalcontainer,
+.modal-container,
 .overlay {
-  position: "fixed";
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -169,6 +165,22 @@ body {
 
 .overlay {
   background-color: rgba(0, 0, 0, 70%);
+}
+
+.cancel {
+  background-color: #eb8e8e;
+  border-style: none;
+  border-radius: 5rem;
+  outline: none;
+  margin-left: 0.5rem;
+}
+
+.confirm {
+  background-color: #87ef76;
+  border-style: none;
+  border-radius: 5rem;
+  outline: none;
+  margin-left: 0.5rem;
 }
 
 @media screen and (min-width: 500px) {
