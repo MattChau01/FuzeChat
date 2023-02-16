@@ -3,6 +3,8 @@ import socketIOClient from 'socket.io-client';
 import { ChatBoxReceiver, ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
 import { NotifyBox } from './notification';
+// importing modal here
+import { EditModal } from './edit-modal';
 
 export default function ChatContainer(props) {
 
@@ -66,8 +68,9 @@ export default function ChatContainer(props) {
         );
       }
     }
-
   }
+
+  // const [modal, setModal] = useState(false);
 
   return (
     <div className='mt-3'>
@@ -76,6 +79,7 @@ export default function ChatContainer(props) {
           <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
             <ChatsLists />
             {/* PASTE MODAL HERE */}
+            <EditModal />
           </div>
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
