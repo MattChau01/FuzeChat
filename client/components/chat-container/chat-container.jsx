@@ -15,6 +15,9 @@ export default function ChatContainer(props) {
   const [notice] = useState(<NotifyBox />);
   const [listOfUsers, updateList] = useState({});
   const [edit, setEdit] = useState(false);
+  // TESTING PROPS PASS
+  // Need to pass `setMsgEdit` inside the edit modal component *****
+  const [msgEdit] = useState('');
 
   useEffect(() => {
 
@@ -70,6 +73,7 @@ export default function ChatContainer(props) {
       }
 
       if (chat.user === userName) {
+        // <EditModal chat={chat} />;
         return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} editClick={editClick} />;
       }
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
@@ -104,7 +108,7 @@ export default function ChatContainer(props) {
             <ChatsLists />
             {/* PASTE MODAL HERE */}
             {/* <EditModal /> */}
-            {(edit === true) ? <EditModal HideModal={HideModal} /> : <div>&nbsp;</div> }
+            {(edit === true) ? <EditModal HideModal={HideModal} msgEdit={msgEdit} /> : <div>&nbsp;</div> }
           </div>
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}

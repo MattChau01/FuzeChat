@@ -51,23 +51,30 @@ const styles = {
 
 export function EditModal(props) {
 
+  // console.log('chat as props: ', props.chat);
+
   // ***** Working on styling modal and overlay (GOOD) *****
 
   // need to add `setMessage` as second parameter
   const [message, setMessage] = useState('');
 
-  // function patchReq() {
-  //   // WORKING ON THIS ****************
-  //   const reqObj = null;
-  //   const req = {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(reqObj)
-  //   };
-  //   // console.log('req: ', req);
-  // }
+  function patchReq() {
+    // WORKING ON THIS
+    // const reqObj = {
+    //   // message:
+    // };
+    // const req = {
+    //   method: 'PATCH',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(reqObj)
+    // };
+    // console.log('req: ', req);
+
+    // console.log('PATCH HERE');
+
+  }
 
   return (
     <div className='overlay'>
@@ -81,7 +88,7 @@ export function EditModal(props) {
           </div>
           <div className='row'>
             <div className='row'>
-              <form>
+              <form autoComplete='off'>
                 <div className='row'>
                   <label htmlFor='edit'>
                     <input name='edit' type='text' placeholder='Message' value={message} className='edit-message' rows='2'
@@ -94,11 +101,15 @@ export function EditModal(props) {
                 <div className='row'>
                   <div className='col mt-4'>
                     <button style={styles.buttonSize} className='cancel' onClick={e => {
-                      e.preventDefault(); props.HideModal();
+                      e.preventDefault();
+                      props.HideModal();
                     }} >Cancel</button>
                   </div>
                   <div className='col mt-4'>
-                    <button style={styles.buttonSize} className='confirm' >Confirm</button>
+                    <button style={styles.buttonSize} className='confirm' onClick={e => {
+                      e.preventDefault();
+                      patchReq();
+                    }} >Confirm</button>
                   </div>
                 </div>
               </form>
