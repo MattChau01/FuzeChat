@@ -17,7 +17,7 @@ export default function ChatContainer(props) {
   const [edit, setEdit] = useState(false);
   // TESTING PROPS PASS
   // Need to pass `setMsgEdit` inside the edit modal component *****
-  const [msgEdit] = useState('');
+  const [msgEdit, setMsgEdit] = useState('');
 
   useEffect(() => {
 
@@ -67,7 +67,10 @@ export default function ChatContainer(props) {
         // console.log('chat: ', chat);
 
         // setEdit(true);
+        setMsgEdit(chat.message);
+
         ShowModal();
+        // console.log('msg value: ', msgEdit);
         // conditional show modal:
         // console.log('status of edit: ', edit);
       }

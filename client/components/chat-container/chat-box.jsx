@@ -41,6 +41,8 @@ export function ChatBoxSender(props, { user, message }) {
 
   // const [edit, setEdit] = useState(false);
 
+  // console.log('new message value: ', props.newMessage);
+
   return (
     <div style={{
       display: 'flex',

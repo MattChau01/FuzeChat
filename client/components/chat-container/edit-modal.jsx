@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// TESTING IMPORT
+// import ChatBoxSender from './chat-box';
 
 const styles = {
   // modalContainer: {
@@ -52,27 +54,41 @@ const styles = {
 export function EditModal(props) {
 
   // console.log('chat as props: ', props.chat);
+  // console.log('msgEdit as props: ', props.msgEdit);
 
   // ***** Working on styling modal and overlay (GOOD) *****
 
   // need to add `setMessage` as second parameter
-  const [message, setMessage] = useState('');
+  const [prevMessage, setPrevMessage] = useState(props.msgEdit);
+  // const [newMessage, setNewMessage] = useState('');
 
   function patchReq() {
     // WORKING ON THIS
-    // const reqObj = {
-    //   // message:
-    // };
-    // const req = {
-    //   method: 'PATCH',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(reqObj)
-    // };
+    const reqObj = {
+      message: props.msgEdit,
+      newMessage: prevMessage
+    };
+    const req = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reqObj)
+    };
     // console.log('req: ', req);
 
     // console.log('PATCH HERE');
+
+    // PATCH REQUEST HERE:
+    fetch(`/api/messages/${reqObj.message}`, req)
+      .then(res =>
+        res.json()
+      )
+      .then(data => {
+        // console.log('data value: ', data);
+
+        setPrevMessage('');
+      });
 
   }
 
@@ -91,10 +107,11 @@ export function EditModal(props) {
               <form autoComplete='off'>
                 <div className='row'>
                   <label htmlFor='edit'>
-                    <input name='edit' type='text' placeholder='Message' value={message} className='edit-message' rows='2'
+                    <input name='edit' type='text' placeholder={props.msgEdit} value={prevMessage} className='edit-message' rows='2'
                     onChange={e => {
                       // console.log('modal input value: ', e.target.value);
-                      setMessage(e.target.value);
+                      setPrevMessage(e.target.value);
+                      // console.log('message value in edit-modal: ', message);
                     }} />
                   </label>
                 </div>
@@ -109,6 +126,7 @@ export function EditModal(props) {
                     <button style={styles.buttonSize} className='confirm' onClick={e => {
                       e.preventDefault();
                       patchReq();
+                      props.HideModal();
                     }} >Confirm</button>
                   </div>
                 </div>
