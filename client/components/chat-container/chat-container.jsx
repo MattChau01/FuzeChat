@@ -18,6 +18,10 @@ export default function ChatContainer(props) {
   // TESTING PROPS PASS
   // Need to pass `setMsgEdit` inside the edit modal component *****
   const [msgEdit, setMsgEdit] = useState('');
+  // TESTING STATUS OF EDITED
+
+  // eslint-disable-next-line
+  const [editStatus, setEditStatus] = useState(false);
 
   useEffect(() => {
 
@@ -54,6 +58,14 @@ export default function ChatContainer(props) {
     setEdit(false);
   }
 
+  // function IsEditing() {
+  //   setEditStatus(true);
+  // }
+
+  // function IsNotEditing() {
+  //   setEditStatus(false);
+  // }
+
   function ChatsLists() {
 
     NewNotif();
@@ -77,7 +89,7 @@ export default function ChatContainer(props) {
 
       if (chat.user === userName) {
         // <EditModal chat={chat} />;
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} editClick={editClick} />;
+        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} editClick={editClick} editStatus={editStatus}/>;
       }
       return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });

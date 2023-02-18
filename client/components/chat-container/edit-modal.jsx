@@ -62,6 +62,9 @@ export function EditModal(props) {
   const [prevMessage, setPrevMessage] = useState(props.msgEdit);
   // const [newMessage, setNewMessage] = useState('');
 
+  // TEST NEW MESSAGE STATE
+  const [updatedMsg, setUpdatedMsg] = useState(prevMessage);
+
   function patchReq() {
     // WORKING ON THIS
     const reqObj = {
@@ -86,13 +89,23 @@ export function EditModal(props) {
       )
       .then(data => {
         // console.log('data value: ', data);
+        // console.log('data.message: ', data.newMessage);
 
+        // TRYING TO REASSIGN MESSAGE
+        setUpdatedMsg(data.newMessage);
         setPrevMessage('');
+        // console.log('updated msg: ', updatedMsg);
+
       });
 
+    // <ChatBoxSender messageX={updatedMsg}/>;
   }
 
+  // eslint-disable-next-line
+  console.log('updated msg: ', updatedMsg);
+
   return (
+
     <div className='overlay'>
       <div className='modal-container'>
         <div style={styles.modalBlock} className='wht-txt text-center'>

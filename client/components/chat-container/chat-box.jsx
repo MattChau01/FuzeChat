@@ -68,6 +68,9 @@ export function ChatBoxSender(props, { user, message }) {
         {/* TESTING HOVER ON MESSAGE */}
         <div className='row'>
           <div className='col'>
+            {/* TESTING STATUS OF `editStatus` */}
+            {/* {console.log('editStatus: ', props.editStatus)}
+            {console.log('message: ', props.message)} */}
             {props.message}
           </div>
           <div className='col-1 px-3 text-right'>
