@@ -65,7 +65,7 @@ export function EditModal(props) {
   // const [newMessage, setNewMessage] = useState('');
 
   // TEST NEW MESSAGE STATE
-  const [updatedMsg, setUpdatedMsg] = useState(prevMessage);
+  // const [updatedMsg, setUpdatedMsg] = useState(prevMessage);
 
   function patchReq() {
     // WORKING ON THIS
@@ -94,13 +94,16 @@ export function EditModal(props) {
         // console.log('data.message: ', data.newMessage);
 
         // TRYING TO REASSIGN MESSAGE
-        setUpdatedMsg(data.newMessage);
+        // setUpdatedMsg(data.newMessage);
+        props.updatedMsg(data.newMessage);
         setPrevMessage('');
 
         // eslint-disable-next-line
-        console.log('updated msg line 97: ', updatedMsg);
+        // console.log('updated msg line 97: ', updatedMsg);
+        // console.log('updated prev msg: ', prevMessage);
 
       });
+    // props.IsEdited();
 
     // <ChatBoxSender messageX={updatedMsg}/>;
     // <ChatBoxSender updatedMsg={updatedMsg}/>;
@@ -108,6 +111,7 @@ export function EditModal(props) {
 
   // console.log('updated msg 105: ', updatedMsg);
 
+  // console.log('editStatus: ', props.editStatus);
   return (
 
     <div className='overlay'>
@@ -143,6 +147,8 @@ export function EditModal(props) {
                     <button style={styles.buttonSize} className='confirm' onClick={e => {
                       e.preventDefault();
                       patchReq();
+                      // IsEdited
+                      props.IsEdited();
                       props.HideModal();
                     }} >Confirm</button>
                   </div>

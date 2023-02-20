@@ -49,7 +49,7 @@ app.get('/api/messages', (req, res, next) => {
   const pst = '"createdAt" at time zone \'America/Los_Angeles\'';
 
   const sql = `
-    select "newMessage", (to_char(${pst}, 'HH24:MI')) as timestamp, "userId"
+    select "newMessage", (to_char(${pst}, 'HH24:MI')) as timestamp, "userId", "entryId"
       from "messages"
     where "createdAt" = (
       select max("createdAt")
