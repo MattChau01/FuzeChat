@@ -14,14 +14,13 @@ export default function ChatContainer(props) {
   const [user] = useState((props.user));
   const [notice] = useState(<NotifyBox />);
   const [listOfUsers, updateList] = useState({});
-  const [edit, setEdit] = useState(false);
+  const [editStatus, setEdit] = useState(false);
   // TESTING PROPS PASS
   // Need to pass `setMsgEdit` inside the edit modal component *****
   const [msgEdit, setMsgEdit] = useState('');
-  // TESTING STATUS OF EDITED
 
   // eslint-disable-next-line
-  const [editStatus, setEditStatus] = useState(false);
+  // const [editStatus, setEditStatus] = useState(false);
 
   useEffect(() => {
 
@@ -41,6 +40,7 @@ export default function ChatContainer(props) {
       .then(res => res.json())
       .then(data => {
         const timestamp = data[0].timestamp;
+
         const newChat = { ...chat, user, timestamp };
         setChats([...chats, newChat]);
         sendChatToSocket([...chats, newChat]);
@@ -123,7 +123,7 @@ export default function ChatContainer(props) {
             <ChatsLists />
             {/* PASTE MODAL HERE */}
             {/* <EditModal /> */}
-            {(edit === true) ? <EditModal HideModal={HideModal} msgEdit={msgEdit} /> : <div>&nbsp;</div> }
+            {(editStatus === true) ? <EditModal HideModal={HideModal} msgEdit={msgEdit} /> : <div>&nbsp;</div> }
           </div>
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}

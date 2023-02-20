@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import newMessage from '../../../server/public/newMessage.mp3';
 
 const alert = new Audio(newMessage);
@@ -40,7 +40,31 @@ export function ChatBoxReceiver(props, { user, message }) {
 export function ChatBoxSender(props, { user, message }) {
 
   // const [edit, setEdit] = useState(false);
+  const [msg, setMsg] = useState('');
 
+  function RetrieveMsg() {
+
+    // return (
+    //   <div>TEST</div>
+    // );
+
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => {
+        // console.log('data: ', data[0]);
+        // console.log('data.message: ', data[0].newMessage);
+        setMsg(data[0].newMessage);
+
+        // console.log('message value line 58:', msg);
+      })
+      .catch(err => console.error(err));
+
+    return (
+      <div>
+        {msg}
+      </div>
+    );
+  }
   // console.log('new message value: ', props.newMessage);
 
   return (
@@ -71,7 +95,15 @@ export function ChatBoxSender(props, { user, message }) {
             {/* TESTING STATUS OF `editStatus` */}
             {/* {console.log('editStatus: ', props.editStatus)}
             {console.log('message: ', props.message)} */}
-            {props.message}
+
+            {/* ***** props.message WORKS ***** WILL WORK ON GET REQUEST TO PRINT LATEST MESSAGE */}
+            {/* {props.message} */}
+
+            {/* TESTING GET REQUEST HERE */}
+
+            <RetrieveMsg />
+            {/* {msg} */}
+
           </div>
           <div className='col-1 px-3 text-right'>
             <i style={{ fontSize: '.4rem' }} className="fa-solid fa-circle edit" onClick={props.editClick} />

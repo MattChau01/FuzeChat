@@ -66,13 +66,13 @@ app.get('/api/messages', (req, res, next) => {
 });
 
 // TESTING WITH GET MESSAGE BY ID
-app.get('api/messages/:entryId', (req, res, next) => {
-  // console.log('get by id');
+// app.get('api/messages/:entryId', (req, res, next) => {
+// console.log('get by id');
 
-  // const entryId = req.params.id;
-  // console.log('entryId: ', entryId);
+// const entryId = req.params.id;
+// console.log('entryId: ', entryId);
 
-});
+// });
 // TESTING ABOVE
 
 app.get('/api/users', (req, res, next) => {
@@ -88,6 +88,28 @@ app.get('/api/users', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+// ***** TESTING NEW GET REQUEST TO RETREIVE LATEST MESSAGE TO WORK WITH FEATURE-EIGHT
+
+// NOTE: MAY NOT WORK DUE TO EXISTING GET REQUEST FOR TIMESTAMP
+
+// app.get('/api/messages', (req, res, next) => {
+
+//   const sql = `
+//     select "newMessage"
+//       from "messages"
+//   order by "entryId" desc
+//   limit 1
+//   `;
+
+//   db.query(sql)
+//     .then(result => {
+//       const lastMsg = result.rows[0];
+//       res.json(lastMsg);
+//     })
+//     .catch(err => next(err));
+
+// });
 
 app.get('/api/chatRooms', (req, res, next) => {
   const sql = `
