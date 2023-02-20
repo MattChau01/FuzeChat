@@ -35,15 +35,22 @@ export default function ChatContainer(props) {
     socketio.emit('chat', chat);
   }
 
+  // TESTING ON FUNCTION
   function addMessage(chat) {
     fetch('/api/messages')
       .then(res => res.json())
       .then(data => {
-        const timestamp = data[0].timestamp;
 
+        // console.log('data: ', data[0]);
+
+        const timestamp = data[0].timestamp;
+        // TEST
+        // const newMessage = data[0].newMessage;
         const newChat = { ...chat, user, timestamp };
         setChats([...chats, newChat]);
         sendChatToSocket([...chats, newChat]);
+
+        // console.log('chats: ', chats);
       })
       .catch(err => console.error(err));
   }
@@ -85,13 +92,16 @@ export default function ChatContainer(props) {
         // console.log('msg value: ', msgEdit);
         // conditional show modal:
         // console.log('status of edit: ', edit);
+
+        // <EditModal chat={chat} />;
+
       }
 
       if (chat.user === userName) {
         // <EditModal chat={chat} />;
-        return <ChatBoxSender key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} editClick={editClick} editStatus={editStatus}/>;
+        return <ChatBoxSender key={index} id={Date.now()} chat={chat} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} editClick={editClick} editStatus={editStatus}/>;
       }
-      return <ChatBoxReceiver key={index} id={Date.now()} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
+      return <ChatBoxReceiver key={index} id={Date.now()} chat={chat} message={chat.message} user={chat.user} timeStamp={chat.time} tStamp={chat.timestamp} />;
     });
   }
 

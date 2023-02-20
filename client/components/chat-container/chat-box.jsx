@@ -5,6 +5,8 @@ const alert = new Audio(newMessage);
 
 export function ChatBoxReceiver(props, { user, message }) {
 
+  // console.log('chat in receiver: ', props.chat);
+
   useEffect(() => {
     alert.play();
   }, []);
@@ -39,7 +41,13 @@ export function ChatBoxReceiver(props, { user, message }) {
 
 export function ChatBoxSender(props, { user, message }) {
 
+  // console.log('chat in sender: ', props.chat);
+
+  // console.log('status: ', props.editStatus);
+
   // const [edit, setEdit] = useState(false);
+
+  // eslint-disable-next-line
   const [msg, setMsg] = useState('');
 
   function RetrieveMsg() {
@@ -60,8 +68,9 @@ export function ChatBoxSender(props, { user, message }) {
       .catch(err => console.error(err));
 
     return (
+      // { msg }
       <div>
-        {msg}
+        {props.message}
       </div>
     );
   }
@@ -92,16 +101,16 @@ export function ChatBoxSender(props, { user, message }) {
         {/* TESTING HOVER ON MESSAGE */}
         <div className='row'>
           <div className='col'>
-            {/* TESTING STATUS OF `editStatus` */}
-            {/* {console.log('editStatus: ', props.editStatus)}
-            {console.log('message: ', props.message)} */}
 
             {/* ***** props.message WORKS ***** WILL WORK ON GET REQUEST TO PRINT LATEST MESSAGE */}
             {/* {props.message} */}
 
             {/* TESTING GET REQUEST HERE */}
 
+            {/* <div contentEditable="true" > {props.message} </div> */}
+
             <RetrieveMsg />
+            {/* {(props.editStatus === true) ? <p>TEST</p> : props.message} */}
             {/* {msg} */}
 
           </div>

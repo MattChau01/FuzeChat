@@ -53,6 +53,8 @@ const styles = {
 
 export function EditModal(props) {
 
+  // console.log('chat in edit: ', props.chat);
+
   // console.log('chat as props: ', props.chat);
   // console.log('msgEdit as props: ', props.msgEdit);
 
@@ -94,15 +96,17 @@ export function EditModal(props) {
         // TRYING TO REASSIGN MESSAGE
         setUpdatedMsg(data.newMessage);
         setPrevMessage('');
-        // console.log('updated msg: ', updatedMsg);
+
+        // eslint-disable-next-line
+        console.log('updated msg line 97: ', updatedMsg);
 
       });
 
     // <ChatBoxSender messageX={updatedMsg}/>;
+    // <ChatBoxSender updatedMsg={updatedMsg}/>;
   }
 
-  // eslint-disable-next-line
-  console.log('updated msg: ', updatedMsg);
+  // console.log('updated msg 105: ', updatedMsg);
 
   return (
 
