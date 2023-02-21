@@ -53,9 +53,9 @@ const styles = {
 
 export function EditModal(props) {
 
-  // console.log('chat in edit: ', props.chat);
+  // console.log('chat in edit: ', props.chatDesc);
 
-  // console.log('chat as props: ', props.chat);
+  // console.log('chat as props: ', props.chatDesc);
   // console.log('msgEdit as props: ', props.msgEdit);
 
   // ***** Working on styling modal and overlay (GOOD) *****

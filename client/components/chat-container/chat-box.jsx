@@ -40,6 +40,7 @@ export function ChatBoxReceiver(props, { user, message }) {
 }
 
 export function ChatBoxSender(props, { user, message }) {
+  // console.log('entire props: ', props);
 
   // console.log('chat in sender: ', props.chat);
 
@@ -50,30 +51,31 @@ export function ChatBoxSender(props, { user, message }) {
   // eslint-disable-next-line
   const [msg, setMsg] = useState('');
 
-  // function RetrieveMsg() {
+  function RetrieveMsg() {
 
-  //   // return (
-  //   //   <div>TEST</div>
-  //   // );
+    // return (
+    //   <div>TEST</div>
+    // );
 
-  //   fetch('/api/messages')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       console.log('data in chat box: ', data[0]);
-  //       // console.log('data.message: ', data[0].newMessage);
-  //       setMsg(data[0].newMessage);
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(data => {
+        // console.log('data in chat box: ', data[0]);
+        // console.log('data.message: ', data[0].newMessage);
+        setMsg(data[0].newMessage);
 
-  //       console.log('message value line 58:', msg);
-  //     })
-  //     .catch(err => console.error(err));
+        // console.log('message value line 58:', msg);
+      })
+      .catch(err => console.error(err));
 
-  //   return (
-  //     // { msg }
-  //     <div>
-  //       {((props.IsEdited === true) && props.chat.entryId) ? <p>TEST</p> : props.message}
-  //     </div>
-  //   );
-  // }
+    return (
+      // { msg }
+      <div>
+        {((props.IsEdited === true) && (props.chat.entryId)) ? <p>TEST</p> : props.message}
+        {/* {props.message} */}
+      </div>
+    );
+  }
   // console.log('new message value: ', props.newMessage);
 
   return (
@@ -87,7 +89,7 @@ export function ChatBoxSender(props, { user, message }) {
         backgroundColor: '#fff',
         borderRadius: 10,
         maxWidth: '70%'
-      }}>
+      }} key={props.id} >
         <div className='row'>
           <div className='col'>
             <strong style={{ fontSize: 16, color: 'black' }}>
@@ -104,13 +106,14 @@ export function ChatBoxSender(props, { user, message }) {
 
             {/* ***** props.message WORKS ***** WILL WORK ON GET REQUEST TO PRINT LATEST MESSAGE */}
             {/* {props.message} */}
-            {props.updatedMsg}
+
+            {/* {props.updatedMsg} */}
 
             {/* TESTING GET REQUEST HERE */}
 
             {/* <div contentEditable="true" > {props.message} </div> */}
 
-            {/* <RetrieveMsg /> */}
+            <RetrieveMsg />
             {/* {(props.editStatus === true) ? <p>TEST</p> : props.message} */}
             {/* {msg} */}
 

@@ -5,6 +5,9 @@ import SendMessage from './send-msg';
 import { NotifyBox } from './notification';
 // importing modal here
 import { EditModal } from './edit-modal';
+// TEST
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 export default function ChatContainer(props) {
 
@@ -20,11 +23,15 @@ export default function ChatContainer(props) {
   const [msgEdit, setMsgEdit] = useState('');
   const [editStatus, setEditStatus] = useState(false);
   // UPDATED MESSAGE
-  const [updatedMsg, setUpdatedMsg] = useState('TEST');
+  const [updatedMsg, setUpdatedMsg] = useState('');
 
-  const [chat, setChat] = useState([]);
+  const [chatDesc, setChat] = useState([]);
 
   useEffect(() => {
+
+    // console.log('connected');
+
+    // showToast();
 
     socketio.on('chat', senderChats => {
       setChats(senderChats);
@@ -36,6 +43,19 @@ export default function ChatContainer(props) {
   function sendChatToSocket(chat) {
     socketio.emit('chat', chat);
   }
+
+  // function showToast() {
+  //   toast('New message!', {
+  //     position: 'top-right',
+  //     autoClose: 2000,
+  //     hideProgressBar: true,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: 'light'
+  //   });
+  // }
 
   // const [msgID, setMsgID] = useState(0);
 
@@ -94,7 +114,7 @@ export default function ChatContainer(props) {
     return chats.map((chat, index) => {
       // console.log(`index: ${index} and ${chat.message}`);
 
-      // console.log('chat line 81: ', chat);
+      // console.log('chat line 97: ', chat);
 
       // TEST WITH BUTTON
       function editClick() {
@@ -105,7 +125,6 @@ export default function ChatContainer(props) {
         // setEdit(true);
         setMsgEdit(chat.message);
         setChat(chat);
-
         ShowModal();
         // console.log('msg value: ', msgEdit);
         // conditional show modal:
@@ -118,12 +137,12 @@ export default function ChatContainer(props) {
       if (chat.user === userName) {
         // <EditModal chat={chat} />;
         return <ChatBoxSender
-          key={index}
-          id={Date.now()}
+          key={chat.entryId}
+          id={chat.entryId}
           chat={chat}
           message={chat.message}
           user={chat.user}
-          timeStamp={chat.time}
+          // timeStamp={chat.time}
           tStamp={chat.timestamp}
           editClick={editClick}
           NotEdited={NotEdited}
@@ -133,11 +152,11 @@ export default function ChatContainer(props) {
       }
       return <ChatBoxReceiver
         key={index}
-        id={Date.now()}
+        id={chat.entryId}
         chat={chat}
         message={chat.message}
         user={chat.user}
-        timeStamp={chat.time}
+        // timeStamp={chat.time}
         tStamp={chat.timestamp}
       />;
     });
@@ -167,37 +186,42 @@ export default function ChatContainer(props) {
   // console.log('updatedMsg: ', updatedMsg);
 
   return (
-    <div className='mt-3'>
-      <div className='chat-list'>
-        <div>
-          <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
-            <ChatsLists />
-            {/* PASTE MODAL HERE */}
-            {/* <EditModal /> */}
-            {(editModal === true)
-              ? <EditModal
+    <>
+      <div className='mt-3'>
+        <div className='chat-list'>
+          <div>
+            <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
+              <ChatsLists />
+              {/* PASTE MODAL HERE */}
+              {/* <EditModal /> */}
+              {(editModal === true)
+                ? <EditModal
                 HideModal={HideModal}
                 msgEdit={msgEdit}
-                chat={chat}
+                chatDesc={chatDesc}
                 editStatus={editStatus}
                 IsEdited={IsEdited}
                 updatedMsg={ word => setUpdatedMsg(word) }
                 />
-              : <div>&nbsp;</div> }
-          </div>
-          <div>
-            {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
-          </div>
-          <div className='mt-3'>
-            <SendMessage
+                : <div>&nbsp;</div> }
+            </div>
+            <div>
+              {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
+            </div>
+            <div className='mt-3'>
+              <SendMessage
               addMessage={addMessage}
               handleSubmit={props.handleSubmit}
               currentRoom={props.currentRoom}
               userName={props.userName}
             />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {/* <div>
+        <ToastContainer />
+      </div> */}
+    </>
   );
 }

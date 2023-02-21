@@ -30,6 +30,7 @@ socketEvents(io);
 io.on('connection', socket => {
 
   socket.on('chat', chat => {
+    // console.log('chat: ', chat);
     io.emit('chat', chat);
   });
 
