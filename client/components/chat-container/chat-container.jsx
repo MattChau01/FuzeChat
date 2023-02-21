@@ -4,7 +4,7 @@ import { ChatBoxReceiver, ChatBoxSender } from './chat-box';
 import SendMessage from './send-msg';
 import { NotifyBox } from './notification';
 // importing modal here
-import { EditModal } from './edit-modal';
+// import { EditModal } from './edit-modal';
 // TEST
 // import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -17,15 +17,15 @@ export default function ChatContainer(props) {
   const [user] = useState((props.user));
   const [notice] = useState(<NotifyBox />);
   const [listOfUsers, updateList] = useState({});
-  const [editModal, setEditModal] = useState(false);
+  // const [editModal, setEditModal] = useState(false);
   // TESTING PROPS PASS
   // Need to pass `setMsgEdit` inside the edit modal component *****
-  const [msgEdit, setMsgEdit] = useState('');
-  const [editStatus, setEditStatus] = useState(false);
+  // const [msgEdit, setMsgEdit] = useState('');
+  // const [editStatus, setEditStatus] = useState(false);
   // UPDATED MESSAGE
-  const [updatedMsg, setUpdatedMsg] = useState('');
+  // const [updatedMsg, setUpdatedMsg] = useState('');
 
-  const [chatDesc, setChat] = useState([]);
+  // const [chatDesc, setChat] = useState([]);
 
   useEffect(() => {
 
@@ -90,23 +90,23 @@ export default function ChatContainer(props) {
 
   }
 
-  function ShowModal() {
-    // console.log('modal will be placed here');
-    setEditModal(true);
+  // function ShowModal() {
+  //   // console.log('modal will be placed here');
+  //   setEditModal(true);
 
-  }
+  // }
 
-  function HideModal() {
-    setEditModal(false);
-  }
+  // function HideModal() {
+  //   setEditModal(false);
+  // }
 
-  function IsEdited() {
-    setEditStatus(true);
-  }
+  // function IsEdited() {
+  //   setEditStatus(true);
+  // }
 
-  function NotEdited() {
-    setEditStatus(false);
-  }
+  // function NotEdited() {
+  //   setEditStatus(false);
+  // }
 
   function ChatsLists() {
 
@@ -114,45 +114,45 @@ export default function ChatContainer(props) {
     return chats.map((chat, index) => {
       // console.log(`index: ${index} and ${chat.message}`);
 
-      // console.log('chat line 97: ', chat);
+      // console.log('chat line 117: ', chat);
 
       // TEST WITH BUTTON
-      function editClick() {
-        // **** SHOWS MESSAGE CONTENT *****
-        // console.log('button was clicked!');
-        // console.log('chat line 98: ', chat);
+      // function editClick() {
+      //   // **** SHOWS MESSAGE CONTENT *****
+      //   // console.log('button was clicked!');
+      //   // console.log('chat line 98: ', chat);
 
-        // setEdit(true);
-        setMsgEdit(chat.message);
-        setChat(chat);
-        ShowModal();
-        // console.log('msg value: ', msgEdit);
-        // conditional show modal:
-        // console.log('status of edit: ', edit);
+      //   // setEdit(true);
+      //   setMsgEdit(chat.message);
+      //   setChat(chat);
+      //   // ShowModal();
+      //   // console.log('msg value: ', msgEdit);
+      //   // conditional show modal:
+      //   // console.log('status of edit: ', edit);
 
-        // <EditModal chat={chat} />;
+      //   // <EditModal chat={chat} />;
 
-      }
+      // }
 
       if (chat.user === userName) {
         // <EditModal chat={chat} />;
         return <ChatBoxSender
-          key={chat.entryId}
-          id={chat.entryId}
+          key={index}
+          id={Date.now()}
           chat={chat}
           message={chat.message}
           user={chat.user}
           // timeStamp={chat.time}
           tStamp={chat.timestamp}
-          editClick={editClick}
-          NotEdited={NotEdited}
-          editStatus={editStatus}
-          updatedMsg={updatedMsg}
+          // editClick={editClick}
+          // NotEdited={NotEdited}
+          // editStatus={editStatus}
+          // updatedMsg={updatedMsg}
         />;
       }
       return <ChatBoxReceiver
         key={index}
-        id={chat.entryId}
+        id={Date.now()}
         chat={chat}
         message={chat.message}
         user={chat.user}
@@ -194,7 +194,7 @@ export default function ChatContainer(props) {
               <ChatsLists />
               {/* PASTE MODAL HERE */}
               {/* <EditModal /> */}
-              {(editModal === true)
+              {/* {(editModal === true)
                 ? <EditModal
                 HideModal={HideModal}
                 msgEdit={msgEdit}
@@ -203,7 +203,7 @@ export default function ChatContainer(props) {
                 IsEdited={IsEdited}
                 updatedMsg={ word => setUpdatedMsg(word) }
                 />
-                : <div>&nbsp;</div> }
+                : <div>&nbsp;</div> } */}
             </div>
             <div>
               {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
