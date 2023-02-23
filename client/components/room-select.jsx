@@ -6,7 +6,7 @@ export default class SelectRoom extends React.Component {
     this.state = {
       buttonClicked: false,
       selectClicked: false,
-      currentVal: null
+      currentVal: ''
     };
     this.selectClicked = this.selectClicked.bind(this);
     this.buttonClicked = this.buttonClicked.bind(this);
@@ -28,21 +28,40 @@ export default class SelectRoom extends React.Component {
   }
 
   handleSubmit(event) {
-    if (this.currentVal === null) {
+
+    if (this.currentVal === '') {
       event.preventDefault();
       return false;
     } else {
       event.preventDefault();
 
-      this.setState({
-        currentVal: event.target.value
-      });
+      // this.setState({
+      //   currentVal: event.target.value
+      // });
+      // console.log('currentVal: ', this.state.currentVal);
       window.location.hash = `user-name&${this.state.currentVal}`;
     }
+
+    // event.preventDefault();
+
+    // const currentVal = event.target.querySelector('[name="user-name"]').value;
+
+    // console.log('currentVal: ', currentVal);
+
+    // if (!currentVal) {
+    //   return;
+    // }
+
+    // this.setState({
+    //   currentVal
+    // });
+
+    // window.location.hash = `user-name&${currentVal}`;
+
   }
 
   render() {
-    if (this.state.buttonClicked === true && this.state.currentVal === null) {
+    if (this.state.buttonClicked === true && this.state.currentVal === '') {
       return (
         <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
@@ -73,7 +92,7 @@ export default class SelectRoom extends React.Component {
           </div>
         </div>
       );
-    } else if (this.state.currentVal !== null && this.selectClicked) {
+    } else if (this.state.currentVal !== '' && this.selectClicked) {
       return (
         <div className='container-fluid mt-5 pt-5' >
           <div className='mt-5 d-flex align-items-center justify-content-center text-center'>
