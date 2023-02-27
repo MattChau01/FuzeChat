@@ -21,6 +21,17 @@ The inspiration for this project was WhatsApp, with the dark background and gree
 
 <img src="https://files.slack.com/files-tmb/T1EHQUJ8J-F04RHU77QN6-3a4610d999/d1_360.gif" alt="tutorial">
 
+## Features
+
+- Select a room to enter
+- Create a username
+- Hear a chime when entering room
+- Send messages to other users
+- See timestamps for each message
+- Receive notifications
+- Hear a chime for incoming messages
+- Scrollable chatbox
+
 ## Technologies used
 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -46,17 +57,6 @@ The inspiration for this project was WhatsApp, with the dark background and gree
 :memo: Designs: Figma, DBDesigner
 
 :framed_picture: Frameworks: React, React Hooks, Bootstrap
-
-## Features
-
-- Select a room to enter
-- Create a username
-- Hear a chime when entering room
-- Send messages to other users
-- See timestamps for each message
-- Receive notifications
-- Hear a chime for incoming messages
-- Scrollable chatbox
 
 ## Stretch features
 
