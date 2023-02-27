@@ -19,7 +19,7 @@ The inspiration for this project was WhatsApp, with the dark background and gree
 5. Click on `Next` after entering a valid `username`.
 6. Ask a buddy to repeat the steps above and start chatting! :blush:
 
-<img src="https://files.slack.com/files-tmb/T1EHQUJ8J-F04RHU77QN6-3a4610d999/d1_360.gif" alt="tutorial">
+<img src="/assets/D1.gif" alt="tutorial">
 
 ## Features
 
