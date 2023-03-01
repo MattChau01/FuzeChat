@@ -19,7 +19,7 @@ export default class RoomName extends React.Component {
           <i className='col-1 fa-solid fa-door-open wht-txt mt-2'
           style={{
             textAlign: 'end',
-            marginRight: 15,
+            marginRight: 25,
             cursor: 'pointer'
           }}/>
         </div>

@@ -26,7 +26,13 @@ const styles = {
   },
   sendArrow: {
     color: '#fff',
-    fontSize: 20
+    fontSize: 15,
+    // paddingRight: '1rem',
+    // alignItems: 'center'
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: '0.2rem'
   }
 };
 
@@ -76,7 +82,7 @@ export default function SendMessage(props) {
             }} />
           <button type='submit' className='send' onClick={() => {
             addAMessage();
-          }}><i className="fa-solid fa-arrow-up" style={styles.sendArrow} /></button>
+          }}><i className="fa-solid fa-paper-plane" style={styles.sendArrow} /></button>
         </label>
       </form>
     </div>

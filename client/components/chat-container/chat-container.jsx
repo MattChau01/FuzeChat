@@ -70,7 +70,7 @@ export default function ChatContainer(props) {
 
   return (
     <div className='mt-3'>
-      <div className='chat-list'>
+      <div>
         <div>
           <div style={{ backgroundColor: '#283C46' }} className='scroll-bar mb-3' >
             <ChatsLists />
