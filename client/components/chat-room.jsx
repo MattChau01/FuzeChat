@@ -16,6 +16,7 @@ export default class ChatRoom extends React.Component {
   }
 
   componentDidMount() {
+
     const reqObj = {};
     reqObj.chatRoomName = this.state.currentRoom;
     reqObj.userName = this.state.userName;
@@ -29,7 +30,8 @@ export default class ChatRoom extends React.Component {
     };
 
     fetch('/api/usersInChat', req)
-      .then(res => res.json());
+      .then(res => res.json())
+      .catch(err => console.error(err));
   }
 
   handleChange(event) {

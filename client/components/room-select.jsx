@@ -15,7 +15,7 @@ export default class SelectRoom extends React.Component {
 
   selectClicked(event) {
     this.setState({
-      selectClicked: !this.state.selectClicked,
+      selectClicked: true,
       currentVal: event.target.value,
       buttonClicked: false
     });
@@ -86,10 +86,9 @@ export default class SelectRoom extends React.Component {
                       <label htmlFor='rooms' className='instruct pt-3 correct'>Please click next after selecting!</label>
                     </div>
                     <div className='pt-5'>
-                      <select required className='selection' name='rooms' onClick={this.selectClicked}>
+                      <select required className='selection' name='rooms' onChange={this.selectClicked}>
                         <option value=''>Select a room here..</option>
                         <option value='rc1022' >rc1022</option>
-
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>
