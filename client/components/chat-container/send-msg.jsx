@@ -27,8 +27,6 @@ const styles = {
   sendArrow: {
     color: '#fff',
     fontSize: 15,
-    // paddingRight: '1rem',
-    // alignItems: 'center'
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
