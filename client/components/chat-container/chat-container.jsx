@@ -5,9 +5,14 @@ import SendMessage from './send-msg';
 import { NotifyBox } from './notification';
 
 export default function ChatContainer(props) {
-
   const userName = window.location.hash.split('&')[2];
-  const socketio = socketIOClient('http://localhost:3000');
+
+  let socketUrl = 'https://fuzechat.page/';
+  if (process.env.NODE_ENV === 'development') {
+    socketUrl = 'http://localhost:3000';
+  }
+
+  const socketio = socketIOClient(socketUrl);
   const [chats, setChats] = useState([]);
   const [user] = useState((props.user));
   const [notice] = useState(<NotifyBox />);
@@ -65,7 +70,6 @@ export default function ChatContainer(props) {
         );
       }
     }
-
   }
 
   return (
