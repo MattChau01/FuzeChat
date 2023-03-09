@@ -3,21 +3,21 @@ import React, { useState } from 'react';
 const styles = {
   button: {
     width: '10%',
-    height: 50,
+    height: '3.125rem',
     fontWeight: 'bold',
     borderRadius: 10,
-    fontSize: 18,
+    fontSize: '1rem',
     backgroundColor: '#34b7f1',
     borderWidth: 0,
     color: '#fff'
   },
   textarea: {
     width: '60%',
-    height: 50,
+    height: '3.125rem',
     borderRadius: 10,
     borderWidth: 0,
-    padding: 10,
-    fontSize: 18
+    padding: '0.5rem',
+    fontSize: '1rem'
   },
   textContainer: {
     display: 'flex',
@@ -26,7 +26,7 @@ const styles = {
   },
   sendArrow: {
     color: '#fff',
-    fontSize: 15,
+    fontSize: '1rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

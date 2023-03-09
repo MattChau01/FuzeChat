@@ -56,9 +56,8 @@ export default class SelectRoom extends React.Component {
                     </div>
                     <div className='pt-5'>
                       <select required className='selection' name='rooms' onClick={this.selectClicked}>
-                        <option value=''>Select a room here..</option>
-                        <option value='rc1022' >rc1022</option>
-
+                        <option value=''>Select room here </option>
+                        <option value='room1' >room1</option>
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>
@@ -87,8 +86,8 @@ export default class SelectRoom extends React.Component {
                     </div>
                     <div className='pt-5'>
                       <select required className='selection' name='rooms' onChange={this.selectClicked}>
-                        <option value=''>Select a room here..</option>
-                        <option value='rc1022' >rc1022</option>
+                        <option value=''>Select room here </option>
+                        <option value='room1' >room1</option>
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>
@@ -117,9 +116,8 @@ export default class SelectRoom extends React.Component {
                     </div>
                     <div className='pt-5'>
                       <select required className='selection' name='rooms' onClick={this.selectClicked}>
-                        <option value=''>Select a room here..</option>
-                        <option value='rc1022' >rc1022</option>
-
+                        <option value=''>Select room here </option>
+                        <option value='room1' >room1</option>
                       </select>
                     </div>
                     <div className='mt-5 pt-4'>

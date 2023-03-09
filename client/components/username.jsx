@@ -13,12 +13,6 @@ export default class NewUserName extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleUserName = this.handleUserName.bind(this);
     this.handleSubmitUserName = this.handleSubmitUserName.bind(this);
-    this.playChime = this.playChime.bind(this);
-  }
-
-  // Will need to test whether this function is needed or not. Line 42 declares a new audio file as well
-  playChime() {
-    new Audio(enterChat).play();
   }
 
   handleClick() {
