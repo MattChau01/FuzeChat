@@ -4,7 +4,7 @@
 
 <strong>FuzeChat is a web application for online chatters who want to chat in a one time chat room.</strong>
 
-The inspiration for this project was WhatsApp, with the dark background and green buttons. I've wanted to create my own messaging app, and was able to accomplish this with FuzeChat! The highlight of this application is it's live messaging system. All users that are connected to a chat room will receive a message that is emitted from a sender. Feel free to try the app with the steps below!
+The inspiration for this project was WhatsApp, with the dark background and green buttons. I've wanted to create my own messaging app, and was able to accomplish this with FuzeChat! The highlight of this application is its live messaging system. All users that are connected to a chat room will receive a message that is emitted from a sender. Feel free to try the app with the steps below!
 
 ## Give it a try!
 
