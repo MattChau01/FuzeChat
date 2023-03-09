@@ -4,19 +4,19 @@ body {
 
 .app-name {
   font-family: Lobster, cursive;
-  font-size: 40px;
+  font-size: 2.5rem;
   color: #fff;
-  margin-left: 15px;
+  margin-left: 1rem;
 }
 
 .nav-bar {
   background-color: rgb(40, 60, 70, 100%);
-  height: 80px;
+  height: 5rem;
 }
 
 .welcome {
   font-family: Helvetica, sans-serif;
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
@@ -26,18 +26,17 @@ body {
 
 .instruct {
   font-family: Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .user-input {
-  width: 300px;
-  height: 40px;
+  height: 2.5rem;
   border-style: none;
   border-radius: 1rem;
   font-family: Helvetica, sans-serif;
   color: grey;
-  padding-left: 10px;
+  padding-left: 0.8rem;
   font-weight: 500;
   outline: none;
 }
@@ -48,15 +47,13 @@ body {
 
 .next {
   font-family: Helvetica, sans-serif;
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 600;
   color: #fff;
-  width: 120px;
-  height: 40px;
+  height: 2.5rem;
   border-style: none;
   border-radius: 1rem;
   text-decoration: none;
-  padding-top: 1px;
 }
 
 .wrong {
@@ -73,13 +70,12 @@ body {
 
 .select {
   background-color: rgb(40, 60, 70, 100%);
-  height: 200px;
-  width: 300px;
+  height: 12rem;
+  padding: 0 2.5rem;
   border-radius: 1rem;
 }
 
 .selection {
-  width: 225px;
   font-family: Poppins, sans-serif;
   outline: none;
   border-radius: 5px;
@@ -88,14 +84,13 @@ body {
 
 .location {
   background-color: rgb(40, 60, 70, 100%);
-  width: 100%;
-  height: 35px;
+  height: 2.1rem;
 }
 
 .text-box {
-  padding-top: 2px;
+  padding-top: 0.2rem;
   width: 350px;
-  height: 44px;
+  height: 2.75rem;
   background-color: #fff;
   border-radius: 5rem;
 }
@@ -103,30 +98,25 @@ body {
 .message-bar {
   margin-left: 0.5rem;
   font-family: Helvetica, sans-serif;
-  width: 305px;
-  height: 40px;
-  font-size: 14px;
+  width: 19rem;
+  height: 2.5rem;
+  font-size: 1rem;
   border-style: none;
   border-radius: 5rem;
   outline: none;
 }
 
 .send {
-  width: 30px;
-  height: 30px;
+  width: 1.8rem;
+  height: 1.875rem;
   border-style: none;
   border-radius: 50%;
   background-color: rgb(2, 175, 160, 100%);
-  margin-right: 3px;
+  margin-right: 0.3rem;
 }
 
 .message {
-  font-size: 14px;
-}
-
-.welcome-to-chat {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 1rem;
 }
 
 .scroll-bar {
@@ -145,35 +135,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-@media screen and (min-width: 500px) {
-  .welcome {
-    font-size: 33px;
-  }
-
-  .instruct {
-    font-size: 20px;
-  }
-
-  .user-input {
-    width: 350px;
-  }
-
-  .next {
-    font-size: 30px;
-    height: 50px;
-  }
-
-  .select {
-    width: 400px;
-  }
-
-  .text-box {
-    width: 100%;
-  }
-
-  .message-bar {
-    width: 385px;
-  }
 }

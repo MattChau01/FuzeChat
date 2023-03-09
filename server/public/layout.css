@@ -1,0 +1,26 @@
+@media screen and (min-width: 500px) {
+  .welcome {
+    font-size: 2rem;
+  }
+
+  .instruct {
+    font-size: 1.25rem;
+  }
+
+  .user-input {
+    width: 18rem;
+  }
+
+  .next {
+    font-size: 1.875rem;
+    height: 3.125rem;
+  }
+
+  .text-box {
+    width: 100%;
+  }
+
+  .message-bar {
+    width: 24rem;
+  }
+}

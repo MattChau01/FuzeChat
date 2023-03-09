@@ -82,7 +82,7 @@ export default function ChatContainer(props) {
           <div>
             {(listOfUsers.length > 0) ? <NewNotif /> : (<div>&nbsp;</div>)}
           </div>
-          <div className='mt-3'>
+          <div className='mt-2'>
             <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
           </div>
         </div>

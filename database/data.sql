@@ -1,4 +1,4 @@
 insert into "chatRooms" (
   "chatRoomName")
   values
-  ('rc1022');
+  ('room1');
