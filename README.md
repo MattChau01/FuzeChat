@@ -61,12 +61,13 @@ The inspiration for this project was WhatsApp, with the dark background and gree
 ## Stretch features
 
 - Editing a message
+- Creating separate chat rooms that a user may leave and enter
 - Allow user to create an account & sign in
 
 ## Getting started
 
 You may clone this repo with the following steps:
-1. Go to `https://github.com/MattChau01/final-project`.
+1. Go to `https://github.com/MattChau01/FuzeChat`.
 2. Click on `code`.
 3. Click on `SSH` (If you are using the latest Windows update, you may need to use `HTTPS` instead).
 4. Click on the clipboard to copy the URL.
