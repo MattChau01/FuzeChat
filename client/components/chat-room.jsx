@@ -38,7 +38,7 @@ export default class ChatRoom extends React.Component {
   }
 
   cancelButton() {
-
+    // console.log('cancel clicked');
   }
 
   handleChange(event) {
@@ -51,7 +51,7 @@ export default class ChatRoom extends React.Component {
     return (
       <div className='d-flex align-items-center justify-content-center'>
         <div style={{ width: '90%' }} >
-          <RoomName currentRoom={this.state.currentRoom}/>
+          <RoomName currentRoom={this.state.currentRoom} cancelButton={this.cancelButton}/>
           {/* <Modal /> */}
           <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName}/>
         </div>

@@ -43,10 +43,10 @@ export default function RoomName(props) {
             marginRight: '1.5rem',
             cursor: 'pointer'
           }}
-          // onClick={
-          //   // console.log('clicked')
-          // }
-          />
+          onClick={
+            // console.log('clicked')
+            props.cancelButton
+          }/>
       </div>
     </div>
 
