@@ -2,7 +2,6 @@ import React from 'react';
 
 export default function Modal(props) {
   return (
-    // <div className='wht-txt'>TEST</div>
     <div style={{
       backgroundColor: 'rgb(0 0 0 / 70 %)'
     }}>
