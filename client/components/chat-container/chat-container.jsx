@@ -84,6 +84,10 @@ export default function ChatContainer(props) {
           </div>
           <div className='mt-2'>
             <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+            {/* {(props.exitClick === true)
+              ? null
+              : <SendMessage addMessage={addMessage} handleSubmit={props.handleSubmit} currentRoom={props.currentRoom} userName={props.userName} />
+              } */}
           </div>
         </div>
       </div>

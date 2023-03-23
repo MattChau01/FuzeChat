@@ -45,7 +45,7 @@ export default function RoomName(props) {
           }}
           onClick={
             // console.log('clicked')
-            props.cancelButton
+            props.exitButton
           }/>
       </div>
     </div>

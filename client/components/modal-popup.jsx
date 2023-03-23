@@ -34,7 +34,7 @@ export default function Modal(props) {
                       color: '#fff',
                       borderRadius: '2rem',
                       borderStyle: 'none'
-                    }}>Cancel</button>
+                    }} onClick={props.cancelClick} >Cancel</button>
                   </div>
                   <div className='col'>
                     <button style={{

@@ -3,7 +3,7 @@ import RoomName from './chat-container/room-name';
 import FindRoom from '../lib/select-room';
 import NewUser from '../lib/print-username';
 import ChatContainer from './chat-container/chat-container';
-// import Modal from '../components/modal-popup';
+import Modal from '../components/modal-popup';
 
 export default class ChatRoom extends React.Component {
   constructor(props) {
@@ -12,10 +12,13 @@ export default class ChatRoom extends React.Component {
       messages: [],
       currentRoom: FindRoom(window.location.hash),
       userName: NewUser(window.location.hash),
-      cancelClick: false
+      // TESTING MOBILE INTERFACE
+      exitClick: false
+      // cancelClick: false
     };
     this.handleChange = this.handleChange.bind(this);
-    this.cancelButton = this.cancelButton.bind(this);
+    this.exitButton = this.exitButton.bind(this);
+    this.cancelClick = this.cancelClick.bind(this);
   }
 
   componentDidMount() {
@@ -37,8 +40,24 @@ export default class ChatRoom extends React.Component {
       .catch(err => console.error(err));
   }
 
-  cancelButton() {
+  exitButton() {
     // console.log('cancel clicked');
+    // console.log('this.state.cancleClick: ', this.state.exitClick);
+
+    this.setState({
+      exitClick: true
+    });
+
+  }
+
+  cancelClick() {
+    // console.log('cancel clicked');
+    // console.log('this.state.cancleClick: ', this.state.cancelClick);
+
+    this.setState({
+      exitClick: false
+    });
+
   }
 
   handleChange(event) {
@@ -51,9 +70,10 @@ export default class ChatRoom extends React.Component {
     return (
       <div className='d-flex align-items-center justify-content-center'>
         <div style={{ width: '90%' }} >
-          <RoomName currentRoom={this.state.currentRoom} cancelButton={this.cancelButton}/>
+          <RoomName currentRoom={this.state.currentRoom} exitButton={this.exitButton}/>
           {/* <Modal /> */}
-          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName}/>
+          <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} exitClick={this.state.exitClick} />
+          {(this.state.exitClick === true) ? <Modal cancelClick={this.cancelClick} /> : null}
         </div>
       </div>
     );
