@@ -65,6 +65,9 @@ export default class ChatRoom extends React.Component {
   confirmClick() {
     // console.log('confirm clicked');
     // console.log('this.state.confirmClick: ', this.state.confirmClick);
+
+    window.location.hash = '#';
+
   }
 
   handleChange(event) {
