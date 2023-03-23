@@ -13,12 +13,14 @@ export default class ChatRoom extends React.Component {
       currentRoom: FindRoom(window.location.hash),
       userName: NewUser(window.location.hash),
       // TESTING MOBILE INTERFACE
-      exitClick: false
+      exitClick: false,
+      confirmClick: false
       // cancelClick: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.exitButton = this.exitButton.bind(this);
     this.cancelClick = this.cancelClick.bind(this);
+    this.confirmClick = this.confirmClick.bind(this);
   }
 
   componentDidMount() {
@@ -60,6 +62,11 @@ export default class ChatRoom extends React.Component {
 
   }
 
+  confirmClick() {
+    // console.log('confirm clicked');
+    // console.log('this.state.confirmClick: ', this.state.confirmClick);
+  }
+
   handleChange(event) {
     this.setState({
       messages: event.target.value
@@ -73,7 +80,7 @@ export default class ChatRoom extends React.Component {
           <RoomName currentRoom={this.state.currentRoom} exitButton={this.exitButton}/>
           {/* <Modal /> */}
           <ChatContainer user={this.state.userName} currentRoom={this.state.currentRoom} userName={this.state.userName} exitClick={this.state.exitClick} />
-          {(this.state.exitClick === true) ? <Modal cancelClick={this.cancelClick} /> : null}
+          {(this.state.exitClick === true) ? <Modal cancelClick={this.cancelClick} confirmClick={this.confirmClick} /> : null}
         </div>
       </div>
     );

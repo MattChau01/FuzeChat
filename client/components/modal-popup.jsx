@@ -42,7 +42,7 @@ export default function Modal(props) {
                       color: '#fff',
                       borderRadius: '2rem',
                       borderStyle: 'none'
-                    }}>Confirm</button>
+                    }} onClick={props.confirmClick} >Confirm</button>
                   </div>
                 </div>
               </div>
