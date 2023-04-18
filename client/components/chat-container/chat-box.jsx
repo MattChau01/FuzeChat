@@ -7,7 +7,8 @@ export function ChatBoxReceiver(props, { user, message }) {
 
   useEffect(() => {
     alert.play();
-  }, []);
+    props.latestMsg();
+  }, [props]);
 
   return (
     <div style={{

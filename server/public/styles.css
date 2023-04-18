@@ -120,8 +120,8 @@ body {
 }
 
 .scroll-bar {
-  height: 60vh;
-  min-height: 63vh;
+  height: 50vh;
+  min-height: 52vh;
   overflow-y: scroll;
 }
 
@@ -135,4 +135,8 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.latest-msg {
+  line-height: 0.85rem;
 }
