@@ -23,4 +23,13 @@
   .message-bar {
     width: 24rem;
   }
+
+  .scroll-bar {
+    height: 60vh;
+    min-height: 63vh;
+  }
+
+  .latest-msg {
+    line-height: 1.5rem;
+  }
 }
